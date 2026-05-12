@@ -492,14 +492,14 @@
   }
   .ghost-cta:hover{background:var(--gold);color:var(--navy);}
 
-  /* ========== EQUIPO ========== */
+  /* ========== EQUIPO v5 (3 cols, aspect 4/3 horizontal) ========== */
   .team{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
   }
   .member{cursor:default;}
   .member-photo{
-    aspect-ratio:3/4;border-radius:4px;overflow:hidden;
-    background:var(--navy-2);position:relative;margin-bottom:16px;
+    aspect-ratio:4/3;border-radius:4px;overflow:hidden;
+    background:var(--navy-2);position:relative;margin-bottom:18px;
   }
   .member-photo img{
     width:100%;height:100%;object-fit:cover;
@@ -2331,24 +2331,13 @@
 <section id="equipo">
   <div class="section-head reveal">
     <div class="mono">05 — Equipo</div>
-    <h2>Cuatro abogados. Una sola promesa.</h2>
-    <p>Cada vertical tiene un abogado responsable. Cuando escribe por WhatsApp, le conectamos con quien va a llevar su caso, no con un asistente.</p>
+    <h2>Tres abogados. Una sola promesa.</h2>
+    <p>Cada vertical tiene un abogado responsable. Cuando escribe por WhatsApp, le conectamos con quien va a llevar su caso, no con un asistente. Al frente, el Ab. Ney Valero recibe personalmente cada caso antes de asignarlo.</p>
   </div>
   <div class="team stagger">
     <div class="member">
-      <div class="member-photo" data-hyperframe>
-        <span class="pin">Fundador</span>
-      <img src="img/ney.webp" srcset="img/ney-sm.webp 400w, img/ney-md.webp 700w, img/ney.webp 1200w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 45vw, 22vw" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" />
-        <svg class="hyperframe" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%"></rect></svg>
-      </div>
-      <div class="overlay-label">Recibe cada caso · personalmente</div>
-      <div class="member-name">Ab. Ney A. Valero</div>
-      <div class="member-role">Socio fundador</div>
-      <div class="member-tags"><span class="member-tag">Civil</span><span class="member-tag">Inmobiliario</span></div>
-    </div>
-    <div class="member">
       <div class="member-photo">
-      <img src="img/adrian.webp" srcset="img/adrian-sm.webp 450w, img/adrian-md.webp 900w, img/adrian.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 45vw, 22vw" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" />
+        <img src="img/adrian.webp" srcset="img/adrian-sm.webp 450w, img/adrian-md.webp 900w, img/adrian.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 30vw" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
         <div class="overlay-label">Contratos · Compliance</div>
       </div>
       <div class="member-name">Ab. Adrián Bastidas</div>
@@ -2357,7 +2346,7 @@
     </div>
     <div class="member">
       <div class="member-photo">
-      <img src="img/patricia.webp" srcset="img/patricia-sm.webp 450w, img/patricia-md.webp 900w, img/patricia.webp 1500w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 45vw, 22vw" width="1500" height="1000" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" />
+        <img src="img/patricia.webp" srcset="img/patricia-sm.webp 450w, img/patricia-md.webp 900w, img/patricia.webp 1500w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 30vw" width="1500" height="1000" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
         <div class="overlay-label">Divorcios · Herencias · Laboral</div>
       </div>
       <div class="member-name">Abg. Patricia Valero</div>
@@ -2366,7 +2355,7 @@
     </div>
     <div class="member">
       <div class="member-photo">
-      <img src="img/daniel.webp" srcset="img/daniel-sm.webp 450w, img/daniel-md.webp 900w, img/daniel.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 45vw, 22vw" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" />
+        <img src="img/daniel.webp" srcset="img/daniel-sm.webp 450w, img/daniel-md.webp 900w, img/daniel.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 30vw" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
         <div class="overlay-label">Tránsito · Casos corporativos</div>
       </div>
       <div class="member-name">Ab. Daniel Carrera</div>
