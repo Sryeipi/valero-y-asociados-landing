@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="es-EC">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Valero & Asociados · Estudio Jurídico en Guayaquil</title>
+<meta name="description" content="Estudio jurídico en Guayaquil con más de 20 años de trayectoria. Derecho de familia, corporativo e inmobiliario. Consulta inicial gratuita por WhatsApp." />
+<meta name="keywords" content="abogado Guayaquil, abogado divorcios Guayaquil, abogado inmobiliario Guayaquil, asesoría legal empresas Guayaquil, herencias Ecuador, escrituras propiedades Guayaquil" />
+<meta property="og:title" content="Valero & Asociados — Protegemos lo que más te importa" />
+<meta property="og:description" content="Más de 20 años defendiendo familias, empresas y patrimonios en Guayaquil." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_EC" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Valero & Asociados",
+  "description": "Estudio jurídico en Guayaquil especializado en derecho de familia, corporativo e inmobiliario.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Guayaquil",
+    "addressCountry": "EC"
+  },
+  "telephone": "+593959080607",
+  "url": "https://valeroyasociados.ec",
+  "areaServed": "Guayaquil, Ecuador",
+  "founder": {
+    "@type": "Person",
+    "name": "Ab. Ney Antonio Valero Brando"
+  }
+}
+</script>
+<style>
+  /* ========== TOKENS ========== */
+  :root{
+    --navy:#0A1628;
+    --navy-2:#142847;
+    --navy-3:#1B3358;
+    --gold:#D4A84B;
+    --gold-warm:#E8B86D;
+    --bone:#F5F2EB;
+    --gray:#9AA3B2;
+    --terracotta:#C4533A;
+    --laurel:#3A8F7D;
+    --jurid:#3A6EB5;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy);
+    color:var(--bone);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:var(--navy);}
+
+  /* Patrón de fondo de cruces */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(212,168,75,0.06) 1px, transparent 0);
+    background-size:32px 32px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ========== TIPOGRAFÍA ========== */
+  .serif{font-family:var(--serif);}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:0.18em;font-size:13px;color:var(--gold);}
+  h1{font-family:var(--serif);font-weight:700;line-height:1.05;letter-spacing:-0.02em;}
+  h2{font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-0.015em;}
+  h3{font-family:var(--serif);font-weight:600;line-height:1.2;}
+
+  /* Progress bar */
+  .progress{
+    position:fixed;top:0;left:0;height:2px;background:var(--gold);
+    z-index:100;width:0%;transition:width .1s linear;
+  }
+
+  /* ========== NAV ========== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(16px);
+    background:rgba(10,22,40,0.65);
+    border-bottom:1px solid rgba(212,168,75,0.1);
+  }
+  .nav-inner{
+    max-width:1280px;margin:0 auto;padding:18px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .logo{
+    font-family:var(--serif);font-weight:700;font-size:22px;
+    color:var(--bone);text-decoration:none;letter-spacing:-0.02em;
+  }
+  .logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{
+    color:var(--bone);text-decoration:none;font-size:14px;font-weight:500;
+    transition:color .2s;position:relative;
+  }
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);color:var(--navy);
+    padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;
+    text-decoration:none;transition:all .2s;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .nav-cta:hover{background:var(--gold-warm);transform:translateY(-1px);}
+  .burger{display:none;background:none;border:0;color:var(--bone);cursor:pointer;}
+
+  /* ========== HERO ========== */
+  .hero{
+    position:relative;z-index:1;
+    max-width:1280px;margin:0 auto;
+    padding:160px 32px 80px;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;
+  }
+  .hero-text .mono{margin-bottom:24px;}
+  .hero-text h1{
+    font-size:clamp(40px, 7vw, 88px);
+    margin-bottom:24px;
+  }
+  .hero-text .sub{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(22px, 2.5vw, 30px);
+    color:var(--gray);
+    margin-bottom:48px;
+    line-height:1.4;
+  }
+  .cta-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--gold);color:var(--navy);
+    padding:18px 32px;border-radius:999px;
+    font-size:15px;font-weight:600;
+    text-decoration:none;transition:all .25s;
+    box-shadow:0 8px 24px rgba(212,168,75,0.25);
+  }
+  .cta-primary:hover{background:var(--gold-warm);transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,168,75,0.35);}
+  .cta-primary svg{transition:transform .2s;}
+  .cta-primary:hover svg{transform:translateX(4px);}
+  .cta-sub{
+    display:block;margin-top:16px;color:var(--gray);font-size:13px;
+  }
+
+  .hero-photo{
+    position:relative;aspect-ratio:4/5;border-radius:4px;
+    overflow:hidden;background:var(--navy-2);
+  }
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:contrast(1.05) brightness(0.95);
+  }
+  .hero-photo::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at top right, rgba(232,184,109,0.15), transparent 60%);
+    pointer-events:none;
+  }
+  .frame{
+    position:absolute;inset:-8px;pointer-events:none;
+    border:1.5px solid var(--gold);
+    clip-path:inset(0 0 0 0);
+  }
+  .frame svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .frame rect{
+    fill:none;stroke:var(--gold);stroke-width:1.5;
+    stroke-dasharray:2000;stroke-dashoffset:2000;
+    animation:draw 1.8s .4s ease-out forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  /* ========== MARQUEE ========== */
+  .marquee{
+    position:relative;z-index:1;
+    background:var(--navy-2);border-block:1px solid rgba(212,168,75,0.1);
+    overflow:hidden;padding:18px 0;
+  }
+  .marquee-track{
+    display:flex;gap:48px;white-space:nowrap;
+    animation:marquee 30s linear infinite;
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  .marquee-item{
+    font-family:var(--mono);font-size:13px;letter-spacing:0.22em;
+    color:var(--gold);text-transform:uppercase;
+  }
+  .marquee-item::after{content:" · ";margin-left:48px;opacity:0.5;}
+  @keyframes marquee{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ========== SECCIONES BASE ========== */
+  section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:120px 32px;}
+  .section-head{margin-bottom:64px;max-width:720px;}
+  .section-head .mono{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(36px,5vw,56px);margin-bottom:16px;}
+  .section-head p{color:var(--gray);font-size:18px;}
+
+  /* ========== ÁREAS ========== */
+  .areas-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .area{
+    background:var(--navy-2);border:1px solid rgba(212,168,75,0.08);
+    padding:40px 32px;border-radius:6px;
+    transition:all .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .area::before{
+    content:"";position:absolute;top:0;left:32px;width:40px;height:3px;
+    background:var(--area-color, var(--gold));
+  }
+  .area:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 40px rgba(212,168,75,0.12);
+    border-color:rgba(212,168,75,0.25);
+  }
+  .area h3{font-size:28px;margin:24px 0 8px;}
+  .area .tag{
+    font-family:var(--serif);font-style:italic;color:var(--gold);
+    font-size:15px;margin-bottom:24px;display:block;
+  }
+  .area ul{list-style:none;margin-bottom:32px;}
+  .area li{
+    color:var(--gray);font-size:15px;padding:8px 0;
+    border-bottom:1px solid rgba(154,163,178,0.08);
+  }
+  .area li:last-child{border:0;}
+  .area-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--gold);text-decoration:none;font-weight:500;font-size:14px;
+    padding:10px 0;border-top:1px solid rgba(212,168,75,0.2);width:100%;
+    transition:gap .2s;
+  }
+  .area-cta:hover{gap:14px;}
+
+  .chips{
+    margin-top:48px;text-align:center;
+    color:var(--gray);font-size:14px;
+  }
+  .chips-list{
+    display:inline-flex;gap:12px;margin-left:16px;flex-wrap:wrap;
+  }
+  .chip{
+    padding:8px 16px;border:1px solid rgba(212,168,75,0.3);
+    border-radius:999px;color:var(--bone);font-size:13px;
+    background:transparent;cursor:pointer;transition:all .2s;
+    text-decoration:none;
+  }
+  .chip:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+
+  /* ========== KPIs ========== */
+  .kpis{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(212,168,75,0.15);
+    border-bottom:1px solid rgba(212,168,75,0.15);
+    padding:48px 0;margin-bottom:80px;
+  }
+  .kpi{
+    text-align:center;padding:0 24px;
+    border-right:1px solid rgba(154,163,178,0.1);
+  }
+  .kpi:last-child{border-right:0;}
+  .kpi-num{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(48px,6vw,72px);color:var(--gold);line-height:1;
+    margin-bottom:12px;
+  }
+  .kpi-lab{color:var(--gray);font-size:14px;}
+
+  /* ========== CASOS HORIZONTAL ========== */
+  .cases-wrap{position:relative;}
+  .cases{
+    display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:8px 32px 32px;margin:0 -32px;
+    scrollbar-width:thin;scrollbar-color:var(--gold) var(--navy-2);
+  }
+  .cases::-webkit-scrollbar{height:6px;}
+  .cases::-webkit-scrollbar-track{background:var(--navy-2);}
+  .cases::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+  .case{
+    flex:0 0 380px;scroll-snap-align:start;
+    background:var(--navy-2);border:1px solid rgba(212,168,75,0.1);
+    border-radius:6px;padding:32px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    min-height:280px;
+  }
+  .case-tag{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.2em;
+    color:var(--tag-color, var(--gold));text-transform:uppercase;margin-bottom:16px;
+  }
+  .case h4{font-family:var(--serif);font-size:22px;line-height:1.3;margin-bottom:16px;}
+  .case p{color:var(--gray);font-size:14px;line-height:1.6;flex:1;}
+  .case-footer{
+    margin-top:24px;padding-top:16px;
+    border-top:1px solid rgba(212,168,75,0.15);
+    font-family:var(--mono);font-size:11px;letter-spacing:0.15em;
+    color:var(--gold);text-transform:uppercase;
+  }
+
+  /* ========== SOBRE EL FUNDADOR ========== */
+  .founder{
+    display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center;
+  }
+  .founder-img{
+    aspect-ratio:3/4;border-radius:4px;overflow:hidden;
+    position:relative;
+  }
+  .founder-img img{width:100%;height:100%;object-fit:cover;}
+  .founder-img::after{
+    content:"";position:absolute;inset:-8px;border:1.5px solid var(--gold);
+    pointer-events:none;
+  }
+  .founder-quote{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(28px,3.5vw,40px);line-height:1.25;
+    margin-bottom:32px;
+  }
+  .founder-attr{
+    font-family:var(--mono);font-size:12px;color:var(--gold);
+    margin-bottom:32px;
+  }
+  .founder-body{color:var(--gray);font-size:17px;margin-bottom:32px;}
+  .credentials{
+    list-style:none;margin-bottom:32px;
+  }
+  .credentials li{
+    font-family:var(--mono);font-size:12px;color:var(--bone);
+    padding:6px 0;letter-spacing:0.1em;
+  }
+  .credentials li::before{content:"· ";color:var(--gold);}
+  .ghost-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--gold);text-decoration:none;font-weight:500;
+    border:1px solid var(--gold);padding:14px 24px;border-radius:999px;
+    transition:all .2s;font-size:14px;
+  }
+  .ghost-cta:hover{background:var(--gold);color:var(--navy);}
+
+  /* ========== EQUIPO ========== */
+  .team{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .member{cursor:pointer;}
+  .member-photo{
+    aspect-ratio:3/4;border-radius:4px;overflow:hidden;
+    background:var(--navy-2);position:relative;margin-bottom:16px;
+  }
+  .member-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(100%) contrast(1.05);
+    transition:filter .5s, transform .5s;
+  }
+  .member:hover .member-photo img{filter:grayscale(0%) contrast(1.05);transform:scale(1.02);}
+  .member-name{font-family:var(--serif);font-size:20px;margin-bottom:4px;}
+  .member-role{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.15em;
+    color:var(--gray);text-transform:uppercase;margin-bottom:12px;
+  }
+  .member-tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .member-tag{
+    font-size:11px;padding:4px 10px;border:1px solid rgba(212,168,75,0.25);
+    border-radius:999px;color:var(--gray);
+  }
+
+  /* ========== RESEÑAS ========== */
+  .reviews{
+    columns:3;column-gap:24px;
+  }
+  .review{
+    background:var(--navy-2);border:1px solid rgba(212,168,75,0.08);
+    border-radius:6px;padding:28px;margin-bottom:24px;
+    break-inside:avoid;
+    transition:all .25s;
+  }
+  .review:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(212,168,75,0.1);
+  }
+  .stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px;}
+  .review-quote{
+    font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.55;
+    color:var(--bone);margin-bottom:20px;
+  }
+  .review-footer{
+    display:flex;align-items:center;gap:12px;
+    padding-top:16px;border-top:1px solid rgba(154,163,178,0.1);
+  }
+  .review-avatar{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--gold);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:600;font-size:14px;
+  }
+  .review-meta div:first-child{font-weight:500;font-size:14px;}
+  .review-meta div:last-child{font-size:11px;color:var(--gray);font-family:var(--mono);letter-spacing:0.1em;}
+
+  /* ========== FAQ ========== */
+  .faq-item{
+    border-bottom:1px solid rgba(212,168,75,0.12);
+    padding:24px 0;cursor:pointer;
+  }
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;gap:32px;
+    font-family:var(--serif);font-size:22px;color:var(--bone);
+    transition:color .2s;
+  }
+  .faq-item:hover .faq-q{color:var(--gold);}
+  .faq-icon{
+    flex:0 0 auto;width:24px;height:24px;color:var(--gold);
+    transition:transform .3s;
+  }
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;
+    transition:max-height .4s ease, padding-top .4s ease;
+    color:var(--gray);font-size:16px;line-height:1.7;
+  }
+  .faq-item.open .faq-a{max-height:400px;padding-top:16px;}
+
+  /* ========== CLOSING ========== */
+  .closing{
+    text-align:center;padding:160px 32px;
+    background:var(--navy);
+    border-top:1px solid rgba(212,168,75,0.1);
+  }
+  .closing .mono{margin-bottom:24px;display:inline-block;}
+  .closing h2{font-size:clamp(36px,5vw,64px);margin-bottom:16px;}
+  .closing .sub{
+    font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.5vw,28px);
+    color:var(--gray);margin-bottom:56px;
+  }
+  .closing .cta-primary{
+    font-size:17px;padding:22px 40px;
+  }
+  .closing-note{
+    margin-top:24px;font-family:var(--mono);font-size:12px;
+    color:var(--gray);letter-spacing:0.15em;text-transform:uppercase;
+  }
+
+  /* ========== FOOTER ========== */
+  footer{
+    background:var(--navy-2);padding:80px 32px 40px;
+    border-top:1px solid rgba(212,168,75,0.1);position:relative;z-index:1;
+  }
+  .footer-inner{max-width:1280px;margin:0 auto;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;
+    margin-bottom:48px;
+  }
+  .footer-col h5{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.2em;
+    color:var(--gold);text-transform:uppercase;margin-bottom:20px;
+  }
+  .footer-col p, .footer-col a{
+    color:var(--gray);font-size:14px;text-decoration:none;
+    display:block;padding:4px 0;
+  }
+  .footer-col a:hover{color:var(--gold);}
+  .footer-logo{
+    font-family:var(--serif);font-weight:700;font-size:28px;
+    color:var(--bone);margin-bottom:12px;letter-spacing:-0.02em;
+  }
+  .footer-logo span{color:var(--gold);}
+  .footer-bottom{
+    padding-top:32px;border-top:1px solid rgba(212,168,75,0.1);
+    display:flex;justify-content:space-between;font-size:13px;color:var(--gray);
+    flex-wrap:wrap;gap:12px;
+  }
+
+  /* ========== WHATSAPP FLOTANTE ========== */
+  .wa-float{
+    position:fixed;bottom:24px;right:24px;z-index:60;
+    width:64px;height:64px;border-radius:50%;
+    background:var(--gold);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 32px rgba(212,168,75,0.4);
+    text-decoration:none;
+    animation:pulse 4s ease-in-out infinite;
+    transition:transform .25s;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  @keyframes pulse{
+    0%,100%{transform:scale(1);box-shadow:0 8px 32px rgba(212,168,75,0.4);}
+    50%{transform:scale(1.05);box-shadow:0 12px 40px rgba(212,168,75,0.6);}
+  }
+
+  /* ========== REVEAL ANIMATIONS ========== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  .stagger > *{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .stagger.visible > *{opacity:1;transform:none;}
+  .stagger.visible > *:nth-child(1){transition-delay:0ms;}
+  .stagger.visible > *:nth-child(2){transition-delay:120ms;}
+  .stagger.visible > *:nth-child(3){transition-delay:240ms;}
+  .stagger.visible > *:nth-child(4){transition-delay:360ms;}
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 960px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .hero{grid-template-columns:1fr;padding:120px 24px 60px;gap:48px;}
+    .areas-grid{grid-template-columns:1fr;gap:16px;}
+    .kpis{grid-template-columns:repeat(2,1fr);gap:24px 0;padding:32px 0;}
+    .kpi{border-right:0;}
+    .kpi:nth-child(odd){border-right:1px solid rgba(154,163,178,0.1);}
+    .founder{grid-template-columns:1fr;gap:48px;}
+    .team{grid-template-columns:repeat(2,1fr);}
+    .reviews{columns:1;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    section{padding:80px 24px;}
+    .closing{padding:100px 24px;}
+  }
+  @media (max-width: 560px){
+    .team{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .nav-inner{padding:14px 20px;}
+    .nav-cta{padding:8px 14px;font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll progress -->
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Valero <span>&</span> Asociados</a>
+    <ul class="nav-links">
+      <li><a href="#areas">Áreas</a></li>
+      <li><a href="#casos">Casos</a></li>
+      <li><a href="#fundador">Fundador</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#reseñas">Reseñas</a></li>
+    </ul>
+    <a href="https://wa.me/593959080607?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20conversar%20sobre%20una%20consulta%20legal." class="nav-cta">
+      WhatsApp
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="burger" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="mono">01 — Estudio Jurídico · Guayaquil</div>
+    <h1 id="heroH1">Protegemos lo que más te importa.</h1>
+    <p class="sub">Tu familia. Tu empresa. Tu patrimonio.</p>
+    <a href="https://wa.me/593959080607?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20agendar%20una%20consulta%20gratuita." class="cta-primary">
+      Conversemos por WhatsApp
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <span class="cta-sub">Consulta inicial gratuita · 30 minutos</span>
+  </div>
+  <div class="hero-photo">
+    <!-- Foto del Ab. Ney Valero. Reemplazá el src en producción. -->
+    <img src="../../IMG_7220.jpg" alt="Ab. Ney Antonio Valero Brando" onerror="this.style.opacity=0.3;this.parentElement.style.background='linear-gradient(135deg, #142847 0%, #1B3358 100%)';" />
+    <div class="frame">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="none">
+        <rect x="0" y="0" width="400" height="500" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">20 años de trayectoria</span>
+    <span class="marquee-item">Guayaquil · Ecuador</span>
+    <span class="marquee-item">Civil · Corporativo · Inmobiliario</span>
+    <span class="marquee-item">Colegio de Abogados del Guayas</span>
+    <span class="marquee-item">Más de 850 casos resueltos</span>
+    <span class="marquee-item">4.8 ★ en Google</span>
+    <span class="marquee-item">20 años de trayectoria</span>
+    <span class="marquee-item">Guayaquil · Ecuador</span>
+    <span class="marquee-item">Civil · Corporativo · Inmobiliario</span>
+    <span class="marquee-item">Colegio de Abogados del Guayas</span>
+    <span class="marquee-item">Más de 850 casos resueltos</span>
+    <span class="marquee-item">4.8 ★ en Google</span>
+  </div>
+</div>
+
+<!-- ÁREAS -->
+<section id="areas">
+  <div class="section-head reveal">
+    <div class="mono">02 — Áreas de práctica</div>
+    <h2>Tres frentes. Un solo respaldo.</h2>
+    <p>Cada área tiene un abogado responsable. Conversemos sobre el tuyo.</p>
+  </div>
+  <div class="areas-grid stagger">
+    <div class="area" style="--area-color: var(--terracotta);">
+      <h3>Familia</h3>
+      <span class="tag">Tu patrimonio familiar, blindado</span>
+      <ul>
+        <li>Divorcios y separaciones</li>
+        <li>Herencias y sucesiones</li>
+        <li>Custodia y régimen de visitas</li>
+        <li>Uniones de hecho</li>
+      </ul>
+      <a href="https://wa.me/593959080607?text=Hola%2C%20quiero%20consultar%20sobre%20un%20tema%20de%20familia%20(divorcio%2C%20herencia%2C%20custodia)." class="area-cta">
+        Conversar por WhatsApp
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="area" style="--area-color: var(--laurel);">
+      <h3>Empresas</h3>
+      <span class="tag">Tu negocio crece, tu respaldo legal también</span>
+      <ul>
+        <li>Constitución de compañías</li>
+        <li>Contratos comerciales</li>
+        <li>Compliance y junta de accionistas</li>
+        <li>Asesoría laboral empresarial</li>
+      </ul>
+      <a href="https://wa.me/593959080607?text=Hola%2C%20soy%20de%20una%20empresa%20y%20quiero%20consultar%20sobre%20asesor%C3%ADa%20legal%20corporativa." class="area-cta">
+        Conversar por WhatsApp
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="area" style="--area-color: var(--jurid);">
+      <h3>Inmobiliario</h3>
+      <span class="tag">Cada propiedad, una certeza</span>
+      <ul>
+        <li>Compraventa y escrituras</li>
+        <li>Due diligence inmobiliaria</li>
+        <li>Arriendos y desahucios</li>
+        <li>Levantamiento de gravámenes</li>
+      </ul>
+      <a href="https://wa.me/593959080607?text=Hola%2C%20tengo%20una%20consulta%20inmobiliaria%20(compraventa%2C%20escrituras%2C%20arriendo)." class="area-cta">
+        Conversar por WhatsApp
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="chips reveal">
+    También llevamos:
+    <div class="chips-list">
+      <a href="https://wa.me/593959080607?text=Hola%2C%20quiero%20consultar%20por%20un%20tema%20de%20tr%C3%A1nsito." class="chip">Tránsito</a>
+      <a href="https://wa.me/593959080607?text=Hola%2C%20quiero%20consultar%20por%20un%20tema%20laboral." class="chip">Laboral</a>
+      <a href="https://wa.me/593959080607?text=Hola%2C%20quiero%20consultar%20por%20un%20tr%C3%A1mite%20migratorio." class="chip">Migración</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section id="casos">
+  <div class="section-head reveal">
+    <div class="mono">03 — Casos resueltos</div>
+    <h2>Más de 800 casos. Cada uno, una decisión bien tomada.</h2>
+  </div>
+
+  <div class="kpis reveal">
+    <div class="kpi">
+      <div class="kpi-num" data-target="850">0</div>
+      <div class="kpi-lab">Casos resueltos</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num" data-target="92" data-suffix="%">0</div>
+      <div class="kpi-lab">Resueltos sin juicio</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num" data-target="20" data-suffix="+">0</div>
+      <div class="kpi-lab">Años de trayectoria</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num">4.8<span style="font-size:0.5em;color:var(--gold);"> ★</span></div>
+      <div class="kpi-lab">Promedio en Google</div>
+    </div>
+  </div>
+
+  <div class="cases-wrap reveal">
+    <div class="cases">
+      <div class="case">
+        <div>
+          <div class="case-tag" style="--tag-color: var(--terracotta);">Familia</div>
+          <h4>Custodia compartida resuelta sin juicio</h4>
+          <p>Padres en proceso de divorcio con dos menores. El padre temía perder visitas por viajes laborales. Mediación estructurada y régimen detallado.</p>
+        </div>
+        <div class="case-footer">Resuelto en 6 semanas</div>
+      </div>
+      <div class="case">
+        <div>
+          <div class="case-tag" style="--tag-color: var(--laurel);">Empresas</div>
+          <h4>S.A.S. constituida en 72 horas</h4>
+          <p>Startup tech necesitaba constituirse antes de cerrar inversión internacional. Estatutos a medida para futuras rondas.</p>
+        </div>
+        <div class="case-footer">Resuelto en 72 horas</div>
+      </div>
+      <div class="case">
+        <div>
+          <div class="case-tag" style="--tag-color: var(--jurid);">Inmobiliario</div>
+          <h4>Compraventa de $280K asegurada</h4>
+          <p>Comprador descubre que la vendedora no era propietaria registrada. Posesión efectiva acelerada y compraventa con título limpio.</p>
+        </div>
+        <div class="case-footer">Resuelto en 47 días</div>
+      </div>
+      <div class="case">
+        <div>
+          <div class="case-tag" style="--tag-color: var(--terracotta);">Familia</div>
+          <h4>Herencia de 4 hermanos, partición consensuada</h4>
+          <p>Madre fallece sin testamento. Dos propiedades, expectativas distintas. Tres escenarios planteados, uno elegido, escritura firmada.</p>
+        </div>
+        <div class="case-footer">Resuelto en 9 semanas</div>
+      </div>
+      <div class="case">
+        <div>
+          <div class="case-tag" style="--tag-color: var(--laurel);">Empresas</div>
+          <h4>Liquidación correcta sin litigio</h4>
+          <p>Trabajadora con 7 años, despedida con liquidación mal calculada. Negociación directa, pago de diferencia más bono adicional.</p>
+        </div>
+        <div class="case-footer">Resuelto en 22 días</div>
+      </div>
+      <div class="case">
+        <div>
+          <div class="case-tag" style="--tag-color: var(--jurid);">Inmobiliario</div>
+          <h4>Hipoteca de 2008 destrabada</h4>
+          <p>Casa heredada con hipoteca cancelada pero nunca levantada en Registro. Cuatro años sin poder vender. Cancelación marginal lograda.</p>
+        </div>
+        <div class="case-footer">Resuelto en 3 semanas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDADOR -->
+<section id="fundador">
+  <div class="founder">
+    <div class="founder-img reveal">
+      <img src="../../ChatGPT Image Apr 22, 2026, 08_47_26 PM.PNG" alt="Ab. Ney Antonio Valero Brando" onerror="this.style.opacity=0.3;this.parentElement.style.background='linear-gradient(135deg, #142847 0%, #1B3358 100%)';" />
+    </div>
+    <div class="reveal">
+      <div class="mono" style="margin-bottom:24px;">04 — El fundador</div>
+      <p class="founder-quote">"La ley es solo el medio. Lo que protegemos es lo que construiste."</p>
+      <p class="founder-attr">— Ab. Ney Antonio Valero Brando</p>
+      <p class="founder-body">Más de 20 años ejerciendo derecho civil, corporativo e inmobiliario en Guayaquil. Especialista en sucesiones, compraventa de propiedades y contratos comerciales complejos.</p>
+      <ul class="credentials">
+        <li>Universidad de Guayaquil — Doctor en Jurisprudencia</li>
+        <li>Miembro del Colegio de Abogados del Guayas</li>
+        <li>Más de 850 casos resueltos</li>
+      </ul>
+      <a href="#equipo" class="ghost-cta">
+        Conoce al equipo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="section-head reveal">
+    <div class="mono">05 — Equipo</div>
+    <h2>Cuatro abogados. Una sola promesa.</h2>
+  </div>
+  <div class="team stagger">
+    <div class="member">
+      <div class="member-photo">
+        <img src="../../ChatGPT Image Apr 22, 2026, 08_47_33 PM.PNG" alt="Ab. Ney Valero" onerror="this.style.opacity=0.3;" />
+      </div>
+      <div class="member-name">Ab. Ney Valero</div>
+      <div class="member-role">Socio fundador</div>
+      <div class="member-tags"><span class="member-tag">Civil</span><span class="member-tag">Inmobiliario</span></div>
+    </div>
+    <div class="member">
+      <div class="member-photo">
+        <img src="../../ChatGPT Image Apr 22, 2026, 09_27_33 PM.PNG" alt="Ab. Henry Valero" onerror="this.style.opacity=0.3;" />
+      </div>
+      <div class="member-name">Ab. Henry Valero</div>
+      <div class="member-role">Socio</div>
+      <div class="member-tags"><span class="member-tag">Corporativo</span><span class="member-tag">Inmobiliario</span></div>
+    </div>
+    <div class="member">
+      <div class="member-photo">
+        <img src="../../67FAB200-1413-4958-9B90-6EA439B8B90F.PNG" alt="Abg. Alicia Mendoza" onerror="this.style.opacity=0.3;" />
+      </div>
+      <div class="member-name">Abg. Alicia Mendoza</div>
+      <div class="member-role">Asociada senior</div>
+      <div class="member-tags"><span class="member-tag">Familia</span><span class="member-tag">Laboral</span></div>
+    </div>
+    <div class="member">
+      <div class="member-photo">
+        <img src="../../1CDA826F-DD6B-4ECA-8AB4-94DBDA0A3C9B.PNG" alt="Abg. Daniel Carrera" onerror="this.style.opacity=0.3;" />
+      </div>
+      <div class="member-name">Abg. Daniel Carrera</div>
+      <div class="member-role">Asociado</div>
+      <div class="member-tags"><span class="member-tag">Tránsito</span><span class="member-tag">Corporativo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="reseñas">
+  <div class="section-head reveal">
+    <div class="mono">06 — Reseñas</div>
+    <h2>Lo que dicen quienes ya pasaron por aquí.</h2>
+    <p>Reseñas verificadas en Google. Última actualización: mayo 2026.</p>
+  </div>
+  <div class="reviews reveal">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Llegué con un divorcio que llevaba dos años estancado. En tres semanas el Ab. Ney me dijo qué hacer paso a paso. Salí sin pelearme con mi ex y con la custodia de mis hijos resuelta."</p>
+      <div class="review-footer"><div class="review-avatar">MF</div><div class="review-meta"><div>María Fernanda C.</div><div>Divorcio · 2024</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Constituyeron mi empresa en menos de cuatro días. Me cobraron lo que dijeron desde el principio, sin sorpresas. Henry estuvo disponible por WhatsApp todo el proceso."</p>
+      <div class="review-footer"><div class="review-avatar">DR</div><div class="review-meta"><div>Diego R.</div><div>Constitución empresa · 2024</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Compré una casa en Samborondón. El due diligence me ahorró un disgusto enorme: detectaron un gravamen que la inmobiliaria no había declarado. Sin ellos hubiera firmado un problema de $40 mil."</p>
+      <div class="review-footer"><div class="review-avatar">RM</div><div class="review-meta"><div>Ricardo M.</div><div>Compraventa · 2024</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Después de la muerte de mi madre quedamos cuatro hermanos discutiendo. La Abg. Mendoza nos sentó a hablar antes de cualquier juicio. La partición se firmó en menos de dos meses."</p>
+      <div class="review-footer"><div class="review-avatar">CV</div><div class="review-meta"><div>Carolina V.</div><div>Herencia · 2023</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Tuve un accidente de tránsito complicado. El Ab. Carrera manejó todo: audiencia, seguro, indemnización. Honorarios justos."</p>
+      <div class="review-footer"><div class="review-avatar">JL</div><div class="review-meta"><div>José Andrés L.</div><div>Tránsito · 2025</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Me despidieron después de seis años. Henry me ayudó a calcular lo correcto y a negociar sin pelear. Me pagaron lo que correspondía más un mes adicional, en 22 días."</p>
+      <div class="review-footer"><div class="review-avatar">ST</div><div class="review-meta"><div>Sofía T.</div><div>Laboral · 2025</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Mi mamá tenía una hipoteca de 2008 que el banco nunca canceló oficialmente. Cuatro años intentando vender. El estudio destrabó el levantamiento en tres semanas."</p>
+      <div class="review-footer"><div class="review-avatar">PE</div><div class="review-meta"><div>Patricio E.</div><div>Inmobiliario · 2025</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Atención por WhatsApp impecable. Pregunto algo a las 9 AM y antes de las 11 tengo respuesta clara. Eso en Ecuador, con abogados, es muy raro."</p>
+      <div class="review-footer"><div class="review-avatar">AS</div><div class="review-meta"><div>Andrea S.</div><div>Asesoría general · 2024</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">"Mi unión de hecho de 11 años se rompió y no sabía qué me correspondía. La Abg. Mendoza me explicó mis derechos sin tecnicismos. Salí con lo que era mío."</p>
+      <div class="review-footer"><div class="review-avatar">GP</div><div class="review-meta"><div>Gabriela P.</div><div>Familia · 2025</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-head reveal">
+    <div class="mono">07 — Preguntas frecuentes</div>
+    <h2>Las preguntas que recibimos todas las semanas.</h2>
+  </div>
+  <div class="reveal">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span>¿La primera consulta es gratuita?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="faq-a">Sí. Te ofrecemos 30 minutos por WhatsApp o videollamada sin costo para entender tu caso y decirte honestamente si podemos ayudarte y cuánto costaría.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span>¿Atienden por WhatsApp?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="faq-a">Sí, es nuestro canal principal. Respondemos consultas de lunes a viernes de 8:00 a 18:00. Para temas urgentes fuera de horario, dejá tu mensaje y contestamos a primera hora del día siguiente.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span>¿Cuánto cobran por un divorcio?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="faq-a">Depende del tipo. Un divorcio por mutuo acuerdo ronda los $350-$600 USD. Un divorcio contencioso con bienes puede ir desde $900 USD. Te damos el presupuesto exacto en la primera llamada.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span>¿Dónde queda la oficina?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="faq-a">Estamos en Guayaquil (dirección por confirmar). Recibimos con cita previa. La mayoría de la coordinación se hace por WhatsApp o Zoom para ahorrarte tiempo.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span>¿Manejan casos fuera de Guayaquil?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="faq-a">Sí. Llevamos casos en Quito, Cuenca y Manta con red de corresponsales. Para trámites notariales o audiencias presenciales coordinamos un colega local bajo nuestra dirección.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span>¿Cuánto tarda un divorcio en Ecuador?</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="faq-a">Por mutuo acuerdo: 30 a 60 días desde la presentación. Contencioso con bienes y custodia: 6 a 18 meses según juzgado. El 92% de nuestros casos se resuelven sin llegar a juicio largo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="closing reveal">
+  <div class="mono">Empecemos por lo más fácil</div>
+  <h2>La primera conversación es por WhatsApp.</h2>
+  <p class="sub">Las decisiones importantes, en persona.</p>
+  <a href="https://wa.me/593959080607?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20conversar." class="cta-primary">
+    Hablar por WhatsApp
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </a>
+  <div class="closing-note">Respondemos en menos de 2 horas hábiles</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Valero <span>&</span> Asociados</div>
+        <p>Estudio Jurídico · Guayaquil, Ecuador</p>
+        <p style="margin-top:16px;">Más de 20 años defendiendo familias, empresas y patrimonios.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Áreas</h5>
+        <a href="#areas">Familia</a>
+        <a href="#areas">Empresas</a>
+        <a href="#areas">Inmobiliario</a>
+        <a href="#areas">Tránsito</a>
+        <a href="#areas">Laboral</a>
+        <a href="#areas">Migración</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="https://wa.me/593959080607">+593 959 080 607</a>
+        <a href="mailto:contacto@valeroyasociados.ec">contacto@valeroyasociados.ec</a>
+        <p style="padding-top:12px;">Lunes a viernes · 8:00 — 18:00</p>
+      </div>
+      <div class="footer-col">
+        <h5>Síguenos</h5>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Google Maps</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Valero & Asociados. Todos los derechos reservados.</span>
+      <span>Política de privacidad · Términos · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/593959080607?text=Hola%2C%20vi%20su%20web." class="wa-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  // Progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    progress.style.width = (scrolled * 100) + '%';
+  });
+
+  // Letter-by-letter fade-in del H1 hero
+  const h1 = document.getElementById('heroH1');
+  if (h1) {
+    const txt = h1.textContent;
+    h1.textContent = '';
+    [...txt].forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.opacity = 0;
+      span.style.display = 'inline-block';
+      span.style.transform = 'translateY(8px)';
+      span.style.transition = `opacity .6s ease ${i * 25}ms, transform .6s ease ${i * 25}ms`;
+      h1.appendChild(span);
+    });
+    requestAnimationFrame(() => {
+      h1.querySelectorAll('span').forEach(s => {
+        s.style.opacity = 1;
+        s.style.transform = 'none';
+      });
+    });
+  }
+
+  // Reveal on scroll (IntersectionObserver)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+  // Count-up de KPIs
+  const counters = document.querySelectorAll('.kpi-num[data-target]');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        let current = 0;
+        const step = target / 60;
+        const tick = () => {
+          current += step;
+          if (current >= target) {
+            el.textContent = target + suffix;
+          } else {
+            el.textContent = Math.floor(current) + suffix;
+            requestAnimationFrame(tick);
+          }
+        };
+        tick();
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObs.observe(c));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1 && document.querySelector(id)) {
+        e.preventDefault();
+        document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Originales pesados (input, no source)
+*.PNG
+*.png
+*.jpg
+*.JPG
+*.jpeg
+*.pdf
+*.PDF
+*.pptx
+*.PPTX
+
+# Excepciones: landing/img/ SÍ entra (son los WebP generados)
+!_Landing_Project/landing/img/**
+!_Landing_Project/landing/img.backup-*/**
+
+# Tools
+_Landing_Project/_tools/__pycache__/
+
+# Playwright
+.playwright-mcp/
+*.jpeg
+
+# HTTP server
+node_modules/

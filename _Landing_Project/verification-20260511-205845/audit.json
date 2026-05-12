@@ -1,0 +1,71 @@
+[
+  {
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1100,
+      "reduced": false
+    },
+    "logs": [],
+    "audit": {
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "bodyHeight": 11034,
+      "brokenLoadedImages": [],
+      "unloadedImages": 0,
+      "focusableFaq": true,
+      "activeSlideCount": 1,
+      "deadHashLinks": 0,
+      "pngRefs": false,
+      "jpgRefs": false,
+      "webpResources": 0
+    }
+  },
+  {
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "reduced": false
+    },
+    "logs": [],
+    "audit": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "bodyHeight": 16486,
+      "brokenLoadedImages": [],
+      "unloadedImages": 0,
+      "focusableFaq": true,
+      "activeSlideCount": 1,
+      "deadHashLinks": 0,
+      "pngRefs": false,
+      "jpgRefs": false,
+      "webpResources": 0
+    }
+  },
+  {
+    "viewport": {
+      "name": "mobile-reduced",
+      "width": 390,
+      "height": 844,
+      "reduced": true
+    },
+    "logs": [],
+    "audit": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "bodyHeight": 16486,
+      "brokenLoadedImages": [],
+      "unloadedImages": 0,
+      "focusableFaq": true,
+      "activeSlideCount": 1,
+      "deadHashLinks": 0,
+      "pngRefs": false,
+      "jpgRefs": false,
+      "webpResources": 0
+    }
+  }
+]
