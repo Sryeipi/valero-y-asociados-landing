@@ -19,7 +19,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="image" href="img/full/ney.jpg?v=20260513-original" fetchpriority="high" />
+<link rel="preload" as="image" href="img/hero-main.webp?v=20260513-team" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
@@ -2995,6 +2995,62 @@
   @media (prefers-reduced-motion: reduce){
     .hero-backdrop img{animation:none!important;transform:none!important;}
   }
+
+  /* ========== v12 image dimension fixes ========== */
+  .member-photo img{
+    aspect-ratio:4/5;
+    object-position:center center!important;
+  }
+  @media (max-width: 960px){
+    .hero{
+      --hero-mobile-media-h:clamp(270px, 38svh, 380px);
+      min-height:100svh;
+      padding:
+        calc(92px + var(--hero-mobile-media-h) + 34px)
+        22px
+        68px;
+      align-items:start;
+      background:linear-gradient(180deg, #10170F 0%, #12190F 46%, #10170F 100%);
+    }
+    .hero-backdrop{
+      inset:92px 18px auto;
+      height:var(--hero-mobile-media-h);
+      z-index:0;
+      border-radius:8px;
+      border:1px solid rgba(176,138,69,.2);
+      box-shadow:0 24px 70px rgba(0,0,0,.42);
+    }
+    .hero-backdrop img{
+      object-fit:cover;
+      object-position:center top;
+      filter:contrast(1.08) brightness(.78) saturate(1.04);
+      transform:none!important;
+    }
+    .hero::after{
+      z-index:1;
+      background:
+        linear-gradient(180deg, rgba(16,23,15,0) 0%, rgba(16,23,15,.18) 28%, rgba(16,23,15,.96) 49%, rgba(16,23,15,.98) 100%),
+        radial-gradient(ellipse at 52% 22%, rgba(176,138,69,.18), transparent 45%);
+    }
+    .hero::before{z-index:1;opacity:.08;}
+    .hero-text{
+      padding-top:0;
+      max-width:680px;
+    }
+  }
+  @media (max-width: 480px){
+    .hero{
+      --hero-mobile-media-h:clamp(210px, 27svh, 238px);
+      padding:
+        calc(88px + var(--hero-mobile-media-h) + 28px)
+        20px
+        60px;
+    }
+    .hero-backdrop{
+      inset:96px 16px auto;
+      height:var(--hero-mobile-media-h);
+    }
+  }
 </style>
 </head>
 <body>
@@ -3058,7 +3114,7 @@
 <!-- HERO v7 cinematic entry (escalonado con delays explicitos) -->
 <section class="hero" id="heroCinema">
   <picture class="hero-backdrop" aria-hidden="true">
-    <source media="(max-width: 720px)" srcset="img/hero-main-mobile.webp?v=20260513-team-cover" />
+    <source media="(max-width: 720px)" srcset="img/hero-main-mobile-panel-sm.webp?v=20260513-dimensions 480w, img/hero-main-mobile-panel-md.webp?v=20260513-dimensions 760w, img/hero-main-mobile-panel.webp?v=20260513-dimensions 1080w" sizes="100vw" />
     <source type="image/webp" srcset="img/hero-main-sm.webp?v=20260513-team 700w, img/hero-main-md.webp?v=20260513-team 1400w, img/hero-main.webp?v=20260513-team 2400w" sizes="100vw" />
     <img src="img/hero-main.webp?v=20260513-team" width="2400" height="1350" alt="" fetchpriority="high" decoding="async" />
   </picture>
@@ -3328,7 +3384,7 @@
       aria-label="Ver perfil del Ab. Ney Valero">
       <div class="member-photo">
         <span class="pin">Fundador</span>
-        <img src="img/full/ney.jpg?v=20260513-original" width="1290" height="2033" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
+        <img src="img/profile-cover-ney.webp?v=20260513-dimensions" srcset="img/profile-cover-ney-sm.webp?v=20260513-dimensions 420w, img/profile-cover-ney-md.webp?v=20260513-dimensions 700w, img/profile-cover-ney.webp?v=20260513-dimensions 900w" sizes="(max-width: 720px) 86vw, 25vw" width="900" height="1125" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" />
         <div class="overlay-label">Recibe cada caso · personalmente</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -3345,7 +3401,7 @@
       data-area-msg="Hola, soy de una empresa y quisiera reservar una consulta con el Ab. Adrián Bastidas sobre asesoría corporativa."
       aria-label="Ver perfil del Ab. Adrián Bastidas">
       <div class="member-photo">
-        <img src="img/full/adrian.png?v=20260513-original" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
+        <img src="img/profile-cover-adrian.webp?v=20260513-dimensions" srcset="img/profile-cover-adrian-sm.webp?v=20260513-dimensions 420w, img/profile-cover-adrian-md.webp?v=20260513-dimensions 700w, img/profile-cover-adrian.webp?v=20260513-dimensions 900w" sizes="(max-width: 720px) 86vw, 25vw" width="900" height="1125" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" />
         <div class="overlay-label">Contratos · Compliance</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -3362,7 +3418,7 @@
       data-area-msg="Hola, quisiera reservar una consulta con la Abg. Patricia Valero sobre un tema de familia o laboral."
       aria-label="Ver perfil de la Abg. Patricia Valero">
       <div class="member-photo">
-        <img src="img/full/patricia.png?v=20260513-original" width="1537" height="1023" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
+        <img src="img/profile-cover-patricia.webp?v=20260513-dimensions" srcset="img/profile-cover-patricia-sm.webp?v=20260513-dimensions 420w, img/profile-cover-patricia-md.webp?v=20260513-dimensions 700w, img/profile-cover-patricia.webp?v=20260513-dimensions 900w" sizes="(max-width: 720px) 86vw, 25vw" width="900" height="1125" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" />
         <div class="overlay-label">Divorcios · Herencias · Laboral</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -3379,7 +3435,7 @@
       data-area-msg="Hola, quisiera reservar una consulta con el Ab. Daniel Carrera sobre un tema de tránsito."
       aria-label="Ver perfil del Ab. Daniel Carrera">
       <div class="member-photo">
-        <img src="img/full/daniel.png?v=20260513-original" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
+        <img src="img/profile-cover-daniel.webp?v=20260513-dimensions" srcset="img/profile-cover-daniel-sm.webp?v=20260513-dimensions 420w, img/profile-cover-daniel-md.webp?v=20260513-dimensions 700w, img/profile-cover-daniel.webp?v=20260513-dimensions 900w" sizes="(max-width: 720px) 86vw, 25vw" width="900" height="1125" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" />
         <div class="overlay-label">Tránsito · Casos corporativos</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
