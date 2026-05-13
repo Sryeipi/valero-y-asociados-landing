@@ -3,11 +3,11 @@ type: proyecto
 domain: clientes
 client: Valero y Asociados
 tags: [proyecto, landing, web, lead-gen, whatsapp]
-status: v7-hq-images-motion-fix-deployed-vercel
+status: v8-profile-photos-fixed-deployed-vercel
 created: 2026-05-11
 updated: 2026-05-13
 git_branch: main
-git_state: commit 903d08b pushed to origin/main; Vercel production READY
+git_state: commit a392d79 pushed to origin/main; Vercel production READY
 owner: Funnel Architect Agent + Design Production Agent
 ---
 
@@ -77,6 +77,12 @@ Esta nota es el **puntero canonico** desde el vault. El vault tiene la memoria e
   - **Fade-edge en cases scroll** + hint "Deslizar" con flecha animada que se oculta al llegar al final.
   - **Parallax sutil en tiles** del mosaico atmosphere (data-speed por tile, rAF-throttled, respeta reduced-motion).
   - **Nav active section indicator** con underline animado via IntersectionObserver (rootMargin -40%/-55%).
+- **2026-05-12 - Codex / Design Production + Quality Gate:** correccion puntual del modal de perfiles:
+  - Carrusel real por abogado usando solo imagenes existentes en Obsidian.
+  - Ney: 4 fotos; Adrian: 3 fotos; Patricia: 2 fotos; Daniel: 2 fotos.
+  - Eliminada la repeticion falsa de una sola foto con tres puntos.
+  - Verificado local y en Vercel: conteos correctos, imagenes unicas y 0 errores de consola.
+  - Deploy production READY: commit `a392d79`, deployment `dpl_DHGUqPvM4viF4copaGm9QRxW1VdW`.
 
 ## Decisiones acumuladas
 
