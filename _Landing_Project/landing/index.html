@@ -534,17 +534,28 @@
     position:relative;aspect-ratio:3/4;
     background:var(--navy-3);overflow:hidden;
   }
+  /* Una sola foto del abogado, ken-burns 3 fases (cinematic camera move) */
   .team-modal-carousel img{
     position:absolute;inset:0;
     width:100%;height:100%;object-fit:cover;
-    opacity:0;transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 8s linear;
-    filter:contrast(1.05) brightness(0.92) saturate(1.05);
-    transform:scale(1);
+    filter:contrast(1.08) brightness(0.96) saturate(1.08);
+    transform-origin:center 30%;
+    transition:transform 6s cubic-bezier(0.42, 0, 0.58, 1);
+    will-change:transform;
   }
-  .team-modal-carousel img.active{opacity:1;transform:scale(1.07);}
+  .team-modal-carousel img.kb-phase-0{transform:scale(1.0) translate3d(0, 0, 0);transform-origin:center 30%;}
+  .team-modal-carousel img.kb-phase-1{transform:scale(1.12) translate3d(-3%, 2%, 0);transform-origin:center 20%;}
+  .team-modal-carousel img.kb-phase-2{transform:scale(1.18) translate3d(2%, -1%, 0);transform-origin:center 40%;}
   .team-modal-carousel::after{
     content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(180deg, transparent 50%, rgba(10,22,40,0.7) 100%);
+    background:linear-gradient(180deg, transparent 55%, rgba(10,22,40,0.65) 100%);
+  }
+  /* Grain sutil sobre la foto del modal para textura editorial */
+  .team-modal-carousel::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+    background-image:radial-gradient(circle, rgba(0,0,0,0.55) 0.7px, transparent 1.4px);
+    background-size:3.5px 3.5px;
+    mix-blend-mode:multiply;opacity:0.14;
   }
   .team-modal-carousel-dots{
     position:absolute;bottom:18px;left:18px;right:18px;z-index:3;
@@ -558,7 +569,7 @@
   .team-modal-carousel-dot.active{background:rgba(245,242,235,0.45);}
   .team-modal-carousel-dot.active::after{
     content:"";position:absolute;inset:0;background:var(--gold);
-    transform:translateX(-100%);animation:tmcDotFill 2.4s linear forwards;
+    transform:translateX(-100%);animation:tmcDotFill 4.2s linear forwards;
   }
   @keyframes tmcDotFill{to{transform:translateX(0);}}
   .team-modal-body{
@@ -2208,23 +2219,145 @@
     will-change:transform;
   }
   .hero-photo:hover img{transform:scale(1.055);}
+  /* ========== MOTION SYSTEM v8 — cinematic slide-in direccional + clip reveal ========== */
+  /* Default: slide-up con blur (sin clip-path por defecto para no cortar contenido) */
   .motion-observe{
     opacity:0;
-    transform:translate3d(0, 70px, 0) scale(.94);
-    filter:blur(16px);
+    transform:translate3d(0, 80px, 0) scale(.96);
+    filter:blur(12px);
     transition:
-      opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
-      transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
-      filter 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      filter 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
       border-color .35s ease,
       box-shadow .35s ease;
-    will-change:opacity,transform,filter;
+    will-change:opacity, transform, filter;
   }
   .motion-observe.motion-in{
     opacity:1;
     transform:translate3d(0, 0, 0) scale(1);
     filter:blur(0);
   }
+
+  /* Slide desde izquierda (impar) */
+  .slide-left{
+    opacity:0;
+    transform:translate3d(-100px, 30px, 0);
+    filter:blur(12px);
+    transition:
+      opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      filter 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms);
+    will-change:opacity, transform, filter;
+  }
+  .slide-left.motion-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0);}
+
+  /* Slide desde derecha (par) */
+  .slide-right{
+    opacity:0;
+    transform:translate3d(100px, 30px, 0);
+    filter:blur(12px);
+    transition:
+      opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      filter 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms);
+    will-change:opacity, transform, filter;
+  }
+  .slide-right.motion-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0);}
+
+  /* Slide desde abajo con curtain reveal */
+  .slide-up{
+    opacity:0;
+    transform:translate3d(0, 120px, 0);
+    filter:blur(14px);
+    transition:
+      opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      filter 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms);
+    will-change:opacity, transform, filter;
+  }
+  .slide-up.motion-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0);}
+
+  /* Reveal con clip-path (cortina vertical) — para imagenes y secciones */
+  .clip-reveal{
+    clip-path:inset(0 100% 0 0);
+    transition:clip-path 1.6s cubic-bezier(0.65, 0, 0.35, 1) var(--motion-delay, 0ms);
+    will-change:clip-path;
+  }
+  .clip-reveal.motion-in{clip-path:inset(0 0 0 0);}
+
+  /* Stagger MAS visible: incrementa el step y compaginar con slide */
+  .stagger.motion-in > *,
+  .team.motion-in > *{
+    animation:staggerInPremium 1.1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .stagger.motion-in > *:nth-child(1),
+  .team.motion-in > *:nth-child(1){animation-delay:0ms;}
+  .stagger.motion-in > *:nth-child(2),
+  .team.motion-in > *:nth-child(2){animation-delay:130ms;}
+  .stagger.motion-in > *:nth-child(3),
+  .team.motion-in > *:nth-child(3){animation-delay:260ms;}
+  .stagger.motion-in > *:nth-child(4),
+  .team.motion-in > *:nth-child(4){animation-delay:390ms;}
+  .stagger.motion-in > *:nth-child(5){animation-delay:520ms;}
+  .stagger.motion-in > *:nth-child(6){animation-delay:650ms;}
+
+  /* StaggerInPremium con direccion alternada (left/right por nth-child) */
+  @keyframes staggerInPremium{
+    from{
+      opacity:0;
+      transform:translate3d(0, 60px, 0) scale(.94);
+      filter:blur(12px);
+    }
+    to{
+      opacity:1;
+      transform:translate3d(0, 0, 0) scale(1);
+      filter:blur(0);
+    }
+  }
+
+  /* Alternar slide direccional en grid de areas (3 cards: left, up, right) */
+  .areas-grid.motion-in .area:nth-child(1){
+    animation:slideInFromLeft 1.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .areas-grid.motion-in .area:nth-child(2){
+    animation:slideInFromBottom 1.3s 130ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .areas-grid.motion-in .area:nth-child(3){
+    animation:slideInFromRight 1.3s 260ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  @keyframes slideInFromLeft{
+    from{opacity:0;transform:translate3d(-80px, 20px, 0);filter:blur(14px);}
+    to{opacity:1;transform:translate3d(0,0,0);filter:blur(0);}
+  }
+  @keyframes slideInFromRight{
+    from{opacity:0;transform:translate3d(80px, 20px, 0);filter:blur(14px);}
+    to{opacity:1;transform:translate3d(0,0,0);filter:blur(0);}
+  }
+  @keyframes slideInFromBottom{
+    from{opacity:0;transform:translate3d(0, 80px, 0) scale(.95);filter:blur(14px);}
+    to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);}
+  }
+  /* Process: stagger pero los 3 desde abajo, scale + blur */
+  .process-grid.motion-in .step-card:nth-child(1){animation:slideInFromBottom 1.3s backwards;}
+  .process-grid.motion-in .step-card:nth-child(2){animation:slideInFromBottom 1.3s 160ms backwards;}
+  .process-grid.motion-in .step-card:nth-child(3){animation:slideInFromBottom 1.3s 320ms backwards;}
+
+  /* Team cards alternar left/up/up/right */
+  .team.motion-in .member:nth-child(1){animation:slideInFromLeft 1.3s backwards;}
+  .team.motion-in .member:nth-child(2){animation:slideInFromBottom 1.3s 130ms backwards;}
+  .team.motion-in .member:nth-child(3){animation:slideInFromBottom 1.3s 260ms backwards;}
+  .team.motion-in .member:nth-child(4){animation:slideInFromRight 1.3s 390ms backwards;}
+
+  /* Reviews 6 cards stagger desde abajo con scale */
+  .reviews.motion-in .review:nth-child(odd){animation:slideInFromLeft 1.2s backwards;}
+  .reviews.motion-in .review:nth-child(even){animation:slideInFromRight 1.2s backwards;}
+  .reviews.motion-in .review:nth-child(1){animation-delay:0ms;}
+  .reviews.motion-in .review:nth-child(2){animation-delay:120ms;}
+  .reviews.motion-in .review:nth-child(3){animation-delay:240ms;}
+  .reviews.motion-in .review:nth-child(4){animation-delay:360ms;}
+  .reviews.motion-in .review:nth-child(5){animation-delay:480ms;}
+  .reviews.motion-in .review:nth-child(6){animation-delay:600ms;}
 
   /* ========== HERO ENTRY v7 (escalonado cinemático con delays explícitos) ========== */
   .hero-enter{
@@ -2648,7 +2781,7 @@
           </svg>
         </div>
         <div class="step-eyebrow">Paso 01 · Conversación</div>
-        <h3 class="step-title">Escriba por WhatsApp</h3>
+        <h3 class="step-title blur-text" data-blur-text>Escriba por WhatsApp</h3>
         <p class="step-body">Cuéntenos en 2-3 líneas qué necesita. Le respondemos en menos de 2 horas hábiles con una primera lectura del caso y le decimos si le sirve agendar una consulta.</p>
         <div class="step-meta"><span aria-hidden="true">→</span> Respuesta &lt; 2 h hábiles</div>
       </article>
@@ -2659,7 +2792,7 @@
           </svg>
         </div>
         <div class="step-eyebrow">Paso 02 · Diagnóstico</div>
-        <h3 class="step-title">Consulta de 30 minutos, sin costo</h3>
+        <h3 class="step-title blur-text" data-blur-text>Consulta de 30 minutos, sin costo</h3>
         <p class="step-body">Videollamada o WhatsApp con el abogado responsable del área. Revisamos documentos, le explicamos opciones reales y le damos un rango de honorarios claro antes de pedirle un solo dólar.</p>
         <div class="step-meta"><span aria-hidden="true">→</span> Sin compromiso</div>
       </article>
@@ -2670,7 +2803,7 @@
           </svg>
         </div>
         <div class="step-eyebrow">Paso 03 · Ejecución</div>
-        <h3 class="step-title">Trabajo bajo presupuesto cerrado</h3>
+        <h3 class="step-title blur-text" data-blur-text>Trabajo bajo presupuesto cerrado</h3>
         <p class="step-body">Si decide continuar, firmamos honorarios escritos con alcance y plazos. Lo mantenemos al día por WhatsApp y solo le pedimos firma cuando hace falta. Sin cobros por llamada.</p>
         <div class="step-meta"><span aria-hidden="true">→</span> Presupuesto fijo</div>
       </article>
@@ -2776,7 +2909,7 @@
       data-role="Socio fundador · Civil & Inmobiliario"
       data-bio="Más de 20 años ejerciendo derecho civil, corporativo e inmobiliario en Guayaquil. Especialista en sucesiones, compraventa de propiedades y contratos comerciales complejos. Recibe personalmente cada caso antes de asignarlo al equipo."
       data-specs="Sucesiones,Compraventa,Contratos,Asesoría empresarial,Mediación"
-      data-photos="ney,editorial-01,scene-02"
+      data-photo="ney" data-photo-focal="22"
       data-area-msg="Hola, vi su web. Quisiera reservar una consulta con el Ab. Ney Valero sobre un tema civil o inmobiliario."
       aria-label="Ver perfil del Ab. Ney Valero">
       <div class="member-photo">
@@ -2794,7 +2927,7 @@
       data-role="Socio · Derecho Corporativo"
       data-bio="Especialista en derecho corporativo, contratos comerciales y compliance. Acompaña la constitución y operación de compañías en Ecuador, desde S.A.S. hasta sociedades con inversión internacional."
       data-specs="Constitución,Contratos comerciales,Compliance,Junta de accionistas,Laboral empresarial"
-      data-photos="adrian,scene-03,scene-08"
+      data-photo="adrian" data-photo-focal="30"
       data-area-msg="Hola, soy de una empresa y quisiera reservar una consulta con el Ab. Adrián Bastidas sobre asesoría corporativa."
       aria-label="Ver perfil del Ab. Adrián Bastidas">
       <div class="member-photo">
@@ -2811,7 +2944,7 @@
       data-role="Asociada senior · Familia & Laboral"
       data-bio="Lleva casos de familia y laboral con un enfoque humano y estratégico. Divorcios, herencias, custodia, uniones de hecho y despidos intempestivos. Cuida vínculos cuando se puede; defiende firmemente cuando hace falta."
       data-specs="Divorcios,Herencias,Custodia,Uniones de hecho,Liquidaciones laborales"
-      data-photos="patricia,scene-05,scene-06"
+      data-photo="patricia" data-photo-focal="35"
       data-area-msg="Hola, quisiera reservar una consulta con la Abg. Patricia Valero sobre un tema de familia o laboral."
       aria-label="Ver perfil de la Abg. Patricia Valero">
       <div class="member-photo">
@@ -2828,7 +2961,7 @@
       data-role="Asociado · Tránsito & Corporativo"
       data-bio="Maneja casos de tránsito (accidentes, multas, alcoholemia) y casos corporativos del estudio. Honorarios justos y resolución rápida cuando el escenario lo permite."
       data-specs="Accidentes de tránsito,Multas,Alcoholemia,Casos corporativos"
-      data-photos="daniel,scene-04,scene-07"
+      data-photo="daniel" data-photo-focal="25"
       data-area-msg="Hola, quisiera reservar una consulta con el Ab. Daniel Carrera sobre un tema de tránsito."
       aria-label="Ver perfil del Ab. Daniel Carrera">
       <div class="member-photo">
@@ -3233,7 +3366,15 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
 
-  const motionTargets = document.querySelectorAll('.area, .step-card, .case, .review, .member');
+  // v8: observa MAS elementos para que el motion se vea TODO el scroll.
+  // Cards individuales + grids stagger + section heads + KPIs + cases + FAQ items.
+  const motionTargets = document.querySelectorAll(
+    '.area, .step-card, .case, .review, .member, .faq-item, .kpi'
+  );
+  const motionGrids = document.querySelectorAll(
+    '.areas-grid, .process-grid, .team, .reviews, .faq-list, .kpis, .cases'
+  );
+  const motionHeads = document.querySelectorAll('.section-head');
   if (motionTargets.length){
     const motionIo = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -3241,12 +3382,44 @@
         e.target.classList.add('motion-in');
         motionIo.unobserve(e.target);
       });
-    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
     motionTargets.forEach((el, i) => {
       el.classList.add('motion-observe');
-      el.style.setProperty('--motion-delay', `${(i % 4) * 70}ms`);
+      el.style.setProperty('--motion-delay', `${(i % 4) * 90}ms`);
       motionIo.observe(el);
     });
+  }
+  // Grids: cuando entran al viewport, agregar .motion-in para activar staggerIn de hijos
+  if (motionGrids.length){
+    const gridIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('motion-in');
+        gridIo.unobserve(e.target);
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+    motionGrids.forEach(g => gridIo.observe(g));
+  }
+  // Section heads: slide-up con clip reveal en el H2
+  if (motionHeads.length){
+    const headIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('motion-in', 'slide-up');
+        headIo.unobserve(e.target);
+      });
+    }, { threshold: 0.18 });
+    motionHeads.forEach(h => headIo.observe(h));
+  }
+  // Hero photo clip reveal una vez termina el loader
+  const heroPhotoEl = document.querySelector('.hero-photo');
+  if (heroPhotoEl && !reduceMotion){
+    setTimeout(() => {
+      heroPhotoEl.classList.add('clip-reveal');
+      requestAnimationFrame(() => {
+        heroPhotoEl.classList.add('motion-in');
+      });
+    }, 2400);
   }
 
   const counters = document.querySelectorAll('.kpi-num[data-target]');
@@ -3675,7 +3848,8 @@
     const role = btn.dataset.role || '';
     const bio = btn.dataset.bio || '';
     const specs = (btn.dataset.specs || '').split(',').map(s => s.trim()).filter(Boolean);
-    const photos = (btn.dataset.photos || '').split(',').map(s => s.trim()).filter(Boolean);
+    const photoSlug = btn.dataset.photo || 'ney';
+    const photoFocal = btn.dataset.photoFocal || '30';
     const areaMsg = btn.dataset.areaMsg || 'Hola, quisiera reservar una consulta.';
     teamModalTitle.textContent = name;
     teamModalRole.textContent = role;
@@ -3688,58 +3862,57 @@
       teamModalSpecs.appendChild(chip);
     });
     teamModalCta.href = 'https://wa.me/593959080607?text=' + encodeURIComponent(areaMsg);
-    // build carousel imgs
+    // Solo UNA foto del abogado, full resolution. Ken-burns 3 fases.
     const existingImgs = teamModalCarousel.querySelectorAll('img');
     existingImgs.forEach(i => i.remove());
-    photos.forEach((slug, i) => {
-      const img = document.createElement('img');
-      img.src = `img/${slug}.webp`;
-      img.srcset = `img/${slug}-sm.webp 550w, img/${slug}-md.webp 1100w, img/${slug}.webp 1800w`;
-      img.sizes = '(max-width: 960px) 100vw, 540px';
-      img.alt = `${name} - foto ${i + 1}`;
-      img.loading = i === 0 ? 'eager' : 'lazy';
-      img.decoding = 'async';
-      if (i === 0) img.classList.add('active');
-      teamModalCarousel.insertBefore(img, teamModalDots);
-    });
-    // build dots
+    const img = document.createElement('img');
+    img.src = `img/${photoSlug}.webp`;
+    img.srcset = `img/${photoSlug}-md.webp 1100w, img/${photoSlug}.webp 2400w`;
+    img.sizes = '(max-width: 960px) 100vw, 600px';
+    img.alt = `${name} — retrato editorial`;
+    img.loading = 'eager';
+    img.decoding = 'async';
+    img.style.objectPosition = `center ${photoFocal}%`;
+    img.classList.add('kb-phase-0');
+    teamModalCarousel.insertBefore(img, teamModalDots);
+    // 3 dots representan las 3 fases del ken-burns
     teamModalDots.innerHTML = '';
-    photos.forEach((_, i) => {
+    [0,1,2].forEach((i) => {
       const dot = document.createElement('button');
       dot.className = 'team-modal-carousel-dot' + (i === 0 ? ' active' : '');
       dot.type = 'button';
-      dot.setAttribute('aria-label', `Ver foto ${i + 1}`);
-      dot.addEventListener('click', () => goToTeamPhoto(i));
+      dot.setAttribute('aria-label', `Fase ${i + 1}`);
+      dot.addEventListener('click', () => goToKenBurnsPhase(i));
       teamModalDots.appendChild(dot);
     });
     teamModalCurrentIdx = 0;
     teamModal.classList.add('open');
     teamModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    // Start auto rotate
     if (teamModalInterval) clearInterval(teamModalInterval);
-    if (!reduceMotion && photos.length > 1){
+    if (!reduceMotion){
       teamModalInterval = setInterval(() => {
-        goToTeamPhoto((teamModalCurrentIdx + 1) % photos.length);
-      }, 2400);
+        goToKenBurnsPhase((teamModalCurrentIdx + 1) % 3);
+      }, 4200);
     }
-    // Focus close button for accessibility
     setTimeout(() => teamModalClose?.focus(), 100);
   }
-  function goToTeamPhoto(idx){
-    const imgs = teamModalCarousel.querySelectorAll('img');
+  function goToKenBurnsPhase(idx){
+    const img = teamModalCarousel.querySelector('img');
     const dots = teamModalDots.querySelectorAll('.team-modal-carousel-dot');
+    if (!img) return;
     teamModalCurrentIdx = idx;
-    imgs.forEach((im, i) => im.classList.toggle('active', i === idx));
+    img.classList.remove('kb-phase-0', 'kb-phase-1', 'kb-phase-2');
+    img.classList.add(`kb-phase-${idx}`);
     dots.forEach((d, i) => {
       d.classList.remove('active');
-      // force animation restart on active dot
       if (i === idx){
         void d.offsetWidth;
         d.classList.add('active');
       }
     });
   }
+  function goToTeamPhoto(idx){ goToKenBurnsPhase(idx); } /* alias legacy */
   function closeTeamModal(){
     if (!teamModal) return;
     teamModal.classList.remove('open');
@@ -3762,12 +3935,10 @@
     if (!teamModal?.classList.contains('open')) return;
     if (e.key === 'Escape') closeTeamModal();
     if (e.key === 'ArrowRight'){
-      const imgs = teamModalCarousel.querySelectorAll('img');
-      goToTeamPhoto((teamModalCurrentIdx + 1) % imgs.length);
+      goToKenBurnsPhase((teamModalCurrentIdx + 1) % 3);
     }
     if (e.key === 'ArrowLeft'){
-      const imgs = teamModalCarousel.querySelectorAll('img');
-      goToTeamPhoto((teamModalCurrentIdx - 1 + imgs.length) % imgs.length);
+      goToKenBurnsPhase((teamModalCurrentIdx - 1 + 3) % 3);
     }
   });
 
