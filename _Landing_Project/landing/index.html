@@ -92,7 +92,7 @@
     {"@type":"Person","name":"Abg. Patricia Valero","jobTitle":"Asociada senior"},
     {"@type":"Person","name":"Ab. Daniel Carrera","jobTitle":"Asociado"}
   ],
-  "slogan": "Protegemos lo que más le importa: su familia, su empresa, su patrimonio."
+  "slogan": "Protegemos lo que más importa: tu familia, tu empresa, tu patrimonio."
 }
 </script>
 <style>
@@ -2717,6 +2717,136 @@
     .cta-cinema{width:100%;justify-content:center;padding:18px 22px;}
     .hero-ticker{left:20px;right:96px;bottom:88px;gap:10px;letter-spacing:0.18em;font-size:9px;}
   }
+
+  /* ========== v10 detail polish: desktop motion, cases drag, mobile profile affordance ========== */
+  .loader{z-index:900;}
+  .loader-mark{font-size:clamp(58px, 9vw, 118px);}
+  @media (min-width: 961px){
+    .hero-enter{
+      animation-duration:1.35s;
+      transform:translate3d(0, 46px, 0);
+      filter:blur(12px);
+    }
+    .hero-enter-photo{
+      animation-duration:1.55s;
+    }
+    .motion-observe{
+      transform:translate3d(0, 92px, 0) scale(.955);
+      filter:blur(15px);
+      transition-duration:1.45s;
+    }
+  }
+
+  .cases-wrap{
+    overflow:visible;
+    -webkit-mask-image:none;
+            mask-image:none;
+  }
+  .cases{
+    scroll-behavior:smooth;
+    scroll-padding:0 32px;
+    overscroll-behavior-x:contain;
+    touch-action:pan-x;
+    padding:12px 32px 38px;
+  }
+  .case{
+    flex:0 0 clamp(340px, 32vw, 430px);
+    min-height:300px;
+    transform:translateZ(0);
+  }
+  .cases-hint{
+    opacity:1;
+    right:18px;
+    top:10px;
+    transform:none;
+    box-shadow:0 16px 40px rgba(0,0,0,0.28);
+  }
+  .cases-wrap:not(.show-hint) .cases-hint{
+    opacity:0;
+  }
+
+  .areas-grid:not(.motion-in) .area,
+  .process-grid:not(.motion-in) .step-card,
+  .team:not(.motion-in) .member,
+  .reviews:not(.motion-in) .review,
+  .faq-list:not(.motion-in) .faq-item,
+  .kpis:not(.motion-in) .kpi{
+    animation:none;
+    opacity:0;
+    transform:translate3d(0, 58px, 0) scale(.97);
+    filter:blur(12px);
+  }
+  html.motion-failsafe .areas-grid:not(.motion-in) .area,
+  html.motion-failsafe .process-grid:not(.motion-in) .step-card,
+  html.motion-failsafe .team:not(.motion-in) .member,
+  html.motion-failsafe .reviews:not(.motion-in) .review,
+  html.motion-failsafe .faq-list:not(.motion-in) .faq-item,
+  html.motion-failsafe .kpis:not(.motion-in) .kpi{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  .member-photo{
+    box-shadow:0 0 0 1px rgba(212,168,75,0.12);
+  }
+  .member-photo::after{
+    inset:0;
+    border:1px solid rgba(212,168,75,0.14);
+    box-shadow:
+      inset 0 -96px 84px -52px rgba(10,22,40,0.78),
+      inset 0 0 0 1px rgba(255,255,255,0.02);
+  }
+  .member:hover .member-photo::after{
+    border-color:rgba(212,168,75,0.56);
+  }
+  .member-photo .ver-mas{
+    bottom:16px;
+  }
+
+  @media (hover: none), (max-width: 720px){
+    .member-photo .ver-mas{
+      opacity:1;
+      transform:none;
+      right:12px;
+      bottom:12px;
+      background:rgba(10,22,40,0.86);
+    }
+    .member-photo .overlay-label{
+      opacity:1;
+      transform:none;
+      right:88px;
+      bottom:15px;
+      font-size:9px;
+      letter-spacing:0.16em;
+    }
+    .member-photo::after{
+      border-color:rgba(212,168,75,0.24);
+    }
+  }
+  @media (max-width: 720px){
+    .cases-wrap{
+      margin-top:8px;
+    }
+    .cases{
+      gap:14px;
+      margin:0 -20px;
+      padding:8px 20px 42px;
+      scroll-padding-left:20px;
+    }
+    .case{
+      flex:0 0 min(86vw, 340px);
+      min-height:260px;
+      padding:24px;
+    }
+    .cases-hint{
+      top:auto;
+      right:20px;
+      bottom:-2px;
+      font-size:9px;
+      padding:7px 10px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2781,10 +2911,10 @@
 <section class="hero" id="heroCinema">
   <div class="hero-text">
     <div class="hero-eyebrow hero-enter" style="--enter-delay:.18s">Estudio Jurídico · Guayaquil · 20+ años</div>
-    <h1 id="heroH1" class="blur-text hero-enter" data-blur-text data-bt-delay-base="260" style="--enter-delay:.28s">Protegemos lo que <span class="ital">más le importa.</span></h1>
-    <p class="hero-sub hero-enter" style="--enter-delay:.58s">Su familia. Su empresa. Su patrimonio. Decisiones importantes, defendidas en Guayaquil desde hace más de dos décadas.</p>
+    <h1 id="heroH1" class="blur-text hero-enter" data-blur-text data-bt-delay-base="260" style="--enter-delay:.28s">Protegemos lo que <span class="ital">más importa.</span></h1>
+    <p class="hero-sub hero-enter" style="--enter-delay:.58s">Tu familia. Tu empresa. Tu patrimonio. Cuando la decisión pesa, te acompaña un abogado que entiende el riesgo y te habla claro.</p>
     <blockquote class="hero-quote hero-enter" style="--enter-delay:.78s">
-      <span class="quote-mark" aria-hidden="true">"</span><span class="anim-text" data-anim-text>La ley es solo el medio. Lo que protegemos es lo que usted construyó.</span><span class="quote-mark" aria-hidden="true">"</span>
+      <span class="quote-mark" aria-hidden="true">"</span><span class="anim-text" data-anim-text>La ley es el medio. Lo importante es proteger lo que construiste.</span><span class="quote-mark" aria-hidden="true">"</span>
       <cite>— Ab. Ney Antonio Valero Brando, Socio fundador</cite>
     </blockquote>
     <div class="hero-cta-row hero-enter" style="--enter-delay:.96s">
@@ -2834,13 +2964,13 @@
   <div class="section-head reveal">
     <div class="mono">02 — Áreas de práctica</div>
     <h2 class="blur-text" data-blur-text>Tres frentes. Un solo respaldo.</h2>
-    <p>Cada área tiene un abogado responsable. Empiece por el tema que le preocupa y le conectamos directo con quien lo lleva.</p>
+    <p>Elige el tema que necesitas resolver. Te conectamos directo con el abogado que lo lleva, sin vueltas y sin lenguaje innecesario.</p>
   </div>
   <div class="areas-grid stagger">
     <div class="area" style="--area-color: var(--terracotta);">
       <div class="area-meta"><span>FAMILIA</span><span>Resp. P. Valero</span></div>
       <h3>Familia</h3>
-      <span class="tag">Su patrimonio familiar, blindado</span>
+      <span class="tag">Tu familia, con estrategia y cuidado</span>
       <ul>
         <li>Divorcios y separaciones</li>
         <li>Herencias y sucesiones</li>
@@ -2855,7 +2985,7 @@
     <div class="area" style="--area-color: var(--laurel);">
       <div class="area-meta"><span>EMPRESAS</span><span>Resp. A. Bastidas</span></div>
       <h3>Empresas</h3>
-      <span class="tag">Su negocio crece, su respaldo legal también</span>
+      <span class="tag">Tu empresa, con respaldo legal claro</span>
       <ul>
         <li>Constitución de compañías y S.A.S.</li>
         <li>Contratos comerciales</li>
@@ -2870,7 +3000,7 @@
     <div class="area" style="--area-color: var(--jurid);">
       <div class="area-meta"><span>INMOBILIARIO</span><span>Resp. N. Valero</span></div>
       <h3>Inmobiliario</h3>
-      <span class="tag">Cada propiedad, una certeza</span>
+      <span class="tag">Tu propiedad, con papeles en orden</span>
       <ul>
         <li>Compraventa y escrituras</li>
         <li>Due diligence inmobiliaria</li>
@@ -2968,55 +3098,55 @@
 
   <div class="cases-wrap reveal">
     <div class="cases-hint" aria-hidden="true">
-      Deslizar
+      Arrastra para ver más
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </div>
     <div class="cases" id="casesScroll">
       <div class="case">
         <div>
           <div class="case-tag" style="--tag-color: var(--terracotta);">Familia</div>
-          <h4>Custodia compartida resuelta sin juicio</h4>
-          <p>Padres en proceso de divorcio con dos menores. El padre temía perder visitas por viajes laborales recurrentes. Mediación estructurada y régimen detallado con calendario quincenal.</p>
+          <h4>Custodia compartida sin escalar el conflicto</h4>
+          <p>Organizamos un acuerdo claro para cuidar tiempos, visitas y responsabilidades sin llevar a la familia a un juicio innecesario.</p>
         </div>
         <div class="case-footer"><span>Mediación</span>Resuelto en 6 semanas</div>
       </div>
       <div class="case">
         <div>
           <div class="case-tag" style="--tag-color: var(--laurel);">Empresas</div>
-          <h4>S.A.S. constituida en 72 horas</h4>
-          <p>Startup tech necesitaba constituirse antes de cerrar inversión internacional. Estatutos a medida con clausulado preparado para futuras rondas. RUC habilitado el mismo día.</p>
+          <h4>S.A.S. lista antes de cerrar inversión</h4>
+          <p>Preparamos estatutos, cláusulas clave y ruta societaria para que la empresa pudiera avanzar sin frenar la negociación.</p>
         </div>
         <div class="case-footer"><span>Aceleración</span>Resuelto en 72 horas</div>
       </div>
       <div class="case">
         <div>
           <div class="case-tag" style="--tag-color: var(--jurid);">Inmobiliario</div>
-          <h4>Compraventa de $280K asegurada</h4>
-          <p>Comprador descubre a último momento que la vendedora no era propietaria registrada. Detuvimos la firma, gestionamos posesión efectiva acelerada y se firmó con título limpio.</p>
+          <h4>Compraventa protegida antes de firmar</h4>
+          <p>Detectamos un riesgo registral antes del pago, ordenamos el título y evitamos que una compra importante termine en problema.</p>
         </div>
         <div class="case-footer"><span>Due diligence</span>Resuelto en 47 días</div>
       </div>
       <div class="case">
         <div>
           <div class="case-tag" style="--tag-color: var(--terracotta);">Familia</div>
-          <h4>Herencia de 4 hermanos, partición consensuada</h4>
-          <p>Madre fallece sin testamento. Dos propiedades, cuatro expectativas distintas. Planteamos tres escenarios de partición, eligieron uno, escritura firmada antes de pelear.</p>
+          <h4>Herencia ordenada entre hermanos</h4>
+          <p>Planteamos escenarios simples para decidir, repartir y firmar antes de que las diferencias familiares se conviertan en pleito.</p>
         </div>
         <div class="case-footer"><span>Sucesión</span>Resuelto en 9 semanas</div>
       </div>
       <div class="case">
         <div>
           <div class="case-tag" style="--tag-color: var(--laurel);">Empresas</div>
-          <h4>Liquidación correcta sin litigio</h4>
-          <p>Trabajadora con 7 años, despedida con liquidación mal calculada (faltaban tres rubros). Negociación directa con la empleadora, pago de diferencia más un mes adicional.</p>
+          <h4>Liquidación corregida sin demanda</h4>
+          <p>Revisamos rubros omitidos, negociamos directo y logramos una salida más justa sin abrir un proceso largo.</p>
         </div>
         <div class="case-footer"><span>Laboral</span>Resuelto en 22 días</div>
       </div>
       <div class="case">
         <div>
           <div class="case-tag" style="--tag-color: var(--jurid);">Inmobiliario</div>
-          <h4>Hipoteca de 2008 destrabada</h4>
-          <p>Casa heredada con hipoteca cancelada en 2008 pero nunca levantada en Registro. Cuatro años sin poder vender. Reconstruimos expediente y obtuvimos cancelación marginal.</p>
+          <h4>Hipoteca antigua destrabada</h4>
+          <p>Reconstruimos el expediente registral y limpiamos el gravamen para que la venta pudiera avanzar con seguridad.</p>
         </div>
         <div class="case-footer"><span>Registral</span>Resuelto en 3 semanas</div>
       </div>
@@ -3313,7 +3443,7 @@
   const loaderBar = document.getElementById('loaderBar');
   const loaderCount = document.getElementById('loaderCount');
   const loaderEl = document.getElementById('loader');
-  const LOADER_DURATION = reduceMotion ? 80 : 3200;
+  const LOADER_DURATION = reduceMotion ? 1400 : 3700;
   let loaderStarted = false;
   function runLoader(){
     if (loaderStarted) return;
@@ -3321,7 +3451,7 @@
     if (reduceMotion){
       if (loaderCount) loaderCount.textContent = '100';
       if (loaderBar) loaderBar.style.width = '100%';
-      setTimeout(() => { if (loaderEl) loaderEl.classList.add('gone'); }, 100);
+      setTimeout(() => { if (loaderEl) loaderEl.classList.add('gone'); }, LOADER_DURATION);
       return;
     }
     const start = performance.now();
@@ -3663,6 +3793,8 @@
     }, { threshold: 0.3 });
     hintIo.observe(casesWrap);
     window.addEventListener('resize', refreshHint, {passive:true});
+    requestAnimationFrame(refreshHint);
+    setTimeout(refreshHint, 700);
   }
 
   // ===== Editorial section badge tracking =====
@@ -4147,6 +4279,8 @@
   const cases = document.getElementById('casesScroll');
   if (cases && finePointer) {
     let isDown = false, startX = 0, scrollLeft = 0;
+    cases.setAttribute('tabindex', '0');
+    cases.setAttribute('aria-label', 'Casos anonimizados. Arrastra o usa la rueda para ver más.');
     cases.addEventListener('mousedown', (e) => {
       isDown = true;
       startX = e.pageX - cases.offsetLeft;
@@ -4160,6 +4294,15 @@
       const x = e.pageX - cases.offsetLeft;
       cases.scrollLeft = scrollLeft - (x - startX) * 1.5;
     });
+    cases.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      const direction = Math.sign(e.deltaY);
+      const atStart = cases.scrollLeft <= 2;
+      const atEnd = cases.scrollLeft + cases.clientWidth >= cases.scrollWidth - 2;
+      if ((direction < 0 && atStart) || (direction > 0 && atEnd)) return;
+      e.preventDefault();
+      cases.scrollLeft += e.deltaY;
+    }, {passive:false});
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
