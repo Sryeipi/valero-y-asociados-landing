@@ -12,6 +12,7 @@
 # Excepciones: landing/img/ SÍ entra (son los WebP generados)
 !_Landing_Project/landing/img/**
 !_Landing_Project/landing/img.backup-*/**
+!_Landing_Project/landing/og-preview.png
 
 # Tools
 _Landing_Project/_tools/__pycache__/
