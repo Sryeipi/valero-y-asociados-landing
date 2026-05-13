@@ -3076,7 +3076,12 @@
     }
     requestAnimationFrame(tick);
   }
-  window.addEventListener('load', runLoader);
+  // Trigger robusto: si la pagina ya esta loaded, dispara inmediato; si no, espera load event.
+  if (document.readyState === 'complete'){
+    runLoader();
+  } else {
+    window.addEventListener('load', runLoader);
+  }
   // Safety: en caso de load lento, dispara igual a los 4s
   setTimeout(() => {
     if (loaderEl && !loaderEl.classList.contains('gone')){
@@ -3215,31 +3220,8 @@
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   }
 
-  const h1 = document.getElementById('heroH1');
-  if (h1 && !reduceMotion) {
-    const parts = [];
-    h1.childNodes.forEach(n => {
-      if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(w => { if (w) parts.push({type:'text', val:w}); });
-      else parts.push({type:'el', val:n.cloneNode(true)});
-    });
-    h1.innerHTML = '';
-    parts.forEach((p, i) => {
-      const span = document.createElement('span');
-      span.style.display = 'inline-block';
-      span.style.opacity = 0;
-      span.style.transform = 'translateY(16px)';
-      span.style.filter = 'blur(6px)';
-      span.style.transition = `opacity .7s ease ${450 + i * 55}ms, transform .7s ease ${450 + i * 55}ms, filter .7s ease ${450 + i * 55}ms`;
-      if (p.type === 'text') span.textContent = p.val.replace(/ /g, '\u00A0');
-      else span.appendChild(p.val);
-      h1.appendChild(span);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        span.style.opacity = 1;
-        span.style.transform = 'none';
-        span.style.filter = 'none';
-      }));
-    });
-  }
+  // [REMOVED v7] codigo viejo de H1 letter-by-letter reescribia el H1 y rompia BlurText word-by-word.
+  // Reemplazado por sistema BlurText con data-blur-text (mas abajo en el IIFE).
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
