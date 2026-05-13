@@ -10,16 +10,16 @@
 <meta property="og:description" content="Más de 20 años defendiendo familias, empresas y patrimonios en Guayaquil. Consulta inicial gratuita por WhatsApp." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="es_EC" />
-<meta property="og:image" content="/og-preview.png" />
+<meta property="og:image" content="/og-preview.png?v=20260513-preview" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="/og-preview.png" />
+<meta name="twitter:image" content="/og-preview.png?v=20260513-preview" />
 <meta name="theme-color" content="#0A1628" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="image" href="img/ney.webp?v=20260512-hq" fetchpriority="high" />
+<link rel="preload" as="image" href="img/full/ney.jpg?v=20260513-original" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
@@ -32,7 +32,7 @@
   "url": "https://valeroyasociados.ec",
   "telephone": "+593959080607",
   "priceRange": "$$",
-  "image": "https://valeroyasociados.ec/img/hero-main.webp?v=20260512-hq",
+  "image": "https://valeroyasociados.ec/og-preview.png?v=20260513-preview",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Guayaquil",
@@ -677,6 +677,102 @@
     .team-modal-body h3{font-size:clamp(26px, 6vw, 36px);}
     .team-modal-body .modal-bio{font-size:15px;}
   }
+  /* ========== v9 polish: original media, centered modal, cleaner edges, desktop motion ========== */
+  .team-modal{z-index:500;padding:clamp(16px, 3vw, 36px);}
+  .team-modal.open{align-items:center;justify-content:center;}
+  .team-modal-dialog{
+    width:100%;
+    max-width:min(1120px, calc(100vw - 48px));
+    height:min(820px, calc(100dvh - 48px));
+    max-height:calc(100dvh - 48px);
+    margin:0 auto;
+    grid-template-columns:minmax(0, 1.08fr) minmax(360px, .92fr);
+    box-shadow:0 28px 100px rgba(0,0,0,0.42);
+  }
+  .team-modal-carousel{
+    height:100%;min-height:0;aspect-ratio:auto;
+    isolation:isolate;border-radius:inherit 0 0 inherit;
+  }
+  .team-modal-carousel img{
+    inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);
+    display:block;filter:contrast(1.03) brightness(0.98) saturate(1.04);
+    backface-visibility:hidden;
+  }
+  .team-modal-carousel img.kb-phase-0{transform:scale(1.035) translate3d(0, 0, 0);}
+  .team-modal-carousel img.kb-phase-1{transform:scale(1.09) translate3d(-2%, 1.5%, 0);}
+  .team-modal-carousel img.kb-phase-2{transform:scale(1.12) translate3d(1.5%, -1%, 0);}
+  .team-modal-carousel::before,
+  .team-modal-carousel::after{inset:-2px;border-radius:inherit;}
+  .team-modal-carousel::before{opacity:0.06;}
+  .team-modal-carousel::after{
+    z-index:1;
+    background:
+      radial-gradient(ellipse at center, transparent 48%, rgba(4,12,24,0.20) 100%),
+      linear-gradient(180deg, transparent 64%, rgba(10,22,40,0.58) 100%);
+  }
+  .team-modal-body{min-height:0;overflow-y:auto;}
+  .member-photo,.hero-photo{isolation:isolate;background:#071324;transform:translateZ(0);}
+  .member-photo img,.hero-photo img{display:block;backface-visibility:hidden;}
+  .member-photo::before,.member-photo::after,.hero-photo::before,.hero-photo::after{
+    inset:-2px;border-radius:inherit;
+  }
+  .member-photo::before{
+    opacity:0.06;
+    background:
+      radial-gradient(ellipse at 72% 18%, rgba(232,184,109,0.12), transparent 56%),
+      linear-gradient(135deg, transparent 62%, rgba(212,168,75,0.10) 100%);
+    mix-blend-mode:screen;
+  }
+  .member:hover .member-photo::before{opacity:0.12;}
+  .member-photo::after{
+    box-shadow:
+      inset 0 -96px 84px -52px rgba(10,22,40,0.78),
+      inset 0 0 0 1px rgba(212,168,75,0.08);
+  }
+  .hero-photo::before{background:linear-gradient(180deg, transparent 62%, rgba(10,22,40,0.66) 100%);}
+  .hero-photo::after{
+    background:radial-gradient(ellipse at 78% 18%, rgba(232,184,109,0.15), transparent 62%);
+    mix-blend-mode:screen;opacity:0.22;
+  }
+  .areas-grid:not(.motion-in) .area,
+  .process-grid:not(.motion-in) .step-card,
+  .team:not(.motion-in) .member,
+  .reviews:not(.motion-in) .review,
+  .faq-list:not(.motion-in) .faq-item,
+  .kpis:not(.motion-in) .kpi{
+    animation:none;
+    opacity:0;
+    transform:translate3d(0, 52px, 0) scale(.97);
+    filter:blur(10px);
+  }
+  html.motion-failsafe .areas-grid:not(.motion-in) .area,
+  html.motion-failsafe .process-grid:not(.motion-in) .step-card,
+  html.motion-failsafe .team:not(.motion-in) .member,
+  html.motion-failsafe .reviews:not(.motion-in) .review,
+  html.motion-failsafe .faq-list:not(.motion-in) .faq-item,
+  html.motion-failsafe .kpis:not(.motion-in) .kpi{
+    opacity:1!important;transform:none!important;filter:none!important;
+  }
+  @media (min-width: 961px){
+    .team-modal-body{padding:clamp(34px, 4vw, 54px) clamp(34px, 4vw, 48px);}
+  }
+  @media (max-width: 960px){
+    .team-modal{padding:12px;}
+    .team-modal.open{align-items:flex-start;}
+    .team-modal-dialog{
+      height:auto;max-height:none;max-width:100%;
+      grid-template-columns:1fr;margin:0 auto 24px;
+    }
+    .team-modal-carousel{height:auto;aspect-ratio:4/5;border-radius:inherit inherit 0 0;}
+    .team-modal-body{overflow:visible;}
+  }
+  @media (max-width: 560px){
+    .team-modal{padding:0;}
+    .team-modal-dialog{min-height:100dvh;border-radius:0;border-left:0;border-right:0;}
+    .team-modal-body{padding:28px 20px calc(36px + env(safe-area-inset-bottom));}
+    .team-modal-carousel{aspect-ratio:4/4.85;}
+  }
+
   @media (max-width: 560px){
     .team-modal{padding:0;}
     .team-modal-dialog{border-radius:0;border-left:0;border-right:0;min-height:100vh;}
@@ -2709,7 +2805,7 @@
     </div>
   </div>
   <div class="hero-photo hero-enter hero-enter-photo" style="--enter-delay:.46s" data-hyperframe>
-    <img src="img/ney.webp?v=20260512-hq" width="1290" height="1935" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
+    <img src="img/full/ney.jpg?v=20260513-original" width="1290" height="2033" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
     <svg class="hyperframe" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%"></rect></svg>
     <div class="hero-photo-credit"><span>Ab. Ney Valero</span><small>Socio fundador</small></div>
   </div>
@@ -2941,12 +3037,12 @@
       data-role="Socio fundador · Civil & Inmobiliario"
       data-bio="Más de 20 años ejerciendo derecho civil, corporativo e inmobiliario en Guayaquil. Especialista en sucesiones, compraventa de propiedades y contratos comerciales complejos. Recibe personalmente cada caso antes de asignarlo al equipo."
       data-specs="Sucesiones,Compraventa,Contratos,Asesoría empresarial,Mediación"
-      data-photo="ney" data-photos="ney,scene-01,scene-02,scene-03" data-photo-focals="22,28,32,30"
+      data-photo="full/ney.jpg" data-photos="full/ney.jpg,full/ney-02.png,full/ney-03.png,full/ney-04.png" data-photo-focals="22,28,32,30"
       data-area-msg="Hola, vi su web. Quisiera reservar una consulta con el Ab. Ney Valero sobre un tema civil o inmobiliario."
       aria-label="Ver perfil del Ab. Ney Valero">
       <div class="member-photo">
         <span class="pin">Fundador</span>
-        <img src="img/ney.webp?v=20260512-hq" width="1290" height="1935" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
+        <img src="img/full/ney.jpg?v=20260513-original" width="1290" height="2033" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
         <div class="overlay-label">Recibe cada caso · personalmente</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2959,11 +3055,11 @@
       data-role="Socio · Derecho Corporativo"
       data-bio="Especialista en derecho corporativo, contratos comerciales y compliance. Acompaña la constitución y operación de compañías en Ecuador, desde S.A.S. hasta sociedades con inversión internacional."
       data-specs="Constitución,Contratos comerciales,Compliance,Junta de accionistas,Laboral empresarial"
-      data-photo="adrian" data-photos="adrian,scene-04,scene-07" data-photo-focals="30,34,30"
+      data-photo="full/adrian.png" data-photos="full/adrian.png,full/adrian-02.png,full/adrian-03.png" data-photo-focals="30,34,30"
       data-area-msg="Hola, soy de una empresa y quisiera reservar una consulta con el Ab. Adrián Bastidas sobre asesoría corporativa."
       aria-label="Ver perfil del Ab. Adrián Bastidas">
       <div class="member-photo">
-        <img src="img/adrian.webp?v=20260512-hq" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
+        <img src="img/full/adrian.png?v=20260513-original" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
         <div class="overlay-label">Contratos · Compliance</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2976,11 +3072,11 @@
       data-role="Asociada senior · Familia & Laboral"
       data-bio="Lleva casos de familia y laboral con un enfoque humano y estratégico. Divorcios, herencias, custodia, uniones de hecho y despidos intempestivos. Cuida vínculos cuando se puede; defiende firmemente cuando hace falta."
       data-specs="Divorcios,Herencias,Custodia,Uniones de hecho,Liquidaciones laborales"
-      data-photo="patricia" data-photos="patricia,editorial-01" data-photo-focals="35,34"
+      data-photo="full/patricia.png" data-photos="full/patricia.png,full/patricia-02.png" data-photo-focals="35,34"
       data-area-msg="Hola, quisiera reservar una consulta con la Abg. Patricia Valero sobre un tema de familia o laboral."
       aria-label="Ver perfil de la Abg. Patricia Valero">
       <div class="member-photo">
-        <img src="img/patricia.webp?v=20260512-hq" width="1500" height="1000" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
+        <img src="img/full/patricia.png?v=20260513-original" width="1537" height="1023" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
         <div class="overlay-label">Divorcios · Herencias · Laboral</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2993,11 +3089,11 @@
       data-role="Asociado · Tránsito & Corporativo"
       data-bio="Maneja casos de tránsito (accidentes, multas, alcoholemia) y casos corporativos del estudio. Honorarios justos y resolución rápida cuando el escenario lo permite."
       data-specs="Accidentes de tránsito,Multas,Alcoholemia,Casos corporativos"
-      data-photo="daniel" data-photos="daniel,scene-05" data-photo-focals="25,28"
+      data-photo="full/daniel.png" data-photos="full/daniel.png,full/daniel-02.png" data-photo-focals="25,28"
       data-area-msg="Hola, quisiera reservar una consulta con el Ab. Daniel Carrera sobre un tema de tránsito."
       aria-label="Ver perfil del Ab. Daniel Carrera">
       <div class="member-photo">
-        <img src="img/daniel.webp?v=20260512-hq" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
+        <img src="img/full/daniel.png?v=20260513-original" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
         <div class="overlay-label">Tránsito · Casos corporativos</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -3211,13 +3307,13 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // Loader cinematico v8.1: counter 000->100 garantizado 2200ms visible
-  // INVARIANTE: el loader siempre se ve minimo 2.2s (counter + barra + rotator)
+  // Loader cinematico v9: counter 000->100 con tiempo suficiente para leer la marca.
+  // INVARIANTE: el loader siempre se ve minimo 3.2s salvo reduced motion.
   // Trigger IMMEDIATE al ejecutar el IIFE, no espera window.load (que puede haber pasado)
   const loaderBar = document.getElementById('loaderBar');
   const loaderCount = document.getElementById('loaderCount');
   const loaderEl = document.getElementById('loader');
-  const LOADER_DURATION = reduceMotion ? 80 : 720;
+  const LOADER_DURATION = reduceMotion ? 80 : 3200;
   let loaderStarted = false;
   function runLoader(){
     if (loaderStarted) return;
@@ -3241,7 +3337,7 @@
         setTimeout(() => {
           if (loaderEl) loaderEl.classList.add('gone');
           if (finePointer) document.body.classList.add('cursor-ready');
-        }, 120);
+        }, 260);
       }
     }
     requestAnimationFrame(tick);
@@ -3393,6 +3489,10 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
 
+  setTimeout(() => {
+    document.documentElement.classList.add('motion-failsafe');
+  }, 12000);
+
   // v8.1: NUEVA ESTRATEGIA - evitar conflict transition + @keyframes.
   // Solo observamos los GRID CONTAINERS. Cuando entran, agregamos .motion-in al container,
   // y las CSS keyframes staggered animations se disparan sobre los hijos.
@@ -3447,7 +3547,7 @@
       requestAnimationFrame(() => {
         heroPhotoEl.classList.add('motion-in');
       });
-    }, 720);
+    }, LOADER_DURATION + 260);
   }
 
   const counters = document.querySelectorAll('.kpi-num[data-target]');
@@ -3866,6 +3966,9 @@
   const teamModalCta = document.getElementById('teamModalCta');
   const teamModalClose = document.getElementById('teamModalClose');
   const teamMemberBtns = document.querySelectorAll('.team .member');
+  if (teamModal && teamModal.parentElement !== document.body){
+    document.body.appendChild(teamModal);
+  }
   let teamModalInterval = null;
   let teamModalCurrentIdx = 0;
   let teamModalLastTrigger = null;
@@ -3901,11 +4004,12 @@
     existingImgs.forEach(i => i.remove());
     photoSlugs.forEach((slug, i) => {
       const img = document.createElement('img');
-      img.src = `img/${slug}.webp?v=20260512-hq2`;
+      const hasExtension = /\.(png|jpe?g|webp|avif)$/i.test(slug);
+      img.src = `img/${hasExtension ? slug : `${slug}.webp`}?v=20260513-original`;
       img.removeAttribute('srcset');
       img.sizes = '(max-width: 960px) 100vw, 600px';
       img.alt = `${name} - foto ${i + 1}`;
-      img.loading = i === 0 ? 'eager' : 'lazy';
+      img.loading = 'eager';
       img.decoding = 'async';
       img.style.objectPosition = `center ${photoFocals[i] || photoFocals[0] || 30}%`;
       img.classList.add(`kb-phase-${i % 3}`);
