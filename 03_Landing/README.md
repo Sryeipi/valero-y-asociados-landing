@@ -3,11 +3,11 @@ type: proyecto
 domain: clientes
 client: Valero y Asociados
 tags: [proyecto, landing, web, lead-gen, whatsapp]
-status: v6-motion-polish-listo-review-deploy-bloqueado-token
+status: v7-hq-images-motion-fix-deployed-vercel
 created: 2026-05-11
-updated: 2026-05-12
-git_branch: fix/landing-coherencia-visual
-git_state: rama fix/landing-coherencia-visual con cambios v6 locales pendientes de commit/review
+updated: 2026-05-13
+git_branch: main
+git_state: commit 903d08b pushed to origin/main; Vercel production READY
 owner: Funnel Architect Agent + Design Production Agent
 ---
 
@@ -104,3 +104,12 @@ Esta nota es el **puntero canonico** desde el vault. El vault tiene la memoria e
 - **Cambios:** correccion del H1 visible, motion polish con entrance blur/scale, parallax sutil de hero photo, glow scroll-driven en cierre, sticky CTA oculto en equipo para no tapar retratos, `og-preview.png`, `favicon.svg`, `theme-color`, `twitter:card` y `og:image`.
 - **Verificacion:** Playwright en `verification-20260512-codex-motion-final`: desktop 1440, mobile 390, mobile reduced motion, 0 errores consola, scrollWidth = viewport, 15 links WhatsApp correctos.
 - **Deploy:** bloqueado por credenciales Vercel. `npx vercel@latest --yes --prod` devuelve `The specified token is not valid`; el conector Vercel de Codex solo indico usar CLI. Pendiente renovar login/token Vercel o conectar repo remoto.
+
+## Cierre v7 Codex - 2026-05-13
+
+- **Ruta:** Session Gateway -> Router -> Design Production + Skill Web Premium UI UX Motion -> Quality Gate -> Git/Vercel.
+- **Problema raiz:** el navegador/CDN podia seguir sirviendo imagenes viejas o variantes pequenas (`sm/srcset`) aunque los WebP del vault ya estuvieran regenerados en alta calidad.
+- **Cambios:** preload del retrato principal, cache-buster `?v=20260512-hq` en WebP, eliminacion de `srcset/sizes` en fotos principales para forzar archivo grande del vault, loader reducido de 2.2s a 720ms, delays hero recortados, fallback `motionSafetyShow` para evitar bloques invisibles si JS falla, retirada del halftone del hero y fotos de equipo en color real.
+- **Verificacion local:** Playwright desktop 1440 y mobile 390 sin errores consola, sin overflow horizontal, hero `ney.webp?v=20260512-hq` cargando 1290x1935, 0 bloques invisibles en viewport.
+- **Deploy:** CLI Vercel sigue con token invalido, pero Git integration funciono. Commit `903d08b` (`fix: improve landing motion and image quality`) pushed a `origin/main`; Vercel production `dpl_CF8igdtJinLyAMoiGGBmweyrPkTv` quedo `READY`.
+- **URL:** https://valero-y-asociados-landing.vercel.app/
