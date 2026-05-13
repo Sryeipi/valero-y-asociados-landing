@@ -1,0 +1,74 @@
+[
+  {
+    "spec": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "reduced": false
+    },
+    "audit": {
+      "title": "Valero & Asociados · Estudio Jurídico en Guayaquil",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "docHeight": 9056,
+      "h1Text": null,
+      "h1Color": "rgb(245, 242, 235)",
+      "h1VisibleText": "Protegemos lo que más le importa.",
+      "firstWordColor": "rgb(245, 242, 235)",
+      "ctaCount": 15,
+      "ogImage": "/og-preview.png",
+      "motionObserved": 21,
+      "motionIn": 3,
+      "stickyExists": true
+    },
+    "consoleErrors": []
+  },
+  {
+    "spec": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "reduced": false
+    },
+    "audit": {
+      "title": "Valero & Asociados · Estudio Jurídico en Guayaquil",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "docHeight": 13608,
+      "h1Text": null,
+      "h1Color": "rgb(245, 242, 235)",
+      "h1VisibleText": "Protegemos lo que más le importa.",
+      "firstWordColor": "rgb(245, 242, 235)",
+      "ctaCount": 15,
+      "ogImage": "/og-preview.png",
+      "motionObserved": 21,
+      "motionIn": 1,
+      "stickyExists": true
+    },
+    "consoleErrors": []
+  },
+  {
+    "spec": {
+      "name": "mobile-reduced",
+      "width": 390,
+      "height": 844,
+      "reduced": true
+    },
+    "audit": {
+      "title": "Valero & Asociados · Estudio Jurídico en Guayaquil",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "docHeight": 13608,
+      "h1Text": null,
+      "h1Color": "rgb(245, 242, 235)",
+      "h1VisibleText": "Protegemos lo que más le importa.",
+      "firstWordColor": "rgb(212, 168, 75)",
+      "ctaCount": 15,
+      "ogImage": "/og-preview.png",
+      "motionObserved": 21,
+      "motionIn": 1,
+      "stickyExists": true
+    },
+    "consoleErrors": []
+  }
+]

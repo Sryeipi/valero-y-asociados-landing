@@ -1,0 +1,548 @@
+[
+  {
+    "spec": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "reduced": false
+    },
+    "audit": {
+      "title": "Valero & Asociados · Estudio Jurídico en Guayaquil",
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "docHeight": 9056,
+      "heroExists": true,
+      "ctaCount": 15,
+      "stickyExists": true,
+      "ogImage": null,
+      "heroText": null,
+      "overflows": [
+        {
+          "tag": "DIV",
+          "cls": "cursor-dot",
+          "id": "cursorDot",
+          "left": -3,
+          "right": 3,
+          "width": 6
+        },
+        {
+          "tag": "DIV",
+          "cls": "grain",
+          "id": "",
+          "left": -758,
+          "right": 2122,
+          "width": 2880
+        },
+        {
+          "tag": "DIV",
+          "cls": "marquee-track",
+          "id": "",
+          "left": -152,
+          "right": 4797,
+          "width": 4949
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": -152,
+          "right": 158,
+          "width": 310
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1460,
+          "right": 1813,
+          "width": 352
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1861,
+          "right": 2299,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2347,
+          "right": 2656,
+          "width": 310
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2704,
+          "right": 2982,
+          "width": 278
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3030,
+          "right": 3468,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3516,
+          "right": 3911,
+          "width": 395
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3959,
+          "right": 4311,
+          "width": 352
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 4359,
+          "right": 4797,
+          "width": 438
+        },
+        {
+          "tag": "DIV",
+          "cls": "case",
+          "id": "",
+          "left": 1292,
+          "right": 1672,
+          "width": 380
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "id": "",
+          "left": 1325,
+          "right": 1639,
+          "width": 314
+        },
+        {
+          "tag": "DIV",
+          "cls": "case-tag",
+          "id": "",
+          "left": 1325,
+          "right": 1639,
+          "width": 314
+        },
+        {
+          "tag": "H4",
+          "cls": "",
+          "id": "",
+          "left": 1325,
+          "right": 1639,
+          "width": 314
+        },
+        {
+          "tag": "P",
+          "cls": "",
+          "id": "",
+          "left": 1325,
+          "right": 1639,
+          "width": 314
+        },
+        {
+          "tag": "DIV",
+          "cls": "case-footer",
+          "id": "",
+          "left": 1325,
+          "right": 1639,
+          "width": 314
+        },
+        {
+          "tag": "DIV",
+          "cls": "case",
+          "id": "",
+          "left": 1696,
+          "right": 2076,
+          "width": 380
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "id": "",
+          "left": 1729,
+          "right": 2043,
+          "width": 314
+        }
+      ]
+    },
+    "consoleErrors": []
+  },
+  {
+    "spec": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "reduced": false
+    },
+    "audit": {
+      "title": "Valero & Asociados · Estudio Jurídico en Guayaquil",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "docHeight": 13608,
+      "heroExists": true,
+      "ctaCount": 15,
+      "stickyExists": true,
+      "ogImage": null,
+      "heroText": null,
+      "overflows": [
+        {
+          "tag": "DIV",
+          "cls": "marquee-track",
+          "id": "",
+          "left": -79,
+          "right": 4870,
+          "width": 4949
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": -79,
+          "right": 231,
+          "width": 310
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 279,
+          "right": 557,
+          "width": 278
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 605,
+          "right": 1043,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1091,
+          "right": 1486,
+          "width": 395
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1534,
+          "right": 1886,
+          "width": 352
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1934,
+          "right": 2372,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2420,
+          "right": 2730,
+          "width": 310
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2778,
+          "right": 3055,
+          "width": 278
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3103,
+          "right": 3541,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3589,
+          "right": 3984,
+          "width": 395
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 4032,
+          "right": 4385,
+          "width": 352
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 4433,
+          "right": 4870,
+          "width": 438
+        },
+        {
+          "tag": "DIV",
+          "cls": "cases",
+          "id": "casesScroll",
+          "left": -8,
+          "right": 398,
+          "width": 406
+        },
+        {
+          "tag": "DIV",
+          "cls": "case",
+          "id": "",
+          "left": -8,
+          "right": 324,
+          "width": 332
+        },
+        {
+          "tag": "DIV",
+          "cls": "case",
+          "id": "",
+          "left": 348,
+          "right": 679,
+          "width": 332
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "DIV",
+          "cls": "case-tag",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "H4",
+          "cls": "",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "P",
+          "cls": "",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        }
+      ]
+    },
+    "consoleErrors": []
+  },
+  {
+    "spec": {
+      "name": "mobile-reduced",
+      "width": 390,
+      "height": 844,
+      "reduced": true
+    },
+    "audit": {
+      "title": "Valero & Asociados · Estudio Jurídico en Guayaquil",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "docHeight": 13608,
+      "heroExists": true,
+      "ctaCount": 15,
+      "stickyExists": true,
+      "ogImage": null,
+      "heroText": null,
+      "overflows": [
+        {
+          "tag": "DIV",
+          "cls": "marquee-track",
+          "id": "",
+          "left": 0,
+          "right": 4949,
+          "width": 4949
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 358,
+          "right": 636,
+          "width": 278
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 684,
+          "right": 1121,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1169,
+          "right": 1564,
+          "width": 395
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 1612,
+          "right": 1965,
+          "width": 352
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2013,
+          "right": 2451,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2499,
+          "right": 2808,
+          "width": 310
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 2856,
+          "right": 3134,
+          "width": 278
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3182,
+          "right": 3620,
+          "width": 438
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 3668,
+          "right": 4063,
+          "width": 395
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 4111,
+          "right": 4463,
+          "width": 352
+        },
+        {
+          "tag": "SPAN",
+          "cls": "marquee-item",
+          "id": "",
+          "left": 4511,
+          "right": 4949,
+          "width": 438
+        },
+        {
+          "tag": "DIV",
+          "cls": "cases",
+          "id": "casesScroll",
+          "left": -8,
+          "right": 398,
+          "width": 406
+        },
+        {
+          "tag": "DIV",
+          "cls": "case",
+          "id": "",
+          "left": -8,
+          "right": 324,
+          "width": 332
+        },
+        {
+          "tag": "DIV",
+          "cls": "case",
+          "id": "",
+          "left": 348,
+          "right": 679,
+          "width": 332
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "DIV",
+          "cls": "case-tag",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "H4",
+          "cls": "",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "P",
+          "cls": "",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        },
+        {
+          "tag": "DIV",
+          "cls": "case-footer",
+          "id": "",
+          "left": 381,
+          "right": 646,
+          "width": 266
+        }
+      ]
+    },
+    "consoleErrors": []
+  }
+]
