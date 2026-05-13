@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 """
-Regenera las WebP de la landing Valero a partir de los PNG/JPG originales.
-v2: encuadre correcto para retratos (caras arriba), calidad 88, sharpening sutil.
+v3 — Calidad 92 con sharpening fuerte + tamanos mas grandes para mejor render desktop.
+Busca originales en multiples locations. Backup automatico.
 """
-import os, sys, shutil
+import os, shutil
 from datetime import datetime
 from PIL import Image, ImageOps, ImageFilter, ImageEnhance
 
-ROOT = r"C:\Users\Administrator\Downloads\Valero y Asociados"
-ORIG = ROOT
+ROOT = r"C:\Users\Administrator\Documents\Obsidian Vault\03_CLIENTES\Valero y Asociados"
+ORIG_LOCS = [
+    ROOT,
+    r"C:\Users\Administrator\Documents\Codex\2026-05-11\files-mentioned-by-the-user-valero\zip-inspect-valero-1\uploads",
+    r"C:\Users\Administrator\Documents\Codex\2026-05-11\files-mentioned-by-the-user-valero\zip-inspect-valero-1",
+]
 OUT = os.path.join(ROOT, "_Landing_Project", "landing", "img")
 BACKUP = os.path.join(ROOT, "_Landing_Project",
-                      f"img.backup-v2-{datetime.now():%Y%m%d-%H%M%S}")
+                      f"img.backup-v3-{datetime.now():%Y%m%d-%H%M%S}")
 
-# (archivo_origen, modo, focal_y) — focal_y es vertical centering 0..1, 0=top
-# Para retratos editoriales, la cara está en el primer tercio vertical => focal_y bajo
 MAP = {
     "ney.webp":         ("ney.jpg",                                           "portrait",    0.22),
     "hero-main.webp":   ("MAIN image.png",                                    "wide",        0.35),
@@ -35,13 +37,14 @@ MAP = {
     "ney-alt.webp":     ("ney.jpg",                                           "portrait",    0.22),
 }
 
+# Tamanos mas grandes para retina DPR2 + sharpening fuerte
 SIZES = {
-    "portrait":    [(1200, 1800), (700, 1050), (400, 600)],
-    "portrait43":  [(1448, 1086), (900, 675),  (450, 338)],
-    "landscape":   [(1800, 1013), (900, 506),  (450, 253)],
-    "landscape32": [(1500, 1000), (900, 600),  (450, 300)],
-    "landscape43": [(1400, 1050), (900, 675),  (450, 338)],
-    "wide":        [(2000, 1125), (1200, 675), (600, 338)],
+    "portrait":    [(1600, 2400), (900, 1350), (500, 750)],
+    "portrait43":  [(1800, 1350), (1100, 825), (550, 413)],
+    "landscape":   [(2200, 1238), (1100, 619), (550, 310)],
+    "landscape32": [(1800, 1200), (1100, 733), (550, 367)],
+    "landscape43": [(1700, 1275), (1100, 825), (550, 413)],
+    "wide":        [(2400, 1350), (1400, 788), (700, 394)],
 }
 
 os.makedirs(OUT, exist_ok=True)
@@ -52,25 +55,34 @@ if not os.path.isdir(BACKUP):
             shutil.copy2(os.path.join(OUT, f), os.path.join(BACKUP, f))
 print(f"[backup] {BACKUP}")
 
+def find_src(name):
+    for loc in ORIG_LOCS:
+        p = os.path.join(loc, name)
+        if os.path.isfile(p):
+            return p
+    return None
+
 def fit_cover(im, target_w, target_h, focal_y=0.4):
-    """Resize+crop preservando aspect, centrando en (0.5, focal_y)."""
     return ImageOps.fit(im, (target_w, target_h), method=Image.LANCZOS, centering=(0.5, focal_y))
 
 def enhance(im):
-    """Sharpening sutil + color boost para fotos editoriales."""
-    im = im.filter(ImageFilter.UnsharpMask(radius=1.2, percent=70, threshold=2))
-    im = ImageEnhance.Color(im).enhance(1.05)
-    im = ImageEnhance.Contrast(im).enhance(1.03)
+    """Sharpening fuerte + color/contrast boost editorial."""
+    im = im.filter(ImageFilter.UnsharpMask(radius=1.8, percent=120, threshold=2))
+    im = ImageEnhance.Color(im).enhance(1.08)
+    im = ImageEnhance.Contrast(im).enhance(1.06)
+    im = ImageEnhance.Brightness(im).enhance(1.02)
     return im
 
-def save_webp(im, path, quality=88):
+def save_webp(im, path, quality=92):
     im.save(path, "WEBP", quality=quality, method=6)
 
 stats = []
+missing = []
 for dest, (src_name, mode, focal_y) in MAP.items():
-    src_path = os.path.join(ORIG, src_name)
-    if not os.path.isfile(src_path):
-        print(f"[MISS] {dest} <- {src_name} (no existe)")
+    src_path = find_src(src_name)
+    if not src_path:
+        print(f"[MISS] {dest} <- {src_name}")
+        missing.append(src_name)
         continue
     sizes = SIZES.get(mode, SIZES["landscape"])
     with Image.open(src_path) as im:
@@ -80,12 +92,12 @@ for dest, (src_name, mode, focal_y) in MAP.items():
         for i, (tw, th) in enumerate(sizes):
             if i == 0:
                 out_path = os.path.join(OUT, dest)
-                q = 88
+                q = 92
             else:
                 base, ext = os.path.splitext(dest)
                 suffix = "-md" if i == 1 else "-sm"
                 out_path = os.path.join(OUT, f"{base}{suffix}{ext}")
-                q = 84 if i == 1 else 80
+                q = 88 if i == 1 else 84
             resized = fit_cover(im, tw, th, focal_y)
             resized = enhance(resized)
             save_webp(resized, out_path, quality=q)
@@ -94,4 +106,6 @@ for dest, (src_name, mode, focal_y) in MAP.items():
 
 total = sum(s[3] for s in stats)
 print(f"\nTOTAL: {len(stats)} archivos, {total} KB ({total/1024:.1f} MB)")
+if missing:
+    print(f"\n[!] MISSING ORIGINALS: {missing}")
 print("DONE.")

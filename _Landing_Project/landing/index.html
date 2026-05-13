@@ -287,7 +287,7 @@
   }
   .marquee-track{
     display:flex;gap:48px;white-space:nowrap;
-    animation:marquee 35s linear infinite;
+    animation:marquee 18s linear infinite;
     width:max-content;
   }
   .marquee:hover .marquee-track{animation-play-state:paused;}
@@ -499,6 +499,162 @@
   }
   .ghost-cta:hover{background:var(--gold);color:var(--navy);}
 
+  /* ========== TEAM MODAL v7 ========== */
+  .team-modal{
+    position:fixed;inset:0;z-index:200;
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+    background:rgba(10,22,40,0.86);
+    backdrop-filter:blur(20px) saturate(1.4);
+    opacity:0;transition:opacity .35s ease;
+  }
+  .team-modal.open{display:flex;opacity:1;}
+  .team-modal-dialog{
+    position:relative;
+    max-width:1080px;width:100%;max-height:calc(100vh - 48px);
+    background:linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 100%);
+    border:1px solid rgba(212,168,75,0.3);
+    border-radius:12px;
+    overflow:hidden;
+    display:grid;grid-template-columns:5fr 4fr;
+    transform:scale(.94) translateY(20px);
+    transition:transform .55s cubic-bezier(0.16,1,0.3,1);
+  }
+  .team-modal.open .team-modal-dialog{transform:none;}
+  .team-modal-close{
+    position:absolute;top:18px;right:18px;z-index:5;
+    width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;
+    background:rgba(10,22,40,0.6);color:var(--bone);
+    border:1px solid rgba(212,168,75,0.3);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .25s;backdrop-filter:blur(8px);
+  }
+  .team-modal-close:hover{background:var(--gold);color:var(--navy);transform:scale(1.05);}
+  .team-modal-carousel{
+    position:relative;aspect-ratio:3/4;
+    background:var(--navy-3);overflow:hidden;
+  }
+  .team-modal-carousel img{
+    position:absolute;inset:0;
+    width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 8s linear;
+    filter:contrast(1.05) brightness(0.92) saturate(1.05);
+    transform:scale(1);
+  }
+  .team-modal-carousel img.active{opacity:1;transform:scale(1.07);}
+  .team-modal-carousel::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg, transparent 50%, rgba(10,22,40,0.7) 100%);
+  }
+  .team-modal-carousel-dots{
+    position:absolute;bottom:18px;left:18px;right:18px;z-index:3;
+    display:flex;gap:6px;justify-content:center;
+  }
+  .team-modal-carousel-dot{
+    width:32px;height:2px;background:rgba(245,242,235,0.25);
+    cursor:pointer;border:0;padding:0;
+    transition:background .35s;position:relative;overflow:hidden;
+  }
+  .team-modal-carousel-dot.active{background:rgba(245,242,235,0.45);}
+  .team-modal-carousel-dot.active::after{
+    content:"";position:absolute;inset:0;background:var(--gold);
+    transform:translateX(-100%);animation:tmcDotFill 2.4s linear forwards;
+  }
+  @keyframes tmcDotFill{to{transform:translateX(0);}}
+  .team-modal-body{
+    padding:48px 40px;
+    display:flex;flex-direction:column;justify-content:center;
+    overflow-y:auto;
+  }
+  .team-modal-body .modal-eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.24em;
+    color:var(--gold);text-transform:uppercase;margin-bottom:18px;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .team-modal-body .modal-eyebrow::before{
+    content:"";width:24px;height:1px;background:var(--gold);
+  }
+  .team-modal-body h3{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(32px, 3vw, 44px);line-height:1.05;letter-spacing:-0.02em;
+    color:var(--bone);margin-bottom:8px;
+  }
+  .team-modal-body .modal-role{
+    font-family:var(--serif);font-style:italic;font-size:17px;
+    color:var(--gold);margin-bottom:28px;
+  }
+  .team-modal-body .modal-bio{
+    color:var(--gray-2);font-size:16px;line-height:1.65;margin-bottom:28px;
+  }
+  .team-modal-body .modal-specs{
+    display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;
+  }
+  .team-modal-body .modal-spec-chip{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.18em;
+    color:var(--bone);text-transform:uppercase;
+    padding:8px 14px;border:1px solid rgba(212,168,75,0.3);border-radius:999px;
+    background:rgba(212,168,75,0.05);
+  }
+  .team-modal-body .modal-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--gold);color:var(--navy);
+    padding:18px 28px;border-radius:999px;
+    font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+    text-decoration:none;
+    box-shadow:0 12px 32px rgba(212,168,75,0.3);
+    transition:all .25s;position:relative;overflow:hidden;
+  }
+  .team-modal-body .modal-cta::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+    transform:translateX(-100%);transition:transform .8s ease;
+  }
+  .team-modal-body .modal-cta:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(212,168,75,0.4);background:var(--gold-warm);}
+  .team-modal-body .modal-cta:hover::before{transform:translateX(100%);}
+  .team-modal-body .modal-cta svg{transition:transform .25s;}
+  .team-modal-body .modal-cta:hover svg{transform:translateX(4px);}
+  .team-modal-meta{
+    margin-top:24px;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.2em;
+    color:var(--gray);text-transform:uppercase;
+  }
+  /* Team member click affordance */
+  button.member{
+    background:none;border:0;padding:0;margin:0;
+    font:inherit;color:inherit;text-align:left;
+    width:100%;
+    -webkit-appearance:none;appearance:none;
+  }
+  button.member:focus-visible{outline:2px solid var(--gold);outline-offset:6px;border-radius:6px;}
+  .member{cursor:pointer;position:relative;}
+  .member-photo::after{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    border:1px solid transparent;
+    transition:border-color .35s ease;
+  }
+  .member:hover .member-photo::after{border-color:rgba(212,168,75,0.4);}
+  .member-photo .ver-mas{
+    position:absolute;bottom:14px;right:14px;z-index:3;
+    background:rgba(10,22,40,0.78);color:var(--gold);
+    font-family:var(--mono);font-size:10px;letter-spacing:0.18em;
+    text-transform:uppercase;padding:6px 12px;border-radius:999px;
+    border:1px solid rgba(212,168,75,0.3);backdrop-filter:blur(6px);
+    opacity:0;transform:translateY(8px);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .member:hover .ver-mas{opacity:1;transform:translateY(0);}
+
+  @media (max-width: 960px){
+    .team-modal{padding:12px;}
+    .team-modal-dialog{
+      grid-template-columns:1fr;
+      max-height:calc(100vh - 24px);
+      overflow-y:auto;
+    }
+    .team-modal-carousel{aspect-ratio:1/1;max-height:55vh;}
+    .team-modal-body{padding:32px 24px;}
+  }
+
   /* ========== EQUIPO v6 (4 cols mixed aspect — Ney portrait 3/4, otros landscape 4/3) ========== */
   .team{
     display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
@@ -700,39 +856,71 @@
 
   /* ========== CINEMATIC OVERHAUL ========== */
 
-  /* Loader/intro */
+  /* Loader cinematico v7 */
   .loader{
     position:fixed;inset:0;z-index:200;background:var(--navy);
     display:flex;align-items:center;justify-content:center;
-    transition:opacity .45s ease, visibility .45s ease;
+    transition:opacity .55s ease, visibility .55s ease;
   }
   .loader.gone{opacity:0;visibility:hidden;pointer-events:none;}
-  .loader-inner{position:relative;text-align:center;}
+  .loader::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(circle at 1px 1px, rgba(212,168,75,0.04) 1px, transparent 0);
+    background-size:24px 24px;
+  }
+  .loader-inner{position:relative;text-align:center;max-width:560px;padding:0 24px;}
+  .loader-eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.32em;
+    color:var(--gold);text-transform:uppercase;margin-bottom:32px;
+    opacity:0;animation:loaderFadeUp .8s .2s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
   .loader-mark{
-    font-family:var(--serif);font-weight:700;
-    font-size:clamp(48px,8vw,96px);letter-spacing:-0.04em;line-height:1;
+    font-family:var(--serif);font-weight:700;font-style:italic;
+    font-size:clamp(56px,9vw,112px);letter-spacing:-0.04em;line-height:0.95;
     color:var(--bone);
+    opacity:0;transform:translateY(40px);filter:blur(12px);
+    animation:loaderMark 1.2s .4s cubic-bezier(0.16,1,0.3,1) forwards;
   }
   .loader-mark .amp{
-    color:var(--gold);font-style:italic;display:inline-block;
-    animation:loaderAmp 1.2s ease-in-out infinite alternate;
+    color:var(--gold);display:inline-block;font-weight:500;
   }
-  @keyframes loaderAmp{from{transform:translateY(0) rotate(0deg);}to{transform:translateY(-4px) rotate(-3deg);}}
-  .loader-line{
-    width:120px;height:1px;background:rgba(212,168,75,0.25);
-    margin:24px auto 0;position:relative;overflow:hidden;
+  @keyframes loaderMark{
+    to{opacity:1;transform:translateY(0);filter:blur(0);}
   }
-  .loader-line::after{
-    content:"";position:absolute;inset:0;background:var(--gold);
-    transform:translateX(-100%);animation:loaderFill 1.8s ease-out forwards;
+  .loader-rotator{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(18px, 2vw, 24px);
+    color:rgba(245,242,235,0.55);margin-top:24px;
+    height:32px;overflow:hidden;position:relative;
+    opacity:0;animation:loaderFadeUp .8s .8s cubic-bezier(0.16,1,0.3,1) forwards;
   }
-  @keyframes loaderFill{to{transform:translateX(100%);}}
-  .loader-sub{
-    font-family:var(--mono);font-size:11px;color:var(--gray);
-    letter-spacing:0.3em;text-transform:uppercase;margin-top:20px;
-    opacity:0;animation:loaderSub .8s .4s ease forwards;
+  .loader-rotator span{
+    display:block;height:32px;line-height:32px;
+    animation:loaderRotateWords 4.2s steps(3) infinite;
   }
-  @keyframes loaderSub{to{opacity:1;}}
+  @keyframes loaderRotateWords{
+    0%, 33% { transform:translateY(0); }
+    34%, 66% { transform:translateY(-32px); }
+    67%, 100% { transform:translateY(-64px); }
+  }
+  .loader-bar-wrap{
+    width:240px;height:2px;background:rgba(212,168,75,0.15);
+    margin:48px auto 16px;position:relative;overflow:hidden;border-radius:2px;
+    opacity:0;animation:loaderFadeUp .6s 1.0s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-bar{
+    position:absolute;left:0;top:0;height:100%;
+    background:linear-gradient(90deg, var(--gold), var(--gold-warm), var(--gold));
+    width:0%;box-shadow:0 0 12px rgba(212,168,75,0.6);
+  }
+  .loader-counter{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:18px;color:var(--bone);
+    font-variant-numeric:tabular-nums;letter-spacing:0;
+    opacity:0;animation:loaderFadeUp .6s 1.0s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .loader-counter .pct{color:var(--gold);}
+  @keyframes loaderFadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 
   /* Cursor spotlight (desktop only) */
   .spot{
@@ -1472,7 +1660,7 @@
     /* Sticky CTA close más visible y tocable */
     .sticky-cta-close{width:32px;height:32px;top:-12px;right:-8px;}
     /* Marquee más lento para legibilidad */
-    .marquee-track{animation-duration:60s;}
+    .marquee-track{animation-duration:25s;}
     /* Magnetic CTA en mobile = sin magnetism (ya está pero reforzamos) */
     .magnetic{transform:none !important;}
     /* Atmosphere mosaic más editorial: 2 cols en lugar de 6 */
@@ -2022,20 +2210,40 @@
   .hero-photo:hover img{transform:scale(1.055);}
   .motion-observe{
     opacity:0;
-    transform:translate3d(0, 28px, 0) scale(.985);
-    filter:blur(10px);
+    transform:translate3d(0, 70px, 0) scale(.94);
+    filter:blur(16px);
     transition:
-      opacity .85s var(--ease-cinema) var(--motion-delay, 0ms),
-      transform .85s var(--ease-cinema) var(--motion-delay, 0ms),
-      filter .85s var(--ease-cinema) var(--motion-delay, 0ms),
+      opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+      filter 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
       border-color .35s ease,
       box-shadow .35s ease;
     will-change:opacity,transform,filter;
   }
   .motion-observe.motion-in{
     opacity:1;
-    transform:none;
+    transform:translate3d(0, 0, 0) scale(1);
     filter:blur(0);
+  }
+
+  /* ========== HERO ENTRY v7 (escalonado cinemático con delays explícitos) ========== */
+  .hero-enter{
+    opacity:0;
+    transform:translate3d(0, 36px, 0);
+    filter:blur(8px);
+    animation:heroEnter 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--enter-delay, 0s) forwards;
+    will-change:opacity, transform, filter;
+  }
+  .hero-enter-photo{
+    transform:translate3d(0, 60px, 0) scale(.92);
+    filter:blur(14px);
+    animation:heroEnterPhoto 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--enter-delay, 0s) forwards;
+  }
+  @keyframes heroEnter{
+    to{opacity:1;transform:translate3d(0, 0, 0);filter:blur(0);}
+  }
+  @keyframes heroEnterPhoto{
+    to{opacity:1;transform:translate3d(0, 0, 0) scale(1);filter:blur(0);}
   }
 
   /* ========== BLURTEXT WORD-BY-WORD REVEAL (v6) ========== */
@@ -2043,12 +2251,13 @@
   .blur-text .bt-word{
     display:inline-block;
     opacity:0;
-    transform:translate3d(0, 50px, 0);
-    filter:blur(10px);
+    transform:translate3d(0, 80px, 0) rotateX(40deg);
+    filter:blur(20px);
+    transform-origin:50% 100%;
     transition:
-      opacity .7s cubic-bezier(0.16, 1, 0.3, 1) var(--bt-delay, 0ms),
-      transform .7s cubic-bezier(0.16, 1, 0.3, 1) var(--bt-delay, 0ms),
-      filter .7s cubic-bezier(0.16, 1, 0.3, 1) var(--bt-delay, 0ms);
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1) var(--bt-delay, 0ms),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1) var(--bt-delay, 0ms),
+      filter 1s cubic-bezier(0.16, 1, 0.3, 1) var(--bt-delay, 0ms);
     will-change:opacity, transform, filter;
   }
   .blur-text.bt-in .bt-word{
@@ -2205,7 +2414,7 @@
   }
   @media (max-width: 960px){
     .grain{opacity:0.03;}
-    .marquee-track{animation-duration:55s;}
+    .marquee-track{animation-duration:30s;}
     .hero-cinema-content{transform:none!important;}
     .hero-cinema h1 .ital{display:inline;}
   }
@@ -2258,12 +2467,14 @@
   <span class="lbl" id="sectionBadgeLbl">Estudio Jurídico</span>
 </div>
 
-<!-- Cinematic loader -->
+<!-- Cinematic loader v7 -->
 <div class="loader" id="loader">
   <div class="loader-inner">
+    <div class="loader-eyebrow">Estudio Jurídico · Guayaquil · 20+ años</div>
     <div class="loader-mark">Valero <span class="amp">&amp;</span> Asociados</div>
-    <div class="loader-line"></div>
-    <div class="loader-sub">Estudio Jurídico · Guayaquil</div>
+    <div class="loader-rotator" aria-hidden="true"><span>Defender.<br>Proteger.<br>Decidir.</span></div>
+    <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+    <div class="loader-counter"><span id="loaderCount">000</span><span class="pct">%</span></div>
   </div>
 </div>
 
@@ -2305,17 +2516,17 @@
 
 </nav>
 
-<!-- HERO CLASICO (v5 - editorial) -->
+<!-- HERO v7 cinematic entry (escalonado con delays explicitos) -->
 <section class="hero" id="heroCinema">
   <div class="hero-text">
-    <div class="hero-eyebrow">Estudio Jurídico · Guayaquil · 20+ años</div>
-    <h1 id="heroH1" class="blur-text" data-blur-text>Protegemos lo que <span class="ital">más le importa.</span></h1>
-    <p class="hero-sub">Su familia. Su empresa. Su patrimonio. Decisiones importantes, defendidas en Guayaquil desde hace más de dos décadas.</p>
-    <blockquote class="hero-quote">
+    <div class="hero-eyebrow hero-enter" style="--enter-delay:1.8s">Estudio Jurídico · Guayaquil · 20+ años</div>
+    <h1 id="heroH1" class="blur-text hero-enter" data-blur-text data-bt-delay-base="2100" style="--enter-delay:2.0s">Protegemos lo que <span class="ital">más le importa.</span></h1>
+    <p class="hero-sub hero-enter" style="--enter-delay:2.7s">Su familia. Su empresa. Su patrimonio. Decisiones importantes, defendidas en Guayaquil desde hace más de dos décadas.</p>
+    <blockquote class="hero-quote hero-enter" style="--enter-delay:3.0s">
       <span class="quote-mark" aria-hidden="true">"</span><span class="anim-text" data-anim-text>La ley es solo el medio. Lo que protegemos es lo que usted construyó.</span><span class="quote-mark" aria-hidden="true">"</span>
       <cite>— Ab. Ney Antonio Valero Brando, Socio fundador</cite>
     </blockquote>
-    <div class="hero-cta-row">
+    <div class="hero-cta-row hero-enter" style="--enter-delay:3.3s">
       <span class="magnetic">
         <a href="https://wa.me/593959080607?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20agendar%20una%20consulta%20gratuita." class="cta-cinema">
           Reservar consulta gratuita
@@ -2324,7 +2535,7 @@
       </span>
       <span class="hero-cta-meta">30 minutos · Sin costo</span>
     </div>
-    <div class="hero-trust">
+    <div class="hero-trust hero-enter" style="--enter-delay:3.6s">
       <div class="trust-item"><strong>850+</strong><span>Casos resueltos</span></div>
       <div class="trust-sep" aria-hidden="true"></div>
       <div class="trust-item"><strong>20+</strong><span>Años de trayectoria</span></div>
@@ -2332,8 +2543,8 @@
       <div class="trust-item"><strong>&lt; 2h</strong><span>Respuesta hábil</span></div>
     </div>
   </div>
-  <div class="hero-photo" data-hyperframe>
-    <img src="img/ney.webp" srcset="img/ney-sm.webp 400w, img/ney-md.webp 700w, img/ney.webp 1200w" sizes="(max-width: 720px) 90vw, (max-width: 1280px) 42vw, 520px" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
+  <div class="hero-photo hero-enter hero-enter-photo" style="--enter-delay:2.3s" data-hyperframe>
+    <img src="img/ney.webp" srcset="img/ney-sm.webp 500w, img/ney-md.webp 900w, img/ney.webp 1600w" sizes="(max-width: 720px) 90vw, (max-width: 1280px) 42vw, 520px" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
     <svg class="hyperframe" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%"></rect></svg>
     <div class="hero-photo-credit"><span>Ab. Ney Valero</span><small>Socio fundador</small></div>
   </div>
@@ -2560,42 +2771,99 @@
     <p>Cada vertical tiene un abogado responsable. Cuando escribe por WhatsApp, le conectamos con quien va a llevar su caso, no con un asistente. El Ab. Ney Valero recibe personalmente cada caso antes de asignarlo.</p>
   </div>
   <div class="team stagger">
-    <div class="member">
+    <button class="member" type="button"
+      data-name="Ab. Ney A. Valero"
+      data-role="Socio fundador · Civil & Inmobiliario"
+      data-bio="Más de 20 años ejerciendo derecho civil, corporativo e inmobiliario en Guayaquil. Especialista en sucesiones, compraventa de propiedades y contratos comerciales complejos. Recibe personalmente cada caso antes de asignarlo al equipo."
+      data-specs="Sucesiones,Compraventa,Contratos,Asesoría empresarial,Mediación"
+      data-photos="ney,editorial-01,scene-02"
+      data-area-msg="Hola, vi su web. Quisiera reservar una consulta con el Ab. Ney Valero sobre un tema civil o inmobiliario."
+      aria-label="Ver perfil del Ab. Ney Valero">
       <div class="member-photo">
         <span class="pin">Fundador</span>
-        <img src="img/ney.webp" srcset="img/ney-sm.webp 400w, img/ney-md.webp 700w, img/ney.webp 1200w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
+        <img src="img/ney.webp" srcset="img/ney-sm.webp 500w, img/ney-md.webp 900w, img/ney.webp 1600w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1600" height="2400" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
         <div class="overlay-label">Recibe cada caso · personalmente</div>
+        <span class="ver-mas">Ver perfil →</span>
       </div>
       <div class="member-name">Ab. Ney A. Valero</div>
       <div class="member-role">Socio fundador</div>
       <div class="member-tags"><span class="member-tag">Civil</span><span class="member-tag">Inmobiliario</span></div>
-    </div>
-    <div class="member">
+    </button>
+    <button class="member" type="button"
+      data-name="Ab. Adrián Bastidas"
+      data-role="Socio · Derecho Corporativo"
+      data-bio="Especialista en derecho corporativo, contratos comerciales y compliance. Acompaña la constitución y operación de compañías en Ecuador, desde S.A.S. hasta sociedades con inversión internacional."
+      data-specs="Constitución,Contratos comerciales,Compliance,Junta de accionistas,Laboral empresarial"
+      data-photos="adrian,scene-03,scene-08"
+      data-area-msg="Hola, soy de una empresa y quisiera reservar una consulta con el Ab. Adrián Bastidas sobre asesoría corporativa."
+      aria-label="Ver perfil del Ab. Adrián Bastidas">
       <div class="member-photo">
-        <img src="img/adrian.webp" srcset="img/adrian-sm.webp 450w, img/adrian-md.webp 900w, img/adrian.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
+        <img src="img/adrian.webp" srcset="img/adrian-sm.webp 550w, img/adrian-md.webp 1100w, img/adrian.webp 1800w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
         <div class="overlay-label">Contratos · Compliance</div>
+        <span class="ver-mas">Ver perfil →</span>
       </div>
       <div class="member-name">Ab. Adrián Bastidas</div>
       <div class="member-role">Socio · Corporativo</div>
       <div class="member-tags"><span class="member-tag">Empresas</span><span class="member-tag">Contratos</span></div>
-    </div>
-    <div class="member">
+    </button>
+    <button class="member" type="button"
+      data-name="Abg. Patricia Valero"
+      data-role="Asociada senior · Familia & Laboral"
+      data-bio="Lleva casos de familia y laboral con un enfoque humano y estratégico. Divorcios, herencias, custodia, uniones de hecho y despidos intempestivos. Cuida vínculos cuando se puede; defiende firmemente cuando hace falta."
+      data-specs="Divorcios,Herencias,Custodia,Uniones de hecho,Liquidaciones laborales"
+      data-photos="patricia,scene-05,scene-06"
+      data-area-msg="Hola, quisiera reservar una consulta con la Abg. Patricia Valero sobre un tema de familia o laboral."
+      aria-label="Ver perfil de la Abg. Patricia Valero">
       <div class="member-photo">
-        <img src="img/patricia.webp" srcset="img/patricia-sm.webp 450w, img/patricia-md.webp 900w, img/patricia.webp 1500w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1500" height="1000" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
+        <img src="img/patricia.webp" srcset="img/patricia-sm.webp 550w, img/patricia-md.webp 1100w, img/patricia.webp 1800w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1200" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
         <div class="overlay-label">Divorcios · Herencias · Laboral</div>
+        <span class="ver-mas">Ver perfil →</span>
       </div>
       <div class="member-name">Abg. Patricia Valero</div>
       <div class="member-role">Asociada senior</div>
       <div class="member-tags"><span class="member-tag">Familia</span><span class="member-tag">Laboral</span></div>
-    </div>
-    <div class="member">
+    </button>
+    <button class="member" type="button"
+      data-name="Ab. Daniel Carrera"
+      data-role="Asociado · Tránsito & Corporativo"
+      data-bio="Maneja casos de tránsito (accidentes, multas, alcoholemia) y casos corporativos del estudio. Honorarios justos y resolución rápida cuando el escenario lo permite."
+      data-specs="Accidentes de tránsito,Multas,Alcoholemia,Casos corporativos"
+      data-photos="daniel,scene-04,scene-07"
+      data-area-msg="Hola, quisiera reservar una consulta con el Ab. Daniel Carrera sobre un tema de tránsito."
+      aria-label="Ver perfil del Ab. Daniel Carrera">
       <div class="member-photo">
-        <img src="img/daniel.webp" srcset="img/daniel-sm.webp 450w, img/daniel-md.webp 900w, img/daniel.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
+        <img src="img/daniel.webp" srcset="img/daniel-sm.webp 550w, img/daniel-md.webp 1100w, img/daniel.webp 1800w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
         <div class="overlay-label">Tránsito · Casos corporativos</div>
+        <span class="ver-mas">Ver perfil →</span>
       </div>
       <div class="member-name">Ab. Daniel Carrera</div>
       <div class="member-role">Asociado</div>
       <div class="member-tags"><span class="member-tag">Tránsito</span><span class="member-tag">Corporativo</span></div>
+    </button>
+  </div>
+
+  <!-- Team Modal v7 -->
+  <div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle" aria-hidden="true">
+    <div class="team-modal-dialog">
+      <button class="team-modal-close" type="button" id="teamModalClose" aria-label="Cerrar perfil">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="team-modal-carousel" id="teamModalCarousel">
+        <!-- imgs injected by JS -->
+        <div class="team-modal-carousel-dots" id="teamModalDots"></div>
+      </div>
+      <div class="team-modal-body">
+        <div class="modal-eyebrow" id="teamModalEyebrow">Equipo · Valero & Asociados</div>
+        <h3 id="teamModalTitle">—</h3>
+        <div class="modal-role" id="teamModalRole">—</div>
+        <p class="modal-bio" id="teamModalBio">—</p>
+        <div class="modal-specs" id="teamModalSpecs"></div>
+        <a class="modal-cta" id="teamModalCta" href="#" target="_blank" rel="noopener">
+          Reservar consulta por WhatsApp
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <div class="team-modal-meta">30 minutos · Sin costo · Respuesta &lt; 2h hábiles</div>
+      </div>
     </div>
   </div>
 </section>
@@ -2778,13 +3046,43 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const ld = document.getElementById('loader');
-      if (ld) ld.classList.add('gone');
-      if (finePointer && !reduceMotion) document.body.classList.add('cursor-ready');
-    }, reduceMotion ? 100 : 300);
-  });
+  // Loader cinematico v7: counter 000->100 con duracion 1800ms, despues fade out
+  const loaderBar = document.getElementById('loaderBar');
+  const loaderCount = document.getElementById('loaderCount');
+  const loaderEl = document.getElementById('loader');
+  const LOADER_DURATION = reduceMotion ? 200 : 1800;
+  function runLoader(){
+    if (reduceMotion){
+      if (loaderCount) loaderCount.textContent = '100';
+      if (loaderBar) loaderBar.style.width = '100%';
+      setTimeout(() => { if (loaderEl) loaderEl.classList.add('gone'); }, 100);
+      return;
+    }
+    const start = performance.now();
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    function tick(now){
+      const t = Math.min(1, (now - start) / LOADER_DURATION);
+      const eased = easeOut(t);
+      const v = Math.floor(eased * 100);
+      if (loaderCount) loaderCount.textContent = String(v).padStart(3, '0');
+      if (loaderBar) loaderBar.style.width = (eased * 100) + '%';
+      if (t < 1) requestAnimationFrame(tick);
+      else {
+        setTimeout(() => {
+          if (loaderEl) loaderEl.classList.add('gone');
+          if (finePointer) document.body.classList.add('cursor-ready');
+        }, 250);
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('load', runLoader);
+  // Safety: en caso de load lento, dispara igual a los 4s
+  setTimeout(() => {
+    if (loaderEl && !loaderEl.classList.contains('gone')){
+      runLoader();
+    }
+  }, 4000);
 
   const progress = document.getElementById('progress');
   const heroCinema = document.getElementById('heroCinema');
@@ -3260,10 +3558,10 @@
     io.observe(sh);
   });
 
-  // ===== BlurText word-by-word reveal (v6) =====
-  // Split text de elementos [data-blur-text] en spans .bt-word, observar con IO
+  // ===== BlurText word-by-word reveal (v7 con base delay configurable) =====
   document.querySelectorAll('[data-blur-text]').forEach(el => {
     if (el.dataset.blurTextDone === '1') return;
+    const baseDelay = parseInt(el.dataset.btDelayBase) || 0;
     const splitNode = (node, parent, wordIndex) => {
       if (node.nodeType === Node.TEXT_NODE){
         const words = node.textContent.split(/(\s+)/);
@@ -3275,7 +3573,7 @@
             const span = document.createElement('span');
             span.className = 'bt-word';
             span.textContent = w;
-            span.style.setProperty('--bt-delay', (wordIndex.i * 70) + 'ms');
+            span.style.setProperty('--bt-delay', (baseDelay + wordIndex.i * 90) + 'ms');
             wordIndex.i++;
             parent.appendChild(span);
           }
@@ -3283,9 +3581,8 @@
       } else if (node.nodeType === Node.ELEMENT_NODE){
         const clone = node.cloneNode(false);
         clone.classList.add('bt-word');
-        clone.style.setProperty('--bt-delay', (wordIndex.i * 70) + 'ms');
+        clone.style.setProperty('--bt-delay', (baseDelay + wordIndex.i * 90) + 'ms');
         wordIndex.i++;
-        // Move all children into clone (recursively split)
         Array.from(node.childNodes).forEach(c => {
           if (c.nodeType === Node.TEXT_NODE){
             clone.appendChild(document.createTextNode(c.textContent));
@@ -3374,6 +3671,123 @@
       card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
   }
+
+  // ===== TEAM MODAL v7 con carrusel auto 2.4s =====
+  const teamModal = document.getElementById('teamModal');
+  const teamModalCarousel = document.getElementById('teamModalCarousel');
+  const teamModalDots = document.getElementById('teamModalDots');
+  const teamModalTitle = document.getElementById('teamModalTitle');
+  const teamModalRole = document.getElementById('teamModalRole');
+  const teamModalBio = document.getElementById('teamModalBio');
+  const teamModalSpecs = document.getElementById('teamModalSpecs');
+  const teamModalCta = document.getElementById('teamModalCta');
+  const teamModalClose = document.getElementById('teamModalClose');
+  const teamMemberBtns = document.querySelectorAll('.team .member');
+  let teamModalInterval = null;
+  let teamModalCurrentIdx = 0;
+  let teamModalLastTrigger = null;
+  function openTeamModal(btn){
+    if (!teamModal) return;
+    teamModalLastTrigger = btn;
+    const name = btn.dataset.name || '';
+    const role = btn.dataset.role || '';
+    const bio = btn.dataset.bio || '';
+    const specs = (btn.dataset.specs || '').split(',').map(s => s.trim()).filter(Boolean);
+    const photos = (btn.dataset.photos || '').split(',').map(s => s.trim()).filter(Boolean);
+    const areaMsg = btn.dataset.areaMsg || 'Hola, quisiera reservar una consulta.';
+    teamModalTitle.textContent = name;
+    teamModalRole.textContent = role;
+    teamModalBio.textContent = bio;
+    teamModalSpecs.innerHTML = '';
+    specs.forEach(s => {
+      const chip = document.createElement('span');
+      chip.className = 'modal-spec-chip';
+      chip.textContent = s;
+      teamModalSpecs.appendChild(chip);
+    });
+    teamModalCta.href = 'https://wa.me/593959080607?text=' + encodeURIComponent(areaMsg);
+    // build carousel imgs
+    const existingImgs = teamModalCarousel.querySelectorAll('img');
+    existingImgs.forEach(i => i.remove());
+    photos.forEach((slug, i) => {
+      const img = document.createElement('img');
+      img.src = `img/${slug}.webp`;
+      img.srcset = `img/${slug}-sm.webp 550w, img/${slug}-md.webp 1100w, img/${slug}.webp 1800w`;
+      img.sizes = '(max-width: 960px) 100vw, 540px';
+      img.alt = `${name} - foto ${i + 1}`;
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      if (i === 0) img.classList.add('active');
+      teamModalCarousel.insertBefore(img, teamModalDots);
+    });
+    // build dots
+    teamModalDots.innerHTML = '';
+    photos.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'team-modal-carousel-dot' + (i === 0 ? ' active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ver foto ${i + 1}`);
+      dot.addEventListener('click', () => goToTeamPhoto(i));
+      teamModalDots.appendChild(dot);
+    });
+    teamModalCurrentIdx = 0;
+    teamModal.classList.add('open');
+    teamModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Start auto rotate
+    if (teamModalInterval) clearInterval(teamModalInterval);
+    if (!reduceMotion && photos.length > 1){
+      teamModalInterval = setInterval(() => {
+        goToTeamPhoto((teamModalCurrentIdx + 1) % photos.length);
+      }, 2400);
+    }
+    // Focus close button for accessibility
+    setTimeout(() => teamModalClose?.focus(), 100);
+  }
+  function goToTeamPhoto(idx){
+    const imgs = teamModalCarousel.querySelectorAll('img');
+    const dots = teamModalDots.querySelectorAll('.team-modal-carousel-dot');
+    teamModalCurrentIdx = idx;
+    imgs.forEach((im, i) => im.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => {
+      d.classList.remove('active');
+      // force animation restart on active dot
+      if (i === idx){
+        void d.offsetWidth;
+        d.classList.add('active');
+      }
+    });
+  }
+  function closeTeamModal(){
+    if (!teamModal) return;
+    teamModal.classList.remove('open');
+    teamModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (teamModalInterval){ clearInterval(teamModalInterval); teamModalInterval = null; }
+    if (teamModalLastTrigger) setTimeout(() => teamModalLastTrigger.focus(), 100);
+  }
+  teamMemberBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openTeamModal(btn);
+    });
+  });
+  if (teamModalClose) teamModalClose.addEventListener('click', closeTeamModal);
+  if (teamModal) teamModal.addEventListener('click', (e) => {
+    if (e.target === teamModal) closeTeamModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!teamModal?.classList.contains('open')) return;
+    if (e.key === 'Escape') closeTeamModal();
+    if (e.key === 'ArrowRight'){
+      const imgs = teamModalCarousel.querySelectorAll('img');
+      goToTeamPhoto((teamModalCurrentIdx + 1) % imgs.length);
+    }
+    if (e.key === 'ArrowLeft'){
+      const imgs = teamModalCarousel.querySelectorAll('img');
+      goToTeamPhoto((teamModalCurrentIdx - 1 + imgs.length) % imgs.length);
+    }
+  });
 
   // ===== Sticky CTA bar =====
   const stickyCta = document.getElementById('stickyCta');
