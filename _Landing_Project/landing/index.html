@@ -19,6 +19,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="image" href="img/ney.webp?v=20260512-hq" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
 {
@@ -31,7 +32,7 @@
   "url": "https://valeroyasociados.ec",
   "telephone": "+593959080607",
   "priceRange": "$$",
-  "image": "https://valeroyasociados.ec/img/hero-main.webp",
+  "image": "https://valeroyasociados.ec/img/hero-main.webp?v=20260512-hq",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Guayaquil",
@@ -705,10 +706,10 @@
   .member:hover .member-photo::before{opacity:0.08;}
   .member-photo img{
     width:100%;height:100%;object-fit:cover;
-    filter:grayscale(100%) contrast(1.05);
+    filter:contrast(1.04) brightness(0.98) saturate(1.02);
     transition:filter .5s, transform .5s;
   }
-  .member:hover .member-photo img{filter:grayscale(0%) contrast(1.05);transform:scale(1.02);}
+  .member:hover .member-photo img{filter:contrast(1.06) brightness(1) saturate(1.06);transform:scale(1.02);}
   .member-photo::after{
     content:"";position:absolute;inset:0;
     box-shadow:inset 0 -80px 80px -40px rgba(10,22,40,0.85);
@@ -1296,7 +1297,7 @@
   }
   .closing-bg{
     position:absolute;inset:0;z-index:0;opacity:0.18;
-    background-image:url('img/scene-02.webp');
+    background-image:url('img/scene-02.webp?v=20260512-hq');
     background-size:cover;background-position:center;
     filter:contrast(1.1) saturate(0.8);
   }
@@ -2338,6 +2339,10 @@
   .faq-list:not(.motion-in) .faq-item,
   .kpis:not(.motion-in) .kpi{
     opacity:0;
+    animation:motionSafetyShow 0s 2.8s forwards;
+  }
+  @keyframes motionSafetyShow{
+    to{opacity:1;transform:none;filter:none;}
   }
 
   /* Alternar slide direccional en grid de areas (3 cards: left, up, right) */
@@ -2437,12 +2442,11 @@
   .hero-photo{position:relative;isolation:isolate;}
   .hero-photo::after{
     content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-    background-image:radial-gradient(circle, rgba(0,0,0,0.6) 0.7px, transparent 1.4px);
-    background-size:3.5px 3.5px;
-    mix-blend-mode:multiply;opacity:0.16;
+    background:linear-gradient(180deg, rgba(10,22,40,0) 58%, rgba(10,22,40,0.42) 100%);
+    mix-blend-mode:multiply;opacity:0.18;
     transition:opacity .6s ease;
   }
-  .hero-photo:hover::after{opacity:0.06;}
+  .hero-photo:hover::after{opacity:0.10;}
 
   /* ========== STEP-CARD MAGNETIC + TILT (v6 extends magnetic to all cards) ========== */
   .step-card{
@@ -2676,14 +2680,14 @@
 <!-- HERO v7 cinematic entry (escalonado con delays explicitos) -->
 <section class="hero" id="heroCinema">
   <div class="hero-text">
-    <div class="hero-eyebrow hero-enter" style="--enter-delay:1.8s">Estudio Jurídico · Guayaquil · 20+ años</div>
-    <h1 id="heroH1" class="blur-text hero-enter" data-blur-text data-bt-delay-base="2100" style="--enter-delay:2.0s">Protegemos lo que <span class="ital">más le importa.</span></h1>
-    <p class="hero-sub hero-enter" style="--enter-delay:2.7s">Su familia. Su empresa. Su patrimonio. Decisiones importantes, defendidas en Guayaquil desde hace más de dos décadas.</p>
-    <blockquote class="hero-quote hero-enter" style="--enter-delay:3.0s">
+    <div class="hero-eyebrow hero-enter" style="--enter-delay:.18s">Estudio Jurídico · Guayaquil · 20+ años</div>
+    <h1 id="heroH1" class="blur-text hero-enter" data-blur-text data-bt-delay-base="260" style="--enter-delay:.28s">Protegemos lo que <span class="ital">más le importa.</span></h1>
+    <p class="hero-sub hero-enter" style="--enter-delay:.58s">Su familia. Su empresa. Su patrimonio. Decisiones importantes, defendidas en Guayaquil desde hace más de dos décadas.</p>
+    <blockquote class="hero-quote hero-enter" style="--enter-delay:.78s">
       <span class="quote-mark" aria-hidden="true">"</span><span class="anim-text" data-anim-text>La ley es solo el medio. Lo que protegemos es lo que usted construyó.</span><span class="quote-mark" aria-hidden="true">"</span>
       <cite>— Ab. Ney Antonio Valero Brando, Socio fundador</cite>
     </blockquote>
-    <div class="hero-cta-row hero-enter" style="--enter-delay:3.3s">
+    <div class="hero-cta-row hero-enter" style="--enter-delay:.96s">
       <span class="magnetic">
         <a href="https://wa.me/593959080607?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20agendar%20una%20consulta%20gratuita." class="cta-cinema">
           Reservar consulta gratuita
@@ -2692,7 +2696,7 @@
       </span>
       <span class="hero-cta-meta">30 minutos · Sin costo</span>
     </div>
-    <div class="hero-trust hero-enter" style="--enter-delay:3.6s">
+    <div class="hero-trust hero-enter" style="--enter-delay:1.08s">
       <div class="trust-item"><strong>850+</strong><span>Casos resueltos</span></div>
       <div class="trust-sep" aria-hidden="true"></div>
       <div class="trust-item"><strong>20+</strong><span>Años de trayectoria</span></div>
@@ -2700,8 +2704,8 @@
       <div class="trust-item"><strong>&lt; 2h</strong><span>Respuesta hábil</span></div>
     </div>
   </div>
-  <div class="hero-photo hero-enter hero-enter-photo" style="--enter-delay:2.3s" data-hyperframe>
-    <img src="img/ney.webp" srcset="img/ney-sm.webp 550w, img/ney-md.webp 1100w, img/ney.webp 1290w" sizes="(max-width: 720px) 90vw, (max-width: 1280px) 42vw, 520px" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
+  <div class="hero-photo hero-enter hero-enter-photo" style="--enter-delay:.46s" data-hyperframe>
+    <img src="img/ney.webp?v=20260512-hq" width="1290" height="1935" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
     <svg class="hyperframe" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%"></rect></svg>
     <div class="hero-photo-credit"><span>Ab. Ney Valero</span><small>Socio fundador</small></div>
   </div>
@@ -2938,7 +2942,7 @@
       aria-label="Ver perfil del Ab. Ney Valero">
       <div class="member-photo">
         <span class="pin">Fundador</span>
-        <img src="img/ney.webp" srcset="img/ney-sm.webp 550w, img/ney-md.webp 1100w, img/ney.webp 1290w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1600" height="2400" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
+        <img src="img/ney.webp?v=20260512-hq" width="1290" height="1935" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
         <div class="overlay-label">Recibe cada caso · personalmente</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2955,7 +2959,7 @@
       data-area-msg="Hola, soy de una empresa y quisiera reservar una consulta con el Ab. Adrián Bastidas sobre asesoría corporativa."
       aria-label="Ver perfil del Ab. Adrián Bastidas">
       <div class="member-photo">
-        <img src="img/adrian.webp" srcset="img/adrian-sm.webp 600w, img/adrian-md.webp 1200w, img/adrian.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
+        <img src="img/adrian.webp?v=20260512-hq" width="1448" height="1086" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
         <div class="overlay-label">Contratos · Compliance</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2972,7 +2976,7 @@
       data-area-msg="Hola, quisiera reservar una consulta con la Abg. Patricia Valero sobre un tema de familia o laboral."
       aria-label="Ver perfil de la Abg. Patricia Valero">
       <div class="member-photo">
-        <img src="img/patricia.webp" srcset="img/patricia-sm.webp 600w, img/patricia-md.webp 1200w, img/patricia.webp 1500w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1200" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
+        <img src="img/patricia.webp?v=20260512-hq" width="1500" height="1000" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
         <div class="overlay-label">Divorcios · Herencias · Laboral</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2989,7 +2993,7 @@
       data-area-msg="Hola, quisiera reservar una consulta con el Ab. Daniel Carrera sobre un tema de tránsito."
       aria-label="Ver perfil del Ab. Daniel Carrera">
       <div class="member-photo">
-        <img src="img/daniel.webp" srcset="img/daniel-sm.webp 600w, img/daniel-md.webp 1200w, img/daniel.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
+        <img src="img/daniel.webp?v=20260512-hq" width="1448" height="1086" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
         <div class="overlay-label">Tránsito · Casos corporativos</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -3209,7 +3213,7 @@
   const loaderBar = document.getElementById('loaderBar');
   const loaderCount = document.getElementById('loaderCount');
   const loaderEl = document.getElementById('loader');
-  const LOADER_DURATION = reduceMotion ? 200 : 2200;
+  const LOADER_DURATION = reduceMotion ? 80 : 720;
   let loaderStarted = false;
   function runLoader(){
     if (loaderStarted) return;
@@ -3233,7 +3237,7 @@
         setTimeout(() => {
           if (loaderEl) loaderEl.classList.add('gone');
           if (finePointer) document.body.classList.add('cursor-ready');
-        }, 350);
+        }, 120);
       }
     }
     requestAnimationFrame(tick);
@@ -3439,7 +3443,7 @@
       requestAnimationFrame(() => {
         heroPhotoEl.classList.add('motion-in');
       });
-    }, 2400);
+    }, 720);
   }
 
   const counters = document.querySelectorAll('.kpi-num[data-target]');
@@ -3886,8 +3890,8 @@
     const existingImgs = teamModalCarousel.querySelectorAll('img');
     existingImgs.forEach(i => i.remove());
     const img = document.createElement('img');
-    img.src = `img/${photoSlug}.webp`;
-    img.srcset = `img/${photoSlug}-md.webp 1200w, img/${photoSlug}.webp 1900w`;
+    img.src = `img/${photoSlug}.webp?v=20260512-hq`;
+    img.removeAttribute('srcset');
     img.sizes = '(max-width: 960px) 100vw, 600px';
     img.alt = `${name} — retrato editorial`;
     img.loading = 'eager';

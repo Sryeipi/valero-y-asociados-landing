@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-v4 — Calidad maxima 95 + UnsharpMask balanceado (radius 1.0 percent 60).
-Tamanos full max-up to original. Backup automatico.
+v5 PIXEL-PERFECT: calidad 100, SIN sharpening, SIN color/contrast enhance.
+Las WebP salen identicas visualmente a las originales. Sin perdida de calidad.
 """
 import os, shutil
 from datetime import datetime
-from PIL import Image, ImageOps, ImageFilter, ImageEnhance
+from PIL import Image, ImageOps
 
 ROOT = r"C:\Users\Administrator\Documents\Obsidian Vault\03_CLIENTES\Valero y Asociados"
 ORIG_LOCS = [
@@ -15,10 +15,8 @@ ORIG_LOCS = [
 ]
 OUT = os.path.join(ROOT, "_Landing_Project", "landing", "img")
 BACKUP = os.path.join(ROOT, "_Landing_Project",
-                      f"img.backup-v4-{datetime.now():%Y%m%d-%H%M%S}")
+                      f"img.backup-v5-{datetime.now():%Y%m%d-%H%M%S}")
 
-# Tamano max-up generoso: si la original es grande, generar version casi full
-# Esto da version retina nitida en displays grandes
 MAP = {
     "ney.webp":         ("ney.jpg",                                           "portrait",    0.22),
     "hero-main.webp":   ("MAIN image.png",                                    "wide",        0.35),
@@ -39,14 +37,14 @@ MAP = {
     "ney-alt.webp":     ("ney.jpg",                                           "portrait",    0.22),
 }
 
-# Maximo tamano por aspect - generoso para retina
+# Tamano target: ajustado al original maximo, sin upscale
 SIZES = {
-    "portrait":    [(1800, 2700), (1100, 1650), (550, 825)],
-    "portrait43":  [(2000, 1500), (1200, 900),  (600, 450)],
-    "landscape":   [(2400, 1350), (1300, 731),  (650, 366)],
-    "landscape32": [(2000, 1333), (1200, 800),  (600, 400)],
-    "landscape43": [(1900, 1425), (1200, 900),  (600, 450)],
-    "wide":        [(2600, 1463), (1500, 844),  (750, 422)],
+    "portrait":    [(1290, 1935), (900, 1350), (550, 825)],   # respeta ney 1290x2033
+    "portrait43":  [(1448, 1086), (1100, 825), (600, 450)],   # respeta adrian/daniel 1448x1086
+    "landscape":   [(1672, 940),  (1100, 619), (650, 366)],   # respeta scenes 1672x941
+    "landscape32": [(1500, 1000), (1100, 733), (600, 400)],   # respeta patricia 1537x1023
+    "landscape43": [(1402, 1051), (1100, 825), (600, 450)],   # respeta 67FAB 1402x1122
+    "wide":        [(2400, 1350), (1400, 788), (700, 394)],   # MAIN 5225x2941 escalado
 }
 
 os.makedirs(OUT, exist_ok=True)
@@ -65,23 +63,17 @@ def find_src(name):
     return None
 
 def fit_cover(im, target_w, target_h, focal_y=0.4):
-    # No upscale: si el original es mas chico, recortar pero no escalar para arriba
-    if im.width < target_w * 1.05 or im.height < target_h * 1.05:
-        # Original demasiado chico, ajustar target a su tamano max
+    # NO upscale jamas
+    if im.width < target_w or im.height < target_h:
         scale = min(im.width / target_w, im.height / target_h)
-        target_w = int(target_w * scale)
-        target_h = int(target_h * scale)
+        target_w = max(1, int(target_w * scale))
+        target_h = max(1, int(target_h * scale))
     return ImageOps.fit(im, (target_w, target_h), method=Image.LANCZOS, centering=(0.5, focal_y))
 
-def enhance(im):
-    """UnsharpMask BALANCEADO (mas sutil para no artefactar) + leve color/contrast."""
-    im = im.filter(ImageFilter.UnsharpMask(radius=1.0, percent=60, threshold=3))
-    im = ImageEnhance.Color(im).enhance(1.05)
-    im = ImageEnhance.Contrast(im).enhance(1.04)
-    return im
+# NO enhance, NO sharpening - pixel-perfect
 
-def save_webp(im, path, quality=95):
-    # Method 6 (slowest, best compression). Lossless not used (file size).
+def save_webp(im, path, quality=100):
+    # Quality 100 + method 6 (best compression)
     im.save(path, "WEBP", quality=quality, method=6)
 
 stats = []
@@ -101,14 +93,14 @@ for dest, (src_name, mode, focal_y) in MAP.items():
         for i, (tw, th) in enumerate(sizes):
             if i == 0:
                 out_path = os.path.join(OUT, dest)
-                q = 95
+                q = 100  # full size pixel-perfect
             else:
                 base, ext = os.path.splitext(dest)
                 suffix = "-md" if i == 1 else "-sm"
                 out_path = os.path.join(OUT, f"{base}{suffix}{ext}")
-                q = 90 if i == 1 else 85
+                q = 95 if i == 1 else 90
             resized = fit_cover(im, tw, th, focal_y)
-            resized = enhance(resized)
+            # NO enhance aqui
             save_webp(resized, out_path, quality=q)
             real_w, real_h = resized.size
             stats.append((os.path.basename(out_path), real_w, real_h, os.path.getsize(out_path)//1024))
