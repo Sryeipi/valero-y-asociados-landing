@@ -502,16 +502,23 @@
   /* ========== TEAM MODAL v7 ========== */
   .team-modal{
     position:fixed;inset:0;z-index:200;
-    display:none;align-items:center;justify-content:center;
+    display:none;
     padding:24px;
     background:rgba(10,22,40,0.86);
     backdrop-filter:blur(20px) saturate(1.4);
     opacity:0;transition:opacity .35s ease;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
   }
-  .team-modal.open{display:flex;opacity:1;}
+  .team-modal.open{
+    display:flex;
+    align-items:flex-start;justify-content:center;
+    opacity:1;
+  }
   .team-modal-dialog{
     position:relative;
-    max-width:1080px;width:100%;max-height:calc(100vh - 48px);
+    max-width:1080px;width:100%;
+    margin:auto;
     background:linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 100%);
     border:1px solid rgba(212,168,75,0.3);
     border-radius:12px;
@@ -575,7 +582,6 @@
   .team-modal-body{
     padding:48px 40px;
     display:flex;flex-direction:column;justify-content:center;
-    overflow-y:auto;
   }
   .team-modal-body .modal-eyebrow{
     font-family:var(--mono);font-size:11px;letter-spacing:0.24em;
@@ -656,14 +662,22 @@
   .member:hover .ver-mas{opacity:1;transform:translateY(0);}
 
   @media (max-width: 960px){
-    .team-modal{padding:12px;}
+    .team-modal{padding:12px;align-items:flex-start;}
     .team-modal-dialog{
       grid-template-columns:1fr;
-      max-height:calc(100vh - 24px);
-      overflow-y:auto;
     }
-    .team-modal-carousel{aspect-ratio:1/1;max-height:55vh;}
-    .team-modal-body{padding:32px 24px;}
+    .team-modal-carousel{aspect-ratio:4/5;max-height:none;}
+    .team-modal-body{padding:32px 24px 40px;}
+    .team-modal-close{top:14px;right:14px;}
+    .team-modal-body h3{font-size:clamp(26px, 6vw, 36px);}
+    .team-modal-body .modal-bio{font-size:15px;}
+  }
+  @media (max-width: 560px){
+    .team-modal{padding:0;}
+    .team-modal-dialog{border-radius:0;border-left:0;border-right:0;min-height:100vh;}
+    .team-modal-close{
+      background:rgba(10,22,40,0.92);
+    }
   }
 
   /* ========== EQUIPO v6 (4 cols mixed aspect — Ney portrait 3/4, otros landscape 4/3) ========== */
@@ -2316,15 +2330,25 @@
     }
   }
 
+  /* Cards de grid arrancan OCULTAS hasta que el container sea motion-in */
+  .areas-grid:not(.motion-in) .area,
+  .process-grid:not(.motion-in) .step-card,
+  .team:not(.motion-in) .member,
+  .reviews:not(.motion-in) .review,
+  .faq-list:not(.motion-in) .faq-item,
+  .kpis:not(.motion-in) .kpi{
+    opacity:0;
+  }
+
   /* Alternar slide direccional en grid de areas (3 cards: left, up, right) */
   .areas-grid.motion-in .area:nth-child(1){
-    animation:slideInFromLeft 1.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation:slideInFromLeft 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .areas-grid.motion-in .area:nth-child(2){
-    animation:slideInFromBottom 1.3s 130ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation:slideInFromBottom 1.3s 130ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   .areas-grid.motion-in .area:nth-child(3){
-    animation:slideInFromRight 1.3s 260ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation:slideInFromRight 1.3s 260ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   @keyframes slideInFromLeft{
     from{opacity:0;transform:translate3d(-80px, 20px, 0);filter:blur(14px);}
@@ -2339,19 +2363,19 @@
     to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);}
   }
   /* Process: stagger pero los 3 desde abajo, scale + blur */
-  .process-grid.motion-in .step-card:nth-child(1){animation:slideInFromBottom 1.3s backwards;}
+  .process-grid.motion-in .step-card:nth-child(1){animation:slideInFromBottom 1.3s forwards;}
   .process-grid.motion-in .step-card:nth-child(2){animation:slideInFromBottom 1.3s 160ms backwards;}
   .process-grid.motion-in .step-card:nth-child(3){animation:slideInFromBottom 1.3s 320ms backwards;}
 
   /* Team cards alternar left/up/up/right */
-  .team.motion-in .member:nth-child(1){animation:slideInFromLeft 1.3s backwards;}
+  .team.motion-in .member:nth-child(1){animation:slideInFromLeft 1.3s forwards;}
   .team.motion-in .member:nth-child(2){animation:slideInFromBottom 1.3s 130ms backwards;}
   .team.motion-in .member:nth-child(3){animation:slideInFromBottom 1.3s 260ms backwards;}
   .team.motion-in .member:nth-child(4){animation:slideInFromRight 1.3s 390ms backwards;}
 
   /* Reviews 6 cards stagger desde abajo con scale */
-  .reviews.motion-in .review:nth-child(odd){animation:slideInFromLeft 1.2s backwards;}
-  .reviews.motion-in .review:nth-child(even){animation:slideInFromRight 1.2s backwards;}
+  .reviews.motion-in .review:nth-child(odd){animation:slideInFromLeft 1.2s forwards;}
+  .reviews.motion-in .review:nth-child(even){animation:slideInFromRight 1.2s forwards;}
   .reviews.motion-in .review:nth-child(1){animation-delay:0ms;}
   .reviews.motion-in .review:nth-child(2){animation-delay:120ms;}
   .reviews.motion-in .review:nth-child(3){animation-delay:240ms;}
@@ -2677,7 +2701,7 @@
     </div>
   </div>
   <div class="hero-photo hero-enter hero-enter-photo" style="--enter-delay:2.3s" data-hyperframe>
-    <img src="img/ney.webp" srcset="img/ney-sm.webp 500w, img/ney-md.webp 900w, img/ney.webp 1600w" sizes="(max-width: 720px) 90vw, (max-width: 1280px) 42vw, 520px" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
+    <img src="img/ney.webp" srcset="img/ney-sm.webp 550w, img/ney-md.webp 1100w, img/ney.webp 1290w" sizes="(max-width: 720px) 90vw, (max-width: 1280px) 42vw, 520px" width="1200" height="1800" alt="Ab. Ney Antonio Valero Brando, socio fundador de Valero & Asociados" fetchpriority="high" decoding="async" style="object-position:center 18%;" />
     <svg class="hyperframe" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%"></rect></svg>
     <div class="hero-photo-credit"><span>Ab. Ney Valero</span><small>Socio fundador</small></div>
   </div>
@@ -2914,7 +2938,7 @@
       aria-label="Ver perfil del Ab. Ney Valero">
       <div class="member-photo">
         <span class="pin">Fundador</span>
-        <img src="img/ney.webp" srcset="img/ney-sm.webp 500w, img/ney-md.webp 900w, img/ney.webp 1600w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1600" height="2400" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
+        <img src="img/ney.webp" srcset="img/ney-sm.webp 550w, img/ney-md.webp 1100w, img/ney.webp 1290w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1600" height="2400" alt="Ab. Ney Antonio Valero Brando, fundador" loading="lazy" decoding="async" style="object-position:center 22%;" />
         <div class="overlay-label">Recibe cada caso · personalmente</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2931,7 +2955,7 @@
       data-area-msg="Hola, soy de una empresa y quisiera reservar una consulta con el Ab. Adrián Bastidas sobre asesoría corporativa."
       aria-label="Ver perfil del Ab. Adrián Bastidas">
       <div class="member-photo">
-        <img src="img/adrian.webp" srcset="img/adrian-sm.webp 550w, img/adrian-md.webp 1100w, img/adrian.webp 1800w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
+        <img src="img/adrian.webp" srcset="img/adrian-sm.webp 600w, img/adrian-md.webp 1200w, img/adrian.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Adrián Bastidas, socio corporativo" loading="lazy" decoding="async" style="object-position:center 30%;" />
         <div class="overlay-label">Contratos · Compliance</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2948,7 +2972,7 @@
       data-area-msg="Hola, quisiera reservar una consulta con la Abg. Patricia Valero sobre un tema de familia o laboral."
       aria-label="Ver perfil de la Abg. Patricia Valero">
       <div class="member-photo">
-        <img src="img/patricia.webp" srcset="img/patricia-sm.webp 550w, img/patricia-md.webp 1100w, img/patricia.webp 1800w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1200" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
+        <img src="img/patricia.webp" srcset="img/patricia-sm.webp 600w, img/patricia-md.webp 1200w, img/patricia.webp 1500w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1200" alt="Abg. Patricia Valero, asociada senior" loading="lazy" decoding="async" style="object-position:center 35%;" />
         <div class="overlay-label">Divorcios · Herencias · Laboral</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -2965,7 +2989,7 @@
       data-area-msg="Hola, quisiera reservar una consulta con el Ab. Daniel Carrera sobre un tema de tránsito."
       aria-label="Ver perfil del Ab. Daniel Carrera">
       <div class="member-photo">
-        <img src="img/daniel.webp" srcset="img/daniel-sm.webp 550w, img/daniel-md.webp 1100w, img/daniel.webp 1800w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
+        <img src="img/daniel.webp" srcset="img/daniel-sm.webp 600w, img/daniel-md.webp 1200w, img/daniel.webp 1448w" sizes="(max-width: 560px) 90vw, (max-width: 960px) 50vw, 22vw" width="1800" height="1350" alt="Ab. Daniel Carrera, asociado" loading="lazy" decoding="async" style="object-position:center 25%;" />
         <div class="overlay-label">Tránsito · Casos corporativos</div>
         <span class="ver-mas">Ver perfil →</span>
       </div>
@@ -3179,12 +3203,17 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // Loader cinematico v7: counter 000->100 con duracion 1800ms, despues fade out
+  // Loader cinematico v8.1: counter 000->100 garantizado 2200ms visible
+  // INVARIANTE: el loader siempre se ve minimo 2.2s (counter + barra + rotator)
+  // Trigger IMMEDIATE al ejecutar el IIFE, no espera window.load (que puede haber pasado)
   const loaderBar = document.getElementById('loaderBar');
   const loaderCount = document.getElementById('loaderCount');
   const loaderEl = document.getElementById('loader');
-  const LOADER_DURATION = reduceMotion ? 200 : 1800;
+  const LOADER_DURATION = reduceMotion ? 200 : 2200;
+  let loaderStarted = false;
   function runLoader(){
+    if (loaderStarted) return;
+    loaderStarted = true;
     if (reduceMotion){
       if (loaderCount) loaderCount.textContent = '100';
       if (loaderBar) loaderBar.style.width = '100%';
@@ -3204,23 +3233,13 @@
         setTimeout(() => {
           if (loaderEl) loaderEl.classList.add('gone');
           if (finePointer) document.body.classList.add('cursor-ready');
-        }, 250);
+        }, 350);
       }
     }
     requestAnimationFrame(tick);
   }
-  // Trigger robusto: si la pagina ya esta loaded, dispara inmediato; si no, espera load event.
-  if (document.readyState === 'complete'){
-    runLoader();
-  } else {
-    window.addEventListener('load', runLoader);
-  }
-  // Safety: en caso de load lento, dispara igual a los 4s
-  setTimeout(() => {
-    if (loaderEl && !loaderEl.classList.contains('gone')){
-      runLoader();
-    }
-  }, 4000);
+  // Dispara INMEDIATO desde el IIFE para garantizar que se vea (no esperamos load).
+  runLoader();
 
   const progress = document.getElementById('progress');
   const heroCinema = document.getElementById('heroCinema');
@@ -3366,30 +3385,18 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
 
-  // v8: observa MAS elementos para que el motion se vea TODO el scroll.
-  // Cards individuales + grids stagger + section heads + KPIs + cases + FAQ items.
-  const motionTargets = document.querySelectorAll(
-    '.area, .step-card, .case, .review, .member, .faq-item, .kpi'
-  );
+  // v8.1: NUEVA ESTRATEGIA - evitar conflict transition + @keyframes.
+  // Solo observamos los GRID CONTAINERS. Cuando entran, agregamos .motion-in al container,
+  // y las CSS keyframes staggered animations se disparan sobre los hijos.
+  // Los hijos individuales NO llevan .motion-observe (causaba conflict).
   const motionGrids = document.querySelectorAll(
     '.areas-grid, .process-grid, .team, .reviews, .faq-list, .kpis, .cases'
   );
   const motionHeads = document.querySelectorAll('.section-head');
-  if (motionTargets.length){
-    const motionIo = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('motion-in');
-        motionIo.unobserve(e.target);
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
-    motionTargets.forEach((el, i) => {
-      el.classList.add('motion-observe');
-      el.style.setProperty('--motion-delay', `${(i % 4) * 90}ms`);
-      motionIo.observe(el);
-    });
-  }
-  // Grids: cuando entran al viewport, agregar .motion-in para activar staggerIn de hijos
+  // Elementos sueltos que SI necesitan motion-observe (no estan en grids con stagger)
+  const motionSolo = document.querySelectorAll(
+    '.hero-quote, .step-meta, .closing > *, .case, .faq-item'
+  );
   if (motionGrids.length){
     const gridIo = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -3397,10 +3404,9 @@
         e.target.classList.add('motion-in');
         gridIo.unobserve(e.target);
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
     motionGrids.forEach(g => gridIo.observe(g));
   }
-  // Section heads: slide-up con clip reveal en el H2
   if (motionHeads.length){
     const headIo = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -3411,7 +3417,21 @@
     }, { threshold: 0.18 });
     motionHeads.forEach(h => headIo.observe(h));
   }
-  // Hero photo clip reveal una vez termina el loader
+  if (motionSolo.length){
+    const soloIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('motion-in');
+        soloIo.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+    motionSolo.forEach((el, i) => {
+      el.classList.add('motion-observe');
+      el.style.setProperty('--motion-delay', `${(i % 3) * 110}ms`);
+      soloIo.observe(el);
+    });
+  }
+  // Hero photo clip reveal cuando termina el loader
   const heroPhotoEl = document.querySelector('.hero-photo');
   if (heroPhotoEl && !reduceMotion){
     setTimeout(() => {
@@ -3867,7 +3887,7 @@
     existingImgs.forEach(i => i.remove());
     const img = document.createElement('img');
     img.src = `img/${photoSlug}.webp`;
-    img.srcset = `img/${photoSlug}-md.webp 1100w, img/${photoSlug}.webp 2400w`;
+    img.srcset = `img/${photoSlug}-md.webp 1200w, img/${photoSlug}.webp 1900w`;
     img.sizes = '(max-width: 960px) 100vw, 600px';
     img.alt = `${name} — retrato editorial`;
     img.loading = 'eager';

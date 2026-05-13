@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-v3 — Calidad 92 con sharpening fuerte + tamanos mas grandes para mejor render desktop.
-Busca originales en multiples locations. Backup automatico.
+v4 — Calidad maxima 95 + UnsharpMask balanceado (radius 1.0 percent 60).
+Tamanos full max-up to original. Backup automatico.
 """
 import os, shutil
 from datetime import datetime
@@ -15,8 +15,10 @@ ORIG_LOCS = [
 ]
 OUT = os.path.join(ROOT, "_Landing_Project", "landing", "img")
 BACKUP = os.path.join(ROOT, "_Landing_Project",
-                      f"img.backup-v3-{datetime.now():%Y%m%d-%H%M%S}")
+                      f"img.backup-v4-{datetime.now():%Y%m%d-%H%M%S}")
 
+# Tamano max-up generoso: si la original es grande, generar version casi full
+# Esto da version retina nitida en displays grandes
 MAP = {
     "ney.webp":         ("ney.jpg",                                           "portrait",    0.22),
     "hero-main.webp":   ("MAIN image.png",                                    "wide",        0.35),
@@ -37,14 +39,14 @@ MAP = {
     "ney-alt.webp":     ("ney.jpg",                                           "portrait",    0.22),
 }
 
-# Tamanos mas grandes para retina DPR2 + sharpening fuerte
+# Maximo tamano por aspect - generoso para retina
 SIZES = {
-    "portrait":    [(1600, 2400), (900, 1350), (500, 750)],
-    "portrait43":  [(1800, 1350), (1100, 825), (550, 413)],
-    "landscape":   [(2200, 1238), (1100, 619), (550, 310)],
-    "landscape32": [(1800, 1200), (1100, 733), (550, 367)],
-    "landscape43": [(1700, 1275), (1100, 825), (550, 413)],
-    "wide":        [(2400, 1350), (1400, 788), (700, 394)],
+    "portrait":    [(1800, 2700), (1100, 1650), (550, 825)],
+    "portrait43":  [(2000, 1500), (1200, 900),  (600, 450)],
+    "landscape":   [(2400, 1350), (1300, 731),  (650, 366)],
+    "landscape32": [(2000, 1333), (1200, 800),  (600, 400)],
+    "landscape43": [(1900, 1425), (1200, 900),  (600, 450)],
+    "wide":        [(2600, 1463), (1500, 844),  (750, 422)],
 }
 
 os.makedirs(OUT, exist_ok=True)
@@ -63,17 +65,23 @@ def find_src(name):
     return None
 
 def fit_cover(im, target_w, target_h, focal_y=0.4):
+    # No upscale: si el original es mas chico, recortar pero no escalar para arriba
+    if im.width < target_w * 1.05 or im.height < target_h * 1.05:
+        # Original demasiado chico, ajustar target a su tamano max
+        scale = min(im.width / target_w, im.height / target_h)
+        target_w = int(target_w * scale)
+        target_h = int(target_h * scale)
     return ImageOps.fit(im, (target_w, target_h), method=Image.LANCZOS, centering=(0.5, focal_y))
 
 def enhance(im):
-    """Sharpening fuerte + color/contrast boost editorial."""
-    im = im.filter(ImageFilter.UnsharpMask(radius=1.8, percent=120, threshold=2))
-    im = ImageEnhance.Color(im).enhance(1.08)
-    im = ImageEnhance.Contrast(im).enhance(1.06)
-    im = ImageEnhance.Brightness(im).enhance(1.02)
+    """UnsharpMask BALANCEADO (mas sutil para no artefactar) + leve color/contrast."""
+    im = im.filter(ImageFilter.UnsharpMask(radius=1.0, percent=60, threshold=3))
+    im = ImageEnhance.Color(im).enhance(1.05)
+    im = ImageEnhance.Contrast(im).enhance(1.04)
     return im
 
-def save_webp(im, path, quality=92):
+def save_webp(im, path, quality=95):
+    # Method 6 (slowest, best compression). Lossless not used (file size).
     im.save(path, "WEBP", quality=quality, method=6)
 
 stats = []
@@ -89,23 +97,25 @@ for dest, (src_name, mode, focal_y) in MAP.items():
         im = ImageOps.exif_transpose(im)
         if im.mode in ("RGBA", "P"):
             im = im.convert("RGB")
+        orig_size = im.size
         for i, (tw, th) in enumerate(sizes):
             if i == 0:
                 out_path = os.path.join(OUT, dest)
-                q = 92
+                q = 95
             else:
                 base, ext = os.path.splitext(dest)
                 suffix = "-md" if i == 1 else "-sm"
                 out_path = os.path.join(OUT, f"{base}{suffix}{ext}")
-                q = 88 if i == 1 else 84
+                q = 90 if i == 1 else 85
             resized = fit_cover(im, tw, th, focal_y)
             resized = enhance(resized)
             save_webp(resized, out_path, quality=q)
-            stats.append((os.path.basename(out_path), tw, th, os.path.getsize(out_path)//1024))
-            print(f"[ok] {os.path.basename(out_path):28s} {tw:4d}x{th:<4d} q={q}  {os.path.getsize(out_path)//1024:>4d} KB")
+            real_w, real_h = resized.size
+            stats.append((os.path.basename(out_path), real_w, real_h, os.path.getsize(out_path)//1024))
+            print(f"[ok] {os.path.basename(out_path):28s} {real_w:4d}x{real_h:<4d} q={q}  {os.path.getsize(out_path)//1024:>5d} KB  (orig {orig_size[0]}x{orig_size[1]})")
 
 total = sum(s[3] for s in stats)
 print(f"\nTOTAL: {len(stats)} archivos, {total} KB ({total/1024:.1f} MB)")
 if missing:
-    print(f"\n[!] MISSING ORIGINALS: {missing}")
+    print(f"\n[!] MISSING: {missing}")
 print("DONE.")
