@@ -378,7 +378,7 @@
 
   /* ========== KPIs ========== */
   .kpis{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
     border-top:1px solid rgba(176,138,69,0.15);
     border-bottom:1px solid rgba(176,138,69,0.15);
     padding:48px 0;margin-bottom:80px;
@@ -656,15 +656,15 @@
   }
   .member:hover .member-photo::after{border-color:rgba(176,138,69,0.4);}
   .member-photo .ver-mas{
-    position:absolute;bottom:14px;right:14px;z-index:3;
+    position:absolute;top:14px;right:14px;bottom:auto;z-index:3;
     background:rgba(16,23,15,0.78);color:var(--gold);
     font-family:var(--mono);font-size:10px;letter-spacing:0.18em;
     text-transform:uppercase;padding:6px 12px;border-radius:999px;
     border:1px solid rgba(176,138,69,0.3);backdrop-filter:blur(6px);
-    opacity:0;transform:translateY(8px);
+    opacity:.96;transform:translateY(0);
     transition:opacity .35s ease, transform .35s ease;
   }
-  .member:hover .ver-mas{opacity:1;transform:translateY(0);}
+  .member:hover .ver-mas{opacity:1;transform:translateY(-1px);}
 
   @media (max-width: 960px){
     .team-modal{padding:12px;align-items:flex-start;}
@@ -2529,7 +2529,18 @@
   }
 
   /* ========== ANIMATEDTEXT CHAR-BY-CHAR SCROLL-DRIVEN (v6) ========== */
-  .anim-text{display:inline-block;line-height:inherit;}
+  .anim-text{
+    display:inline;
+    line-height:inherit;
+    overflow:visible;
+    white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .anim-text .at-word{
+    display:inline-block;
+    white-space:nowrap;
+  }
   .anim-text .at-char{
     display:inline-block;
     opacity:0.18;
@@ -2693,9 +2704,9 @@
     .trust-row{max-width:none;}
     .areas-grid{grid-template-columns:1fr;gap:16px;}
     .process-grid{grid-template-columns:1fr;gap:0;}
-    .kpis{grid-template-columns:repeat(2,1fr);gap:24px 0;padding:32px 0;}
+    .kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:32px 0;}
     .kpi{border-right:0;}
-    .kpi:nth-child(odd){border-right:1px solid rgba(159,146,127,0.1);}
+    .kpi:not(:last-child){border-right:1px solid rgba(159,146,127,0.1);}
     .founder{grid-template-columns:1fr;gap:48px;}
     .team{grid-template-columns:repeat(2,1fr);}
     .reviews{columns:1;}
@@ -3003,17 +3014,18 @@
   }
   @media (max-width: 960px){
     .hero{
+      --hero-mobile-media-top:118px;
       --hero-mobile-media-h:clamp(270px, 38svh, 380px);
       min-height:100svh;
       padding:
-        calc(92px + var(--hero-mobile-media-h) + 34px)
+        calc(var(--hero-mobile-media-top) + var(--hero-mobile-media-h) + 34px)
         22px
         68px;
       align-items:start;
       background:linear-gradient(180deg, #10170F 0%, #12190F 46%, #10170F 100%);
     }
     .hero-backdrop{
-      inset:92px 18px auto;
+      inset:var(--hero-mobile-media-top) 18px auto;
       height:var(--hero-mobile-media-h);
       z-index:0;
       border-radius:8px;
@@ -3040,14 +3052,15 @@
   }
   @media (max-width: 480px){
     .hero{
+      --hero-mobile-media-top:120px;
       --hero-mobile-media-h:clamp(210px, 27svh, 238px);
       padding:
-        calc(88px + var(--hero-mobile-media-h) + 28px)
+        calc(var(--hero-mobile-media-top) + var(--hero-mobile-media-h) + 28px)
         20px
         60px;
     }
     .hero-backdrop{
-      inset:96px 16px auto;
+      inset:var(--hero-mobile-media-top) 16px auto;
       height:var(--hero-mobile-media-h);
     }
   }
@@ -3235,6 +3248,106 @@
       transform:translate3d(0, 0, 0) scale(1)!important;
       filter:blur(0)!important;
       animation:none!important;
+    }
+  }
+
+  /* ========== v18 polish: spacing, text safety, KPIs and compact actions ========== */
+  .hero-quote,
+  .hero-sub,
+  .section-head p,
+  .review-quote,
+  .step-body,
+  .case p{
+    overflow:visible;
+    text-wrap:pretty;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+  .cta-cinema{
+    padding:18px 30px;
+    min-height:54px;
+  }
+  .cta-primary{
+    padding:15px 28px;
+    min-height:48px;
+  }
+  .closing .cta-primary{
+    padding:17px 32px;
+    min-height:52px;
+  }
+  .sticky-cta-main{
+    min-height:44px;
+    padding:12px 18px;
+  }
+  .hero-trust{
+    max-width:620px;
+  }
+  .member-photo .ver-mas{
+    top:14px!important;
+    right:14px!important;
+    bottom:auto!important;
+  }
+  @media (max-width: 720px){
+    .hero-trust{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      align-items:start;
+      gap:10px;
+      max-width:none;
+    }
+    .hero-trust .trust-sep{
+      display:none;
+    }
+    .hero-trust .trust-item{
+      min-width:0;
+    }
+    .hero-trust .trust-item strong{
+      font-size:18px;
+    }
+    .hero-trust .trust-item span{
+      font-size:8.5px;
+      line-height:1.25;
+      letter-spacing:.08em;
+    }
+    .kpis{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      padding:28px 0;
+      margin-bottom:56px;
+    }
+    .kpi{
+      padding:0 8px;
+    }
+    .kpi-num{
+      font-size:clamp(31px, 10vw, 42px);
+      margin-bottom:8px;
+    }
+    .kpi-lab{
+      font-size:10px;
+      line-height:1.25;
+      letter-spacing:.02em;
+    }
+    .cta-cinema,
+    .cta-primary{
+      min-height:39px;
+      padding:11px 16px;
+      font-size:12.5px;
+    }
+    .sticky-cta-main{
+      min-height:38px;
+      padding:9px 14px;
+    }
+    .closing .cta-primary{
+      min-height:42px;
+      padding:12px 18px;
+      font-size:14px;
+    }
+    .member-photo .ver-mas{
+      top:12px!important;
+      right:12px!important;
+      padding:6px 10px;
+      font-size:9px;
+      letter-spacing:.12em;
     }
   }
 </style>
@@ -3471,18 +3584,14 @@
 <section id="casos">
   <div class="section-head reveal">
     <div class="mono">04 — Casos resueltos</div>
-    <h2 class="blur-text" data-blur-text>Más de 800 casos. Cada uno, una decisión bien tomada.</h2>
-    <p>Resúmenes anonimizados de expedientes reales. Nombres y montos modificados para proteger la confidencialidad del cliente.</p>
+    <h2 class="blur-text" data-blur-text>Más de 850 casos. Decisiones tomadas con criterio.</h2>
+    <p>Ejemplos anonimizados de situaciones reales. Cambiamos nombres y datos sensibles para cuidar la confidencialidad de cada cliente.</p>
   </div>
 
   <div class="kpis reveal">
     <div class="kpi">
       <div class="kpi-num" data-target="850" data-suffix="+">0</div>
       <div class="kpi-lab">Casos resueltos</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-num" data-target="3" data-suffix="">0</div>
-      <div class="kpi-lab">Áreas principales</div>
     </div>
     <div class="kpi">
       <div class="kpi-num" data-target="20" data-suffix="+">0</div>
@@ -3557,7 +3666,7 @@
   <div class="section-head reveal">
     <div class="mono">05 — Equipo</div>
     <h2 class="blur-text" data-blur-text>Cuatro abogados. Una sola promesa.</h2>
-    <p>Cada vertical tiene un abogado responsable. Cuando nos escribes por WhatsApp, te conectamos con quien va a llevar tu caso, no con un asistente. El Ab. Ney Valero recibe personalmente cada caso antes de asignarlo.</p>
+    <p>Desde el primer mensaje sabes quién revisa tu caso, qué ruta conviene y qué pasos tienen sentido. Atención directa, criterios claros y un equipo que cuida lo importante antes de mover una sola firma.</p>
   </div>
   <div class="team stagger">
     <button class="member" type="button"
@@ -3662,7 +3771,7 @@
   <div class="section-head reveal">
     <div class="mono">06 — Confianza</div>
     <h2 class="blur-text" data-blur-text>Lo que cuidamos antes de tocar tu caso.</h2>
-    <p>Sin promesas vacías ni historias inventadas: estas son las reglas de atención que sostienen cada consulta.</p>
+    <p>Sin promesas vacías ni discursos largos: estos son los criterios que sostienen cada consulta.</p>
   </div>
   <div class="reviews reveal">
     <div class="review">
@@ -3692,11 +3801,10 @@
     </div>
     <div class="review">
       <div class="review-kicker">Confidencialidad</div>
-      <p class="review-quote">Los casos se cuentan puertas adentro. La web solo muestra áreas, método y criterios; los detalles sensibles se protegen.</p>
+      <p class="review-quote">Los casos se conversan puertas adentro. La página muestra áreas, método y criterios; los detalles sensibles se protegen.</p>
       <div class="review-footer"><div class="review-avatar">06</div><div class="review-meta"><div>Discreción</div><div>Datos y expedientes protegidos</div></div></div>
     </div>
   </div>
-  <div class="reviews-note">Las reseñas verificadas se incorporan solo cuando existan fuentes reales autorizadas.</div>
 </section>
 
 <!-- FAQ -->
@@ -4440,17 +4548,27 @@
   }, { threshold: 0.15 });
   document.querySelectorAll('[data-blur-text]').forEach(el => btIo.observe(el));
 
-  // ===== AnimatedText char-by-char scroll-driven (v6) =====
-  // Para [data-anim-text]: split en spans .at-char, scroll activa progresivamente
+  // ===== AnimatedText word-safe scroll-driven (v18) =====
+  // Agrupa letras por palabra para evitar cortes raros en móvil.
   document.querySelectorAll('[data-anim-text]').forEach(el => {
     if (el.dataset.animTextDone === '1') return;
-    const text = el.textContent;
+    const text = el.textContent.trim();
     el.innerHTML = '';
-    [...text].forEach(c => {
-      const span = document.createElement('span');
-      span.className = 'at-char';
-      span.textContent = c === ' ' ? ' ' : c;
-      el.appendChild(span);
+    text.split(/(\s+)/).forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) {
+        el.appendChild(document.createTextNode(' '));
+        return;
+      }
+      const word = document.createElement('span');
+      word.className = 'at-word';
+      [...part].forEach(c => {
+        const span = document.createElement('span');
+        span.className = 'at-char';
+        span.textContent = c;
+        word.appendChild(span);
+      });
+      el.appendChild(word);
     });
     el.dataset.animTextDone = '1';
   });
