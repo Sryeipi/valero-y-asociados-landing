@@ -2404,7 +2404,7 @@
   /* Stagger MAS visible: incrementa el step y compaginar con slide */
   .stagger.motion-in > *,
   .team.motion-in > *{
-    animation:staggerInPremium 1.1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation:staggerInPremium 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   .stagger.motion-in > *:nth-child(1),
   .team.motion-in > *:nth-child(1){animation-delay:0ms;}
@@ -2469,14 +2469,14 @@
   }
   /* Process: stagger pero los 3 desde abajo, scale + blur */
   .process-grid.motion-in .step-card:nth-child(1){animation:slideInFromBottom 1.3s forwards;}
-  .process-grid.motion-in .step-card:nth-child(2){animation:slideInFromBottom 1.3s 160ms backwards;}
-  .process-grid.motion-in .step-card:nth-child(3){animation:slideInFromBottom 1.3s 320ms backwards;}
+  .process-grid.motion-in .step-card:nth-child(2){animation:slideInFromBottom 1.3s 160ms both;}
+  .process-grid.motion-in .step-card:nth-child(3){animation:slideInFromBottom 1.3s 320ms both;}
 
   /* Team cards alternar left/up/up/right */
   .team.motion-in .member:nth-child(1){animation:slideInFromLeft 1.3s forwards;}
-  .team.motion-in .member:nth-child(2){animation:slideInFromBottom 1.3s 130ms backwards;}
-  .team.motion-in .member:nth-child(3){animation:slideInFromBottom 1.3s 260ms backwards;}
-  .team.motion-in .member:nth-child(4){animation:slideInFromRight 1.3s 390ms backwards;}
+  .team.motion-in .member:nth-child(2){animation:slideInFromBottom 1.3s 130ms both;}
+  .team.motion-in .member:nth-child(3){animation:slideInFromBottom 1.3s 260ms both;}
+  .team.motion-in .member:nth-child(4){animation:slideInFromRight 1.3s 390ms both;}
 
   /* Reviews 6 cards stagger desde abajo con scale */
   .reviews.motion-in .review:nth-child(odd){animation:slideInFromLeft 1.2s forwards;}
@@ -3226,6 +3226,15 @@
     .kpis.motion-in .kpi,
     .cases.motion-in .case{
       animation-duration:1.55s!important;
+    }
+    .team.motion-in .member{
+      animation-fill-mode:both!important;
+    }
+    .team.motion-in.motion-complete .member{
+      opacity:1!important;
+      transform:translate3d(0, 0, 0) scale(1)!important;
+      filter:blur(0)!important;
+      animation:none!important;
     }
   }
 </style>
@@ -4032,6 +4041,9 @@
       entries.forEach(e => {
         if (!e.isIntersecting) return;
         e.target.classList.add('motion-in');
+        if (e.target.classList.contains('team')) {
+          window.setTimeout(() => e.target.classList.add('motion-complete'), 2200);
+        }
         gridIo.unobserve(e.target);
       });
     }, { threshold: 0.02, rootMargin: '0px 0px -12% 0px' });
@@ -4041,6 +4053,9 @@
         const r = g.getBoundingClientRect();
         if (r.top < window.innerHeight * 0.9 && r.bottom > window.innerHeight * 0.08) {
           g.classList.add('motion-in');
+          if (g.classList.contains('team')) {
+            window.setTimeout(() => g.classList.add('motion-complete'), 2200);
+          }
           gridIo.unobserve(g);
         }
       });
