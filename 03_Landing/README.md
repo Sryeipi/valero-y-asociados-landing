@@ -3,11 +3,11 @@ type: proyecto
 domain: clientes
 client: Valero y Asociados
 tags: [proyecto, landing, web, lead-gen, whatsapp]
-status: v8-profile-photos-fixed-deployed-vercel
+status: v9-feedback-cliente-azul-nombres
 created: 2026-05-11
-updated: 2026-05-13
+updated: 2026-08-03
 git_branch: main
-git_state: commit a392d79 pushed to origin/main; Vercel production READY
+git_state: ver ultimo commit en origin/main; Vercel production READY (deploy automatico por Git integration)
 owner: Funnel Architect Agent + Design Production Agent
 ---
 
@@ -15,13 +15,14 @@ owner: Funnel Architect Agent + Design Production Agent
 
 ## Donde vive el proyecto
 
-El paquete fisico vive **fuera del vault** porque incluye HTML, fotos pesadas y archivos binarios (PDF, PPTX):
+Todo el proyecto vive **dentro del vault** (migrado de Downloads el 2026-05-12):
 
 ```
-C:\Users\Administrator\Downloads\Valero y Asociados\
+Obsidian Vault\03_CLIENTES\Valero y Asociados\_Landing_Project\landing\index.html
 ```
 
-Esta nota es el **puntero canonico** desde el vault. El vault tiene la memoria estrategica (brief, brandkit, decisiones). La carpeta downloads tiene el codigo y los assets.
+Repo: `https://github.com/Sryeipi/valero-y-asociados-landing` (raiz = carpeta del cliente; `vercel.json` apunta a `_Landing_Project/landing`). Push a `main` = deploy automatico en Vercel.
+**URL produccion:** https://valero-y-asociados-landing.vercel.app/
 
 ## Conversion
 
@@ -119,3 +120,14 @@ Esta nota es el **puntero canonico** desde el vault. El vault tiene la memoria e
 - **Verificacion local:** Playwright desktop 1440 y mobile 390 sin errores consola, sin overflow horizontal, hero `ney.webp?v=20260512-hq` cargando 1290x1935, 0 bloques invisibles en viewport.
 - **Deploy:** CLI Vercel sigue con token invalido, pero Git integration funciono. Commit `903d08b` (`fix: improve landing motion and image quality`) pushed a `origin/main`; Vercel production `dpl_CF8igdtJinLyAMoiGGBmweyrPkTv` quedo `READY`.
 - **URL:** https://valero-y-asociados-landing.vercel.app/
+
+## Cierre v9 Claude Code - 2026-08-03 (feedback del cliente por WhatsApp)
+
+Cambios pedidos por David Bastidas Guillen (WhatsApp 2026-08-02):
+
+1. **Paleta azul/plomo**: el estudio tiene papeleria azul/gris. HTML re-tokenizado a la paleta navy del brandkit (`#0A1628/#142847/#1B3358` + dorado `#D4A84B` + plomo `#9AA3B2/#C3CAD6` + acentos `#C4533A/#3A8F7D/#3A6EB5`). Todos los rgba/hex hardcodeados migrados (gold, navy, gray viejos).
+2. **Nombres reales con segundos apellidos**: Ney Valero Brando · David Bastidas Guillen (antes "Adrian Bastidas") · Patricia Bastidas de Valero (antes "Patricia Valero") · Fernando Carrillo Arteaga (antes "Daniel Carrera"). Cards, modal, JSON-LD, alts y mensajes WhatsApp actualizados. Archivos de foto conservan nombres viejos (adrian/daniel) — no renombrar.
+3. **Areas ampliadas, sin responsables**: se quitaron los "Resp. X" de las cards; listas ampliadas con el detalle del PPTX del cliente (divorcios express/judicial/contencioso, pensiones, testamentos, posesion efectiva, SAS/Ltda/SA, marca SENADI, cobro judicial, retainer PyME, promesas, prescripcion adquisitiva, propiedad horizontal). Chips nuevos: declaraciones juramentadas, poderes, actas de finiquito.
+4. **Copy**: "firmamos honorarios escritos" → "firmamos un acuerdo de honorarios por escrito, con alcance y plazos definidos". Caso S.A.S.: "clausulas clave" → "clausulas claves", "pudiera" → "pueda" (tambien en caso registral).
+
+Verificado con Playwright (desktop 1440 + mobile 375, sin overflow). Pendiente que sigue vivo: direccion de oficina real, WhatsApp comercial, politica de privacidad.

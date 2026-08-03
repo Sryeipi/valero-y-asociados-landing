@@ -48,10 +48,12 @@ project_active: landing_v1
 
 ## Equipo
 
-1. Ab. Ney Antonio Valero Brando - Socio fundador (Civil, Inmobiliario)
-2. Ab. Henry Valero - Socio (Corporativo, Inmobiliario)
-3. Abg. Alicia Mendoza - Asociada senior (Familia, Laboral)
-4. Abg. Daniel Carrera - Asociado (Transito, Corporativo)
+1. Ab. Ney Valero Brando (Ney Antonio Valero Brando) - Socio fundador (Civil, Inmobiliario)
+2. Ab. David Bastidas Guillen - Socio (Corporativo)
+3. Abg. Patricia Bastidas de Valero - Asociada senior (Familia, Laboral)
+4. Ab. Fernando Carrillo Arteaga - Asociado (Transito, Corporativo)
+
+> Nombres confirmados por el cliente via WhatsApp 2026-08-02 (David Bastidas Guillen). Con segundos apellidos, sin abreviar. Las fotos `adrian.png` / `daniel.png` corresponden a David y Fernando respectivamente (nombres de archivo heredados, no renombrar: rompen srcsets).
 
 ## Buyer personas
 
@@ -63,30 +65,18 @@ project_active: landing_v1
 
 ## Proyectos activos
 
+- [[_Landing_Project/00_LEEME_PRIMERO|Paquete Landing completo]] - brief, benchmarks, prompts, wireframe, reviews, fixes
 - [[01_Brief Estrategico|01 Brief Estrategico]] - documento maestro
 - [[02_Brandkit|02 Brandkit]] - sistema visual operativo
-- [[03_Landing/README|03 Landing v1]] - proyecto fisico en `C:\Users\Administrator\Downloads\Valero y Asociados\`
+- [[03_Landing/README|03 Landing v6]] - estado del sitio (repo GitHub `Sryeipi/valero-y-asociados-landing`)
 
-## Archivos fuera del vault
+## Paquete y archivos del proyecto (en el vault)
 
-```
-C:\Users\Administrator\Downloads\Valero y Asociados\
-├── _Landing_Project/        (paquete completo armado por Cowork)
-│   ├── 00_LEEME_PRIMERO.md
-│   ├── 01_Brief_Estrategico.md
-│   ├── 02_Benchmarks_Investigacion.md
-│   ├── 03_Prompts_Claude_Design.md
-│   ├── 04_Wireframe_y_Estructura.md
-│   ├── 05_Reviews_y_Casos.md
-│   ├── 06_Obsidian_Claude_Code_Guia.md
-│   └── landing/index.html   (landing HTML funcional)
-├── Estrategia-Valero-y-Asociados-2025.pdf
-├── Presentacion-Valero-y-Asociados.pptx
-├── CLAUDE.md                (boot Obsidian-First para Claude Code)
-├── PROMPT_CLAUDE_DESIGN.md  (prompt self-contained para Claude.ai)
-├── PROMPT_CLAUDE_CODE.md    (prompt corto para sesiones Claude Code)
-└── *.PNG / *.jpg            (fotos editoriales del equipo)
-```
+Todo el paquete vive ahora **dentro del vault** (movido de Downloads el 2026-05-12):
+
+- [[_Landing_Project/00_LEEME_PRIMERO|Paquete _Landing_Project]] — brief, benchmarks, prompts, wireframe, reviews, fixes y `landing/index.html`.
+- Boot y prompts del cliente: [[03_CLIENTES/Valero y Asociados/CLAUDE|CLAUDE (boot)]] · [[PROMPT_CLAUDE_DESIGN]] · [[PROMPT_CLAUDE_CODE]] · [[03_CLIENTES/Valero y Asociados/README|README]]
+- Fuentes pesadas (PDF estrategia, PPTX, fotos editoriales del equipo) preservadas en la carpeta del cliente.
 
 ## Reglas duras del proyecto
 

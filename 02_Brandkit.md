@@ -3,14 +3,16 @@ type: brandkit
 domain: clientes
 client: Valero y Asociados
 tags: [brandkit, valero, paleta, tipografia, sistema-visual]
-status: v1-borrador
+status: v1-vigente
 created: 2026-05-11
-updated: 2026-05-11
+updated: 2026-08-03
 owner: Brand Intelligence Agent (mode: kit)
 source: derivado de _Landing_Project/01_Brief_Estrategico.md
 ---
 
 # Brandkit operativo - Valero & Asociados v1
+
+> **2026-08-03:** el cliente confirmo por WhatsApp que la papeleria del estudio es azul/plomo. El `index.html` de la landing quedo alineado a esta paleta navy (antes usaba una variante verde-oliva no documentada). Esta tabla es la fuente de verdad. Token extra en el HTML: `--gray-2 #C3CAD6` (plomo claro).
 
 ## 1. Paleta
 
