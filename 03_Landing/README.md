@@ -131,3 +131,9 @@ Cambios pedidos por David Bastidas Guillen (WhatsApp 2026-08-02):
 4. **Copy**: "firmamos honorarios escritos" → "firmamos un acuerdo de honorarios por escrito, con alcance y plazos definidos". Caso S.A.S.: "clausulas clave" → "clausulas claves", "pudiera" → "pueda" (tambien en caso registral).
 
 Verificado con Playwright (desktop 1440 + mobile 375, sin overflow). Pendiente que sigue vivo: direccion de oficina real, WhatsApp comercial, politica de privacidad.
+
+### URLs vivas (2026-08-03)
+
+- **https://sryeipi.github.io/valero-y-asociados-landing/** — GitHub Pages, rama `gh-pages` (solo contenido de `landing/`). OJO: NO se actualiza sola con push a main; hay que re-armar y pushear `gh-pages` tras cada cambio.
+- `https://birm-landing-demo.vercel.app/` — proyecto Vercel mal nombrado pero conectado a este repo; sirve Valero y SI se actualiza con cada push a main. No presentable al cliente por el nombre.
+- `https://valero-y-asociados-landing.vercel.app/` — **CAIDA** (DEPLOYMENT_NOT_FOUND): el proyecto Vercel `valero-y-asociados-landing` compila pero no tiene dominio de produccion asignado y tiene Deployment Protection. Fix manual en dashboard: Settings → Domains → agregar el dominio + apagar Protection. El conector Vercel de Claude no tiene scope del team `sryeipis-projects`.
